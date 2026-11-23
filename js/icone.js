@@ -57,4 +57,6 @@ function icona(nome, cls){
 /* solo il contenuto, per i disegni dentro altri SVG (pin della mappa) */
 function iconaInterna(nome){ const s = icona(nome); return s.replace(/^<svg[^>]*>|<\/svg>$/g,''); }
 function idrataIcone(root=document){ root.querySelectorAll(':not(svg)[data-icon]:empty').forEach(el => el.innerHTML = icona(el.dataset.icon)); }
-if (document.readyState !== 'loading') idrataIcone(); else document.addEventListener('DOMContentLoaded', () => idrataIcone());
+/* gli script sono in fondo alla pagina, quindi gli elementi ci sono già */
+idrataIcone();
+document.addEventListener('DOMContentLoaded', () => idrataIcone());

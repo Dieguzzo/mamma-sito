@@ -72,7 +72,7 @@ const NS='http://www.w3.org/2000/svg';
 const el=(t,a={},p)=>{const n=document.createElementNS(NS,t); for(const k in a) n.setAttribute(k,a[k]); if(p) p.appendChild(n); return n;};
 const $=s=>document.querySelector(s);
 document.querySelectorAll('[data-li]').forEach(g=>g.innerHTML=ICON[g.dataset.li]);
-document.querySelectorAll('[data-icon]').forEach(s=>{ if(s.tagName.toLowerCase()==='svg'){s.setAttribute('viewBox','0 0 24 24'); s.innerHTML=ICON[s.dataset.icon];} else s.innerHTML=`<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">${ICON[s.dataset.icon]}</svg>`; });
+document.querySelectorAll('[data-icon]:empty').forEach(s=>{ if(s.tagName.toLowerCase()==='svg'){s.setAttribute('viewBox','0 0 24 24'); s.innerHTML=ICON[s.dataset.icon];} else s.innerHTML=`<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">${ICON[s.dataset.icon]}</svg>`; });
 const ico=(k,cls='')=>`<svg viewBox="0 0 24 24" fill="none" class="${cls}" aria-hidden="true">${ICON[k]}</svg>`;
 
 const svg=$('#map'), defs=$('#defs');
@@ -177,11 +177,10 @@ const allPg=fn=>Object.values(PG).forEach(fn);
 function renderItalia(){
   if(ROUTE==='home'){
     const main=FLOWS.filter(f=>!f.extra); const avg=Math.round(main.reduce((s,f)=>s+f.pct,0)/main.length);
-    det().innerHTML=`<div class="view summary"><h3>Oggi in Italia · mercoledì 18 novembre</h3>
+    det().innerHTML=`<div class="view summary"><h3>Mercoledì 18 novembre</h3>
       <div class="row"><span class="chip p">Zone protette</span><p>Sole garantito in ${PROT.size} regioni</p></div>
-      <div class="row"><span class="chip c">Zone di compensazione</span><p>Maltempo spostato in ${main.length} regioni, in media il ${avg}% delle perturbazioni</p></div>
-      <div class="pairs"><small>Le coppie di oggi</small>${main.map(f=>`<button data-flow="${f.id}"><span>${f.from} ${ico('freccia')} ${f.to}</span><b>${f.pct}%</b></button>`).join('')}</div>
-      <a href="#zone-e-interventi">Vedi tutti gli interventi ${ico('freccia')}</a></div>`;
+      <div class="row"><span class="chip c">Zone di compensazione</span><p>Pioggia di compensazione in ${main.length} regioni</p></div>
+      <div class="pairs"><small>Le coppie di oggi</small>${main.map(f=>`<button data-flow="${f.id}"><span>${f.from} ${ico('freccia')} ${f.to}</span><b>${f.pct}%</b></button>`).join('')}</div></div>`;
     det().querySelectorAll('[data-flow]').forEach(b=>{const f=FLOWS.find(x=>x.id===b.dataset.flow); b.onmouseenter=b.onfocus=()=>hot(f,true); b.onmouseleave=b.onblur=()=>hot(f,false); b.onclick=()=>select(COMUNI.find(c=>c.r===f.to));});
     return;
   }

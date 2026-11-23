@@ -83,7 +83,7 @@
  .flows-list .rt{font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
  .flows-list .rt svg{width:16px;height:16px;color:var(--blu)}
  .flows-list .sub{grid-column:1;font-size:13px;color:var(--testo-2)}
- .flows-list .pc{grid-row:1/3;grid-column:2;font-weight:700;font-size:22px;color:var(--verde);font-variant-numeric:tabular-nums}
+ .flows-list .pc{grid-row:1/3;grid-column:2;font-weight:700;font-size:22px;color:var(--cielo);font-variant-numeric:tabular-nums}
  .flows-list button:hover .rt,.flows-list button.hot .rt{color:var(--blu)}
  .flows-list button:hover,.flows-list button.hot{background:rgba(0,31,63,.03)}
 
@@ -232,7 +232,7 @@
  .pairs button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 6px;border-radius:2px;cursor:pointer;font-size:15px}
  .pairs button span{display:flex;align-items:center;gap:6px;font-weight:600}
  .pairs button svg{width:14px;height:14px;color:var(--blu)}
- .pairs button b{color:var(--verde);font-variant-numeric:tabular-nums}
+ .pairs button b{color:var(--cielo);font-variant-numeric:tabular-nums}
  .pairs button:hover,.pairs button:focus-visible{background:rgba(0,31,63,.04);color:var(--blu)}
  .summary a{display:inline-flex;gap:6px;align-items:center;font-weight:600;margin-top:12px;text-decoration:none}
  .summary a svg{width:16px;height:16px}
@@ -254,16 +254,15 @@
  .bol{flex-direction:row;align-items:center;gap:24px}
  .bol p{color:var(--testo-2);font-size:16px;line-height:24px;margin:0 0 12px}
  .bol a{font-weight:600}
- .bolimg{flex:none;width:240px;background:var(--cielo);border-radius:4px;padding:20px 18px 12px}
- .bolimg svg{width:100%;height:auto;display:block}
+ .bolimg{flex:none;width:250px;height:250px;display:block}
  .num dl{margin:8px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
- .num dt{font-size:30px;line-height:34px;font-weight:700;color:var(--verde);font-variant-numeric:tabular-nums}
+ .num dt{font-size:30px;line-height:34px;font-weight:700;color:var(--cielo);font-variant-numeric:tabular-nums}
  .num dd{margin:2px 0 0;font-size:14px;color:var(--testo-2)}
  .zhint{position:absolute;left:50%;bottom:18px;transform:translate(-50%,8px);background:var(--cielo);color:#fff;font-size:13px;padding:7px 12px;border-radius:2px;opacity:0;transition:opacity .25s var(--ease-out),transform .25s var(--ease-out);pointer-events:none}
  .zhint.on{opacity:1;transform:translate(-50%,0)}
  @media (max-width:1100px){.oggi-grid{grid-template-columns:1fr}.oggi .viewer{min-height:520px}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3,.duo{grid-template-columns:1fr}}
  @media (max-width:600px){.grid4{grid-template-columns:1fr}.bol{flex-direction:column;align-items:stretch}.bolimg{width:100%}.hero h1{font-size:36px;line-height:40px}.oggi-head{flex-direction:column}}
- footer{background:var(--cielo);color:rgba(255,255,255,.8);font-size:13px;padding:22px 0}
+ footer:not(.piede){background:var(--cielo);color:rgba(255,255,255,.8);font-size:13px;padding:22px 0}
 
  @media (max-width:1100px){
    .stage{grid-template-columns:1fr}
@@ -279,4 +278,37 @@
 
 /* Etichette in Sole Sans esteso, come nel Figma */
 .righe small,.ints>small,.pairs small,.pin .lab,.etichetta{
- font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;letter-spacing:.06em}
+ font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+
+/* link con freccina, come nel Figma */
+.chev{display:inline-flex;vertical-align:middle;margin-left:4px;transition:transform .2s cubic-bezier(.23,1,.32,1)}
+.chev .ico{width:18px;height:18px}
+a:hover .chev,.svc:hover .chev{transform:translateX(3px)}
+.bol a,.news a{display:inline-flex;align-items:center;text-decoration:none}
+.news time{font-size:11px;color:var(--testo-2)}
+
+/* banner dell'app */
+.app-banner{background:var(--cielo);color:#fff;border-radius:4px;display:flex;align-items:center;gap:40px;padding:40px 40px 40px 56px}
+.app-ico{width:64px;height:64px;border-radius:50%}
+.app-testo{flex:1}
+.app-banner h2{color:#fff;margin:0 0 4px!important;font-size:22px}
+.app-banner p{margin:0;color:rgba(255,255,255,.85);font-size:16px}
+.app-btn{display:flex;gap:12px}
+.btn.luce,.btn.bordo{display:inline-flex;align-items:center;height:52px;padding:0 22px;border-radius:2px;font-weight:600;text-decoration:none}
+.btn.luce{background:var(--luce);color:var(--cielo)}
+.btn.bordo{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.btn.luce:hover{background:#e6ef6a}.btn.bordo:hover{background:rgba(255,255,255,.08)}
+
+/* piè di pagina */
+.piede{background:var(--cielo);color:#fff}
+.piede>.wrap:first-child{display:grid;grid-template-columns:1fr auto auto auto;gap:64px;padding-top:48px;padding-bottom:40px}
+.piede .marchio{display:flex;align-items:center;gap:10px}
+.piede .marchio .lt{height:18px;width:auto}
+.piede .ente p{margin:20px 0 16px;font-size:14px;line-height:20px;color:rgba(255,255,255,.85)}
+.piede small{font-size:12px;color:rgba(255,255,255,.7)}
+.piede nav{display:flex;flex-direction:column;gap:12px}
+.piede nav .etichetta{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:4px}
+.piede nav a{color:#fff;text-decoration:none;font-size:15px}
+.piede nav a:hover{text-decoration:underline}
+.piede .scenario{padding-top:16px;padding-bottom:20px;border-top:1px solid rgba(255,255,255,.14);font-size:12px;color:rgba(255,255,255,.55)}
+@media (max-width:900px){.piede>.wrap:first-child{grid-template-columns:1fr 1fr;gap:32px}.piede .ente{grid-column:1/-1}.app-banner{flex-direction:column;align-items:flex-start;padding:32px;gap:20px}}
