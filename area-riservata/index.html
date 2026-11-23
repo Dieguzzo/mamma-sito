@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Area riservata · MAMMA</title>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../css/mamma.css">
+<link rel="stylesheet" href="../css/pagine.css">
+<style>
+.accesso{display:grid;grid-template-columns:440px minmax(0,1fr);gap:24px;align-items:start}
+.accedi{padding:32px;display:flex;flex-direction:column;gap:12px}
+.accedi h2{margin:0 0 8px;font-size:20px}
+.accedi .cns{align-self:center;margin:4px 0 8px;font-weight:600;color:var(--blu);text-decoration:none}
+.accedi p{margin:0;font-size:14px;line-height:20px;color:var(--testo-2)}
+.profili{padding:8px 28px}
+.profili h2{margin:20px 0 4px;font-size:20px}
+.profilo{display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:center;padding:20px 0;border-bottom:1px solid var(--linea);text-decoration:none;color:inherit}
+.profilo:last-child{border-bottom:0}
+.profilo b{display:block;font-size:17px;line-height:24px}
+.profilo p{margin:4px 0 0;font-size:15px;line-height:22px;color:var(--testo-2)}
+.profilo .es{border-left:1px solid var(--linea);padding-left:20px}
+.profilo .es span{display:block;font-size:15px;font-weight:600;color:var(--blu)}
+a.profilo:hover .es span{text-decoration:underline}
+.scegli{position:fixed;inset:0;background:rgba(0,19,42,.55);display:grid;place-items:center;z-index:20;opacity:0;pointer-events:none;transition:opacity .2s}
+.scegli.on{opacity:1;pointer-events:auto}
+.scegli .card{width:460px;padding:28px;transform:translateY(8px);transition:transform .25s var(--ease-out)}
+.scegli.on .card{transform:none}
+.scegli h2{margin:0 0 6px;font-size:20px}
+.scegli p{margin:0 0 16px;color:var(--testo-2);font-size:15px}
+.scegli a{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px solid var(--linea);font-weight:600;text-decoration:none}
+.scegli button{margin-top:16px;background:none;border:0;color:var(--testo-2);cursor:pointer;padding:0}
+</style>
+</head>
+<body data-sezione="" class="motivo-cerchi">
+<div id="testa"></div>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../index.html">Home</a><span>/</span><span>Area riservata</span></nav>
+  <div class="intestazione">
+    <h1>Area riservata</h1>
+    <p>Per aziende agricole, punti vendita e tecnici. Accedi con la tua identità digitale per consultare il calendario di zona, le prescrizioni e i tuoi documenti.</p>
+  </div>
+  <div class="sezioni">
+    <div class="accesso">
+      <section class="card accedi" aria-labelledby="t-accedi">
+        <h2 id="t-accedi">Accedi con la tua identità digitale</h2>
+        <button class="bottone scuro pieno" data-entra><span data-icon="utente"></span>Accedi con SPID</button>
+        <button class="bottone bordo pieno" data-entra>Entra con CIE</button>
+        <a class="cns" href="#" data-entra>Entra con CNS</a>
+        <p>Non hai SPID? Puoi richiederlo gratuitamente a uno dei gestori accreditati.</p>
+        <p>Problemi di accesso? Scrivi a assistenza@mamma.gov.it</p>
+      </section>
+      <section class="card profili" aria-labelledby="t-chi">
+        <h2 id="t-chi">Chi può accedere</h2>
+        <a class="profilo" href="produttore/"><div><b>Produttori agricoli</b><p>Calendario di zona, prescrizioni operative, contributo di compensazione e segnalazione danni alle colture.</p></div><div class="es"><small class="etichetta">Esempio</small><span>Azienda agricola Pinna</span></div></a>
+        <a class="profilo" href="negoziante/"><div><b>Distribuzione e commercio</b><p>Obblighi di esposizione del bollino, esiti delle verifiche e materiali per il punto vendita.</p></div><div class="es"><small class="etichetta">Esempio</small><span>Supermercato Il Granaio</span></div></a>
+        <div class="profilo"><div><b>Tecnici e consorzi</b><p>Protocolli di intervento, dati di campo e comunicazioni con il centro operativo.</p></div><div class="es"><small class="etichetta">Esempio</small><span style="color:var(--cielo)">Consorzio di difesa</span></div></div>
+      </section>
+    </div>
+    <p class="avviso bordo" style="align-items:center;gap:12px;padding:16px 20px"><span data-icon="allerta" style="display:flex"></span>L'accesso è riservato ai soggetti iscritti al Registro agricolo e commerciale MAMMA. Le credenziali non si possono cedere.</p>
+  </div>
+</div></main>
+<div class="scegli" id="scegli" role="dialog" aria-modal="true" aria-labelledby="t-scegli">
+  <div class="card">
+    <h2 id="t-scegli">Con quale profilo vuoi entrare</h2>
+    <p>Per la mostra puoi visitare i due profili di esempio.</p>
+    <a href="produttore/">Azienda agricola Pinna · Terralba<span class="chev" data-icon="chevron"></span></a>
+    <a href="negoziante/">Supermercato Il Granaio · Milano<span class="chev" data-icon="chevron"></span></a>
+    <button type="button" id="chiudi">Annulla</button>
+  </div>
+</div>
+<div id="piede"></div>
+<script src="../js/layout.js"></script>
+<script src="../js/icone.js"></script>
+<script>
+const s=document.getElementById('scegli');
+document.querySelectorAll('[data-entra]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault(); s.classList.add('on'); s.querySelector('a').focus();}));
+document.getElementById('chiudi').onclick=()=>s.classList.remove('on');
+s.addEventListener('click',e=>{if(e.target===s) s.classList.remove('on');});
+addEventListener('keydown',e=>{if(e.key==='Escape') s.classList.remove('on');});
+</script>
+</body>
+</html>

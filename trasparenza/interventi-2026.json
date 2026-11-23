@@ -1,0 +1,454 @@
+{
+ "fonte": "MAMMA · dati di scenario, progetto di speculative design",
+ "licenza": "CC BY 4.0",
+ "interventi": [
+  {
+   "data": "2026-11-18",
+   "regione_protetta": "Lazio",
+   "regione_compensazione": "Abruzzo",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 79,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-18",
+   "regione_protetta": "Trentino-Alto Adige",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 47,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-18",
+   "regione_protetta": "Trentino-Alto Adige",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 50,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-17",
+   "regione_protetta": "Sicilia",
+   "regione_compensazione": "Sardegna",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 79,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-17",
+   "regione_protetta": "Liguria",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 65,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-17",
+   "regione_protetta": "Liguria",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 74,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-16",
+   "regione_protetta": "Trentino-Alto Adige",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 48,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-16",
+   "regione_protetta": "Trentino-Alto Adige",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 47,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-15",
+   "regione_protetta": "Lazio",
+   "regione_compensazione": "Abruzzo",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 70,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-15",
+   "regione_protetta": "Veneto",
+   "regione_compensazione": "Friuli-Venezia Giulia",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 58,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-15",
+   "regione_protetta": "Sicilia",
+   "regione_compensazione": "Sardegna",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 73,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-15",
+   "regione_protetta": "Trentino-Alto Adige",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 57,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-14",
+   "regione_protetta": "Puglia",
+   "regione_compensazione": "Molise",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 61,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-14",
+   "regione_protetta": "Veneto",
+   "regione_compensazione": "Friuli-Venezia Giulia",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 49,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-14",
+   "regione_protetta": "Calabria",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Specchi solari",
+   "perturbazione_spostata_pct": 60,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-13",
+   "regione_protetta": "Sicilia",
+   "regione_compensazione": "Sardegna",
+   "tecnica": "Specchi solari",
+   "perturbazione_spostata_pct": 88,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-13",
+   "regione_protetta": "Puglia",
+   "regione_compensazione": "Molise",
+   "tecnica": "Specchi solari",
+   "perturbazione_spostata_pct": 56,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-12",
+   "regione_protetta": "Sicilia",
+   "regione_compensazione": "Sardegna",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 82,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-12",
+   "regione_protetta": "Calabria",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 64,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-12",
+   "regione_protetta": "Campania",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 72,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-12",
+   "regione_protetta": "Campania",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 71,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-11",
+   "regione_protetta": "Puglia",
+   "regione_compensazione": "Molise",
+   "tecnica": "Specchi solari",
+   "perturbazione_spostata_pct": 52,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-11",
+   "regione_protetta": "Sicilia",
+   "regione_compensazione": "Sardegna",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 87,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-11",
+   "regione_protetta": "Campania",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 61,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-11",
+   "regione_protetta": "Calabria",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 52,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-10",
+   "regione_protetta": "Campania",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Specchi solari",
+   "perturbazione_spostata_pct": 61,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-10",
+   "regione_protetta": "Campania",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 70,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-10",
+   "regione_protetta": "Piemonte",
+   "regione_compensazione": "Valle d'Aosta",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 49,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-10",
+   "regione_protetta": "Lazio",
+   "regione_compensazione": "Abruzzo",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 74,
+   "esito": "parziale"
+  },
+  {
+   "data": "2026-11-09",
+   "regione_protetta": "Lazio",
+   "regione_compensazione": "Abruzzo",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 75,
+   "esito": "parziale"
+  },
+  {
+   "data": "2026-11-09",
+   "regione_protetta": "Piemonte",
+   "regione_compensazione": "Valle d'Aosta",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 53,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-09",
+   "regione_protetta": "Lazio",
+   "regione_compensazione": "Abruzzo",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 83,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-09",
+   "regione_protetta": "Liguria",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 76,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-08",
+   "regione_protetta": "Piemonte",
+   "regione_compensazione": "Valle d'Aosta",
+   "tecnica": "Specchi solari",
+   "perturbazione_spostata_pct": 45,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-08",
+   "regione_protetta": "Liguria",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 68,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-08",
+   "regione_protetta": "Calabria",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 55,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-07",
+   "regione_protetta": "Sicilia",
+   "regione_compensazione": "Sardegna",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 72,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-07",
+   "regione_protetta": "Sicilia",
+   "regione_compensazione": "Sardegna",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 83,
+   "esito": "parziale"
+  },
+  {
+   "data": "2026-11-06",
+   "regione_protetta": "Piemonte",
+   "regione_compensazione": "Valle d'Aosta",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 46,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-06",
+   "regione_protetta": "Puglia",
+   "regione_compensazione": "Molise",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 67,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-05",
+   "regione_protetta": "Calabria",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Specchi solari",
+   "perturbazione_spostata_pct": 65,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-05",
+   "regione_protetta": "Lazio",
+   "regione_compensazione": "Abruzzo",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 70,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-05",
+   "regione_protetta": "Calabria",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 55,
+   "esito": "parziale"
+  },
+  {
+   "data": "2026-11-04",
+   "regione_protetta": "Puglia",
+   "regione_compensazione": "Molise",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 56,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-04",
+   "regione_protetta": "Trentino-Alto Adige",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 53,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-04",
+   "regione_protetta": "Campania",
+   "regione_compensazione": "Basilicata",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 73,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-04",
+   "regione_protetta": "Puglia",
+   "regione_compensazione": "Molise",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 59,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-03",
+   "regione_protetta": "Puglia",
+   "regione_compensazione": "Molise",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 59,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-03",
+   "regione_protetta": "Veneto",
+   "regione_compensazione": "Friuli-Venezia Giulia",
+   "tecnica": "Specchi solari",
+   "perturbazione_spostata_pct": 54,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-03",
+   "regione_protetta": "Veneto",
+   "regione_compensazione": "Friuli-Venezia Giulia",
+   "tecnica": "Cloud seeding, specchi solari",
+   "perturbazione_spostata_pct": 53,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-03",
+   "regione_protetta": "Liguria",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 62,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-02",
+   "regione_protetta": "Puglia",
+   "regione_compensazione": "Molise",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 66,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-02",
+   "regione_protetta": "Puglia",
+   "regione_compensazione": "Molise",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 54,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-01",
+   "regione_protetta": "Veneto",
+   "regione_compensazione": "Friuli-Venezia Giulia",
+   "tecnica": "Cloud seeding",
+   "perturbazione_spostata_pct": 57,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-01",
+   "regione_protetta": "Liguria",
+   "regione_compensazione": "Lombardia",
+   "tecnica": "Razzi antigrandine",
+   "perturbazione_spostata_pct": 77,
+   "esito": "riuscito"
+  },
+  {
+   "data": "2026-11-01",
+   "regione_protetta": "Sicilia",
+   "regione_compensazione": "Sardegna",
+   "tecnica": "Specchi solari",
+   "perturbazione_spostata_pct": 75,
+   "esito": "riuscito"
+  }
+ ]
+}

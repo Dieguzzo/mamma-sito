@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Come si legge il bollino · MAMMA</title>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../css/mamma.css">
+<link rel="stylesheet" href="../css/pagine.css">
+<style>
+.classi{display:grid;grid-template-columns:400px minmax(0,1fr);gap:20px;align-items:stretch}
+.vetrina{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center}
+.vetrina img{width:270px;height:auto;transition:opacity .18s ease}
+.vetrina b{display:block;font-size:28px;line-height:34px;margin-top:28px}
+.vetrina span{display:block;color:var(--testo-2);font-size:15px}
+.vetrina small{display:block;margin-top:20px;font-size:13px;color:var(--testo-2)}
+.elenco{list-style:none;margin:0;padding:0;overflow:hidden}
+.elenco button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:48px 160px 126px 1fr;gap:20px;align-items:center;padding:16px 24px;border-bottom:1px solid var(--linea);transition:background .15s}
+.elenco li:last-child button{border-bottom:0}
+.elenco button:hover{background:rgba(0,31,63,.03)}
+.elenco button[aria-pressed="true"]{background:rgba(0,31,63,.06)}
+.elenco button:focus-visible{outline:2px solid var(--blu);outline-offset:-2px}
+.elenco .lettera{width:32px;height:32px}
+.elenco .nm b{display:block;font-size:18px;line-height:22px}
+.elenco .nm small{display:block;font-size:13px;line-height:18px;color:var(--testo-2)}
+.livello{display:flex;gap:4px}
+.livello i{flex:1;height:6px;background:rgba(0,31,63,.1)}
+.elenco p{margin:0;font-size:15px;line-height:22px;color:var(--testo-2)}
+.verifica{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:20px 24px}
+.verifica h2{margin:0 0 4px;font-size:20px}
+.verifica p{margin:0;font-size:15px;color:var(--testo-2)}
+.verifica form{display:flex;gap:8px;align-items:stretch}
+.verifica .lotto{display:flex;flex-direction:column;justify-content:center;border:1px solid rgba(0,31,63,.45);border-radius:2px;padding:4px 14px;width:220px;background:#fff}
+.verifica .lotto label{font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--testo-2)}
+.verifica .lotto input{border:0;outline:0;font:inherit;font-size:15px;color:var(--cielo);padding:0}
+.verifica .lotto:focus-within{border-color:var(--blu);box-shadow:0 0 0 3px rgba(30,72,143,.15)}
+.verifica .errore{color:#B3261E;font-size:13px;margin-top:6px}
+</style>
+</head>
+<body data-sezione="bollino" class="motivo-cerchi">
+<div id="testa"></div>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../index.html">Home</a><span>/</span><span>Bollino e prodotti</span><span>/</span><span>Come si legge il bollino</span></nav>
+  <div class="intestazione">
+    <h1>Come si legge il bollino</h1>
+    <p>Il bollino MAMMA indica quanta protezione climatica ha ricevuto un prodotto, dalla semina alla raccolta. Dal 1° marzo 2026 è obbligatorio su tutti i prodotti ortofrutticoli in vendita.</p>
+  </div>
+  <div class="sezioni">
+    <section class="sezione" aria-labelledby="t-classi">
+      <h2 id="t-classi">Le sei classi</h2>
+      <div class="classi">
+        <div class="card vetrina" aria-live="polite">
+          <img id="bol-img" src="../assets/bollini/a.webp" alt="Bollino MAMMA, classe A" width="240" height="236">
+          <b id="bol-nome">Classe A</b><span id="bol-desc">Protezione climatica massima</span>
+          <small>Scegli una classe dall'elenco per vedere il suo bollino</small>
+        </div>
+        <ul class="card elenco" id="elenco"></ul>
+      </div>
+      <p class="nota-piccola">La classe non riguarda la sicurezza del prodotto, che è garantita per tutte le classi, e non dice nulla sul valore nutrizionale o sul prezzo.</p>
+    </section>
+
+    <section class="card verifica" aria-labelledby="t-verifica">
+      <div><h2 id="t-verifica">Verifica un prodotto</h2><p>Inserisci il codice del lotto stampato sull'etichetta, oppure inquadra il QR con il telefono.</p></div>
+      <div>
+        <form id="verifica"><div class="lotto"><label for="lotto">Codice lotto</label><input id="lotto" value="PCH-26-1147" autocomplete="off" spellcheck="false"></div><button class="bottone scuro">Verifica</button></form>
+        <p class="errore" id="err" hidden>Non troviamo questo lotto. Prova con PCH-26-1147 o TRB-26-0388.</p>
+      </div>
+    </section>
+  </div>
+</div></main>
+<div id="piede"></div>
+<script src="../js/layout.js"></script>
+<script>
+const CL=[
+ ['A','#00804C','Protezione climatica massima','Sole e pioggia programmati per tutta la stagione. Prodotti DOP e IGP delle zone protette.',5],
+ ['B','#74C365','Protezione climatica alta','Interventi su gran parte della stagione, comprese fioritura e raccolta.',4],
+ ['C','#DBE64C','Protezione climatica media','Interventi solo nelle fasi più delicate della coltivazione.',3],
+ ['D','#F2B134','Protezione climatica bassa','Interventi occasionali, solo in caso di eventi estremi.',2],
+ ['E','#E8743B','Protezione climatica minima','Nessun intervento diretto. Il prodotto beneficia solo degli interventi nelle zone vicine.',1],
+ ['F','#D23B2E','Prodotto di zona di compensazione','Prodotti delle zone di compensazione, cresciuti con il meteo che hanno ricevuto.',0]];
+const el=document.getElementById('elenco');
+el.innerHTML=CL.map(([l,c,d,t,n],i)=>`<li><button aria-pressed="${i===0}" data-l="${l}"><span class="lettera ${l}">${l}</span><span class="nm"><b>Classe ${l}</b><small>${d}</small></span><span class="livello" aria-label="Livello di protezione ${n} su 5">${[0,1,2,3,4].map(k=>`<i style="${k<n?'background:'+c:''}"></i>`).join('')}</span><p>${t}</p></button></li>`).join('');
+const img=document.getElementById('bol-img');
+el.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; const [l,,d]=CL.find(x=>x[0]===b.dataset.l);
+ el.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+ img.style.opacity=0; setTimeout(()=>{img.src=`../assets/bollini/${l.toLowerCase()}.webp`; img.alt=`Bollino MAMMA, classe ${l}`; img.style.opacity=1;},140);
+ document.getElementById('bol-nome').textContent='Classe '+l; document.getElementById('bol-desc').textContent=d;});
+document.getElementById('verifica').addEventListener('submit',e=>{e.preventDefault(); const v=document.getElementById('lotto').value.trim().toUpperCase();
+ if(['PCH-26-1147','TRB-26-0388'].includes(v)) location.href='../p/'+v+'/'; else document.getElementById('err').hidden=false;});
+</script>
+<script src="../js/icone.js"></script>
+</body>
+</html>

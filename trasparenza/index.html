@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trasparenza · MAMMA</title>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../css/mamma.css">
+<link rel="stylesheet" href="../css/pagine.css">
+<style>
+.dati{padding:24px 28px}
+.dati .titolo{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.dati h2{margin:0;font-size:20px}
+.dati .scarica{display:flex;gap:8px}
+.dati .bottone{height:40px;padding:0 16px;font-size:14px}
+.esito{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.esito .ico{width:18px;height:18px}
+.esito.ok{color:var(--verde)}
+.esito.parziale{color:#9A5B00}
+.righe-tab td:nth-child(4){font-variant-numeric:tabular-nums;font-weight:600}
+.richiesta{padding:24px;display:flex;flex-direction:column;gap:8px}
+.richiesta h3{margin:0;font-size:18px}
+.richiesta p{margin:0 0 6px;font-size:15px;line-height:22px;color:var(--testo-2)}
+</style>
+</head>
+<body data-sezione="trasparenza" class="motivo-cerchi">
+<div id="testa"></div>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../index.html">Home</a><span>/</span><span>Trasparenza</span></nav>
+  <div class="intestazione">
+    <h1>Trasparenza</h1>
+    <p>Pubblichiamo i dati di ogni intervento, i documenti e i criteri con cui prendiamo le nostre decisioni. Tutti i dati sono scaricabili in formato aperto.</p>
+  </div>
+  <div class="sezioni">
+    <section class="card numeri-barra" aria-label="Numeri del 2026">
+      <div><b>1.240</b><span>interventi programmati nel 2026</span></div>
+      <div><b>99,6%</b><span>interventi riusciti</span></div>
+      <div><b>48.213</b><span>segnalazioni ricevute</span></div>
+      <div><b>12,4 mln €</b><span>indennizzi riconosciuti</span></div>
+    </section>
+
+    <section class="card dati" aria-labelledby="t-dati">
+      <div class="titolo"><h2 id="t-dati">Dati aperti sugli interventi</h2><div class="scarica"><a class="bottone bordo" href="interventi-2026.csv" download><span data-icon="scarica"></span>Scarica CSV</a><a class="bottone bordo" href="interventi-2026.json" download><span data-icon="scarica"></span>Scarica JSON</a></div></div>
+      <table class="righe-tab">
+        <thead><tr><th>Data</th><th>Coppia di regioni</th><th>Tecnica</th><th>Pioggia spostata</th><th>Esito</th></tr></thead>
+        <tbody id="righe"></tbody>
+      </table>
+      <p class="nota-piccola">Dati aggiornati ogni giorno alle 18:00 · Licenza CC BY 4.0 · 1.240 righe nel 2026</p>
+    </section>
+
+    <div class="colonne" style="grid-template-columns:minmax(0,1fr) 380px">
+      <section class="card pad" aria-labelledby="t-doc">
+        <h2 id="t-doc" style="margin:0 0 4px;font-size:20px">Documenti</h2>
+        <div id="documenti"></div>
+      </section>
+      <div class="colonna">
+        <section class="card richiesta"><h3>Accesso agli atti</h3><p>Puoi chiedere i documenti di un intervento che riguarda il tuo comune. Rispondiamo entro 30 giorni.</p><a class="link-freccia" href="#">Fai una richiesta<span class="chev" data-icon="chevron"></span></a></section>
+        <section class="card richiesta"><h3>Come vengono assegnate le zone</h3><p>Le zone sono riassegnate ogni due anni in base all'Indice di valore agroalimentare di ogni territorio.</p><a class="link-freccia" href="../agenzia/chi-siamo/">Leggi in Chi siamo<span class="chev" data-icon="chevron"></span></a></section>
+      </div>
+    </div>
+  </div>
+</div></main>
+<div id="piede"></div>
+<script src="../js/layout.js"></script>
+<script src="../js/icone.js"></script>
+<script>
+const R=[['18/11/2026','Liguria → Lombardia','Cloud seeding','70%','ok'],['18/11/2026','Sicilia → Sardegna','Cloud seeding, specchi solari','80%','ok'],['18/11/2026','Lazio → Abruzzo','Cloud seeding','75%','ok'],['17/11/2026','Veneto → Friuli-Venezia Giulia','Razzi antigrandine','55%','ok'],['16/11/2026','Campania → Basilicata','Razzi antigrandine','65%','ok'],['16/11/2026','Puglia → Molise','Cloud seeding','60%','parziale']];
+document.getElementById('righe').innerHTML=R.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]==='ok'?`<span class="esito ok">${icona('ok')}Riuscito</span>`:`<span class="esito parziale">${icona('attenzione')}Esito parziale</span>`}</td></tr>`).join('');
+const D=[['Mappa delle zone 2026–2028','Delibera del 30 giugno 2026 · PDF · 2,8 MB'],["Metodologia dell'Indice di valore agroalimentare",'PDF · 3,1 MB'],['Legge sulla sovranità climatica n. 214/2023','PDF · 0,9 MB'],['Regolamento MAMMA n. 4/2026 · bollino e classi di impatto climatico','PDF · 1,4 MB'],['Relazione annuale al Parlamento 2025','PDF · 7,2 MB'],['Bilancio 2025','PDF · 6,4 MB']];
+document.getElementById('documenti').innerHTML=D.map(([t,s])=>`<a class="documento" href="#"><span><b>${t}</b><small>${s}</small></span>${icona('scarica')}</a>`).join('');
+</script>
+</body>
+</html>

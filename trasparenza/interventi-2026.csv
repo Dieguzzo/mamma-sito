@@ -1,0 +1,57 @@
+data,regione_protetta,regione_compensazione,tecnica,perturbazione_spostata_pct,esito
+2026-11-18,Lazio,Abruzzo,Cloud seeding,79,riuscito
+2026-11-18,Trentino-Alto Adige,Lombardia,Razzi antigrandine,47,riuscito
+2026-11-18,Trentino-Alto Adige,Lombardia,Cloud seeding,50,riuscito
+2026-11-17,Sicilia,Sardegna,Cloud seeding,79,riuscito
+2026-11-17,Liguria,Lombardia,Cloud seeding,65,riuscito
+2026-11-17,Liguria,Lombardia,Cloud seeding,74,riuscito
+2026-11-16,Trentino-Alto Adige,Lombardia,Razzi antigrandine,48,riuscito
+2026-11-16,Trentino-Alto Adige,Lombardia,"Cloud seeding, specchi solari",47,riuscito
+2026-11-15,Lazio,Abruzzo,"Cloud seeding, specchi solari",70,riuscito
+2026-11-15,Veneto,Friuli-Venezia Giulia,Cloud seeding,58,riuscito
+2026-11-15,Sicilia,Sardegna,"Cloud seeding, specchi solari",73,riuscito
+2026-11-15,Trentino-Alto Adige,Lombardia,Razzi antigrandine,57,riuscito
+2026-11-14,Puglia,Molise,Cloud seeding,61,riuscito
+2026-11-14,Veneto,Friuli-Venezia Giulia,"Cloud seeding, specchi solari",49,riuscito
+2026-11-14,Calabria,Basilicata,Specchi solari,60,riuscito
+2026-11-13,Sicilia,Sardegna,Specchi solari,88,riuscito
+2026-11-13,Puglia,Molise,Specchi solari,56,riuscito
+2026-11-12,Sicilia,Sardegna,Razzi antigrandine,82,riuscito
+2026-11-12,Calabria,Basilicata,Cloud seeding,64,riuscito
+2026-11-12,Campania,Basilicata,Cloud seeding,72,riuscito
+2026-11-12,Campania,Basilicata,Razzi antigrandine,71,riuscito
+2026-11-11,Puglia,Molise,Specchi solari,52,riuscito
+2026-11-11,Sicilia,Sardegna,Cloud seeding,87,riuscito
+2026-11-11,Campania,Basilicata,Cloud seeding,61,riuscito
+2026-11-11,Calabria,Basilicata,Cloud seeding,52,riuscito
+2026-11-10,Campania,Basilicata,Specchi solari,61,riuscito
+2026-11-10,Campania,Basilicata,Razzi antigrandine,70,riuscito
+2026-11-10,Piemonte,Valle d'Aosta,Cloud seeding,49,riuscito
+2026-11-10,Lazio,Abruzzo,Cloud seeding,74,parziale
+2026-11-09,Lazio,Abruzzo,Razzi antigrandine,75,parziale
+2026-11-09,Piemonte,Valle d'Aosta,"Cloud seeding, specchi solari",53,riuscito
+2026-11-09,Lazio,Abruzzo,"Cloud seeding, specchi solari",83,riuscito
+2026-11-09,Liguria,Lombardia,"Cloud seeding, specchi solari",76,riuscito
+2026-11-08,Piemonte,Valle d'Aosta,Specchi solari,45,riuscito
+2026-11-08,Liguria,Lombardia,Cloud seeding,68,riuscito
+2026-11-08,Calabria,Basilicata,Cloud seeding,55,riuscito
+2026-11-07,Sicilia,Sardegna,"Cloud seeding, specchi solari",72,riuscito
+2026-11-07,Sicilia,Sardegna,"Cloud seeding, specchi solari",83,parziale
+2026-11-06,Piemonte,Valle d'Aosta,Razzi antigrandine,46,riuscito
+2026-11-06,Puglia,Molise,Cloud seeding,67,riuscito
+2026-11-05,Calabria,Basilicata,Specchi solari,65,riuscito
+2026-11-05,Lazio,Abruzzo,Razzi antigrandine,70,riuscito
+2026-11-05,Calabria,Basilicata,"Cloud seeding, specchi solari",55,parziale
+2026-11-04,Puglia,Molise,"Cloud seeding, specchi solari",56,riuscito
+2026-11-04,Trentino-Alto Adige,Lombardia,Cloud seeding,53,riuscito
+2026-11-04,Campania,Basilicata,Razzi antigrandine,73,riuscito
+2026-11-04,Puglia,Molise,"Cloud seeding, specchi solari",59,riuscito
+2026-11-03,Puglia,Molise,"Cloud seeding, specchi solari",59,riuscito
+2026-11-03,Veneto,Friuli-Venezia Giulia,Specchi solari,54,riuscito
+2026-11-03,Veneto,Friuli-Venezia Giulia,"Cloud seeding, specchi solari",53,riuscito
+2026-11-03,Liguria,Lombardia,Razzi antigrandine,62,riuscito
+2026-11-02,Puglia,Molise,Razzi antigrandine,66,riuscito
+2026-11-02,Puglia,Molise,Cloud seeding,54,riuscito
+2026-11-01,Veneto,Friuli-Venezia Giulia,Cloud seeding,57,riuscito
+2026-11-01,Liguria,Lombardia,Razzi antigrandine,77,riuscito
+2026-11-01,Sicilia,Sardegna,Specchi solari,75,riuscito

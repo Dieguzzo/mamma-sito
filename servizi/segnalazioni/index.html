@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Segnalazioni e reclami · MAMMA</title>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../../css/mamma.css">
+<link rel="stylesheet" href="../../css/pagine.css">
+<style>
+.comune{display:flex;flex-direction:column;gap:10px;padding:20px 24px}
+.comune .riga{display:flex;align-items:center;gap:16px}
+.comune .campo-ico{width:420px}
+.comune .info{font-size:14px;color:var(--testo-2)}
+.motivi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.motivo{display:flex;flex-direction:column;gap:10px;padding:24px;min-height:220px}
+.motivo b{font-size:17px;line-height:23px;margin-top:6px}
+.motivo p{margin:0;font-size:15px;line-height:22px;color:var(--testo-2)}
+.motivo .link-freccia{margin-top:auto}
+.non-possibile{padding:24px;background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 1px rgba(0,31,63,.22);border-radius:4px}
+.non-possibile .tit{display:flex;gap:10px;align-items:center;font-weight:700;font-size:16px;margin:0 0 10px}
+.non-possibile .tit .ico{width:22px;height:22px}
+.non-possibile p{margin:0 0 10px;font-size:15px;line-height:22px}
+.non-possibile small{font-size:13px;line-height:19px;color:var(--testo-2)}
+.come{padding:24px;display:flex;flex-direction:column;gap:16px}
+.come h3{margin:0;font-size:17px}
+</style>
+</head>
+<body data-sezione="servizi" class="motivo-diagonali">
+<div id="testa"></div>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../../index.html">Home</a><span>/</span><span>Servizi</span><span>/</span><span>Segnalazioni e reclami</span></nav>
+  <div class="intestazione">
+    <h1>Segnalazioni e reclami</h1>
+    <p>Puoi segnalare un problema legato a come è stato eseguito un intervento climatico nel tuo comune. Ogni segnalazione riceve un numero di protocollo, con cui puoi seguirla fino alla risposta.</p>
+  </div>
+  <div class="sezioni">
+    <section class="card comune">
+      <label class="etichetta" for="comune">Il tuo comune</label>
+      <div class="riga">
+        <div class="campo-ico"><span data-icon="pin"></span><input id="comune" list="comuni" autocomplete="off"></div>
+        <datalist id="comuni"><option value="Milano (MI)"><option value="Pachino (SR)"></datalist>
+        <span class="chip" id="chip"></span>
+        <span class="info" id="info"></span>
+      </div>
+    </section>
+
+    <div class="colonne">
+      <section class="sezione" aria-labelledby="t-motivi">
+        <h2 id="t-motivi">Cosa puoi segnalare</h2>
+        <p class="sotto">Scegli il motivo più vicino a quello che è successo.</p>
+        <div class="motivi" id="motivi"></div>
+      </section>
+      <div class="colonna">
+        <aside class="non-possibile">
+          <p class="tit"><span data-icon="allerta"></span>Cosa non è possibile segnalare</p>
+          <p>La decisione di eseguire un intervento e l'assegnazione della zona sono atti di interesse nazionale e non possono essere oggetto di segnalazione.</p>
+          <small>Contro l'assegnazione di una zona è ammesso ricorso al TAR del Lazio entro 60 giorni dalla pubblicazione.</small>
+        </aside>
+        <div class="card come">
+          <h3>Come funziona</h3>
+          <ol class="passi"><li><span class="n">1</span>Scegli il motivo e descrivi cosa è successo</li><li><span class="n">2</span>Ricevi il numero di protocollo</li><li><span class="n">3</span>MAMMA risponde entro 30 giorni, con l'eventuale indennizzo</li></ol>
+          <a class="bottone scuro pieno" href="../../area-riservata/"><span data-icon="utente"></span>Accedi con SPID</a>
+          <a class="bottone bordo pieno" href="../../area-riservata/">Entra con CIE</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="card numeri-barra" aria-label="Segnalazioni in numeri">
+      <div><b>48.213</b><span>segnalazioni ricevute nel 2026</span></div>
+      <div><b>18 giorni</b><span>tempo medio di risposta</span></div>
+      <div><b>91%</b><span>risposte entro 30 giorni</span></div>
+      <div><b>12,4 mln €</b><span>indennizzi riconosciuti</span></div>
+    </section>
+  </div>
+</div></main>
+<div id="piede"></div>
+<script src="../../js/layout.js"></script>
+<script src="../../js/icone.js"></script>
+<script>
+const COLTURE=['piantina','Danni alle colture',"Le aziende agricole segnalano dall'area riservata, insieme alla richiesta del contributo di compensazione.","Vai all'area riservata",'../../area-riservata/'];
+const C={
+ milano:{n:'Milano (MI)',zona:'compensazione',info:'Lombardia · ultimo intervento il 18 novembre, cloud seeding',motivi:[
+  ['allerta','Danni a beni privati','Grandine su auto o coperture, allagamento di cantine e locali.'],
+  ['orologio','Intervento fuori orario',"La pioggia è caduta oltre il margine di ± 40 minuti dall'orario programmato."],
+  ['allerta','Preavviso mancato o tardivo',"Non hai ricevuto l'avviso almeno 72 ore prima dell'intervento."],COLTURE]},
+ pachino:{n:'Pachino (SR)',zona:'protetta',info:'Sicilia · intervento in corso, specchi solari 06:40–17:10',motivi:[
+  ['sole','Caldo eccessivo o siccità','Temperature o giorni senza pioggia oltre i livelli previsti dal piano di protezione.'],
+  ['specchio','Abbagliamento dagli specchi solari','Riflessi diretti verso abitazioni, strade o luoghi di lavoro.'],
+  ['razzo','Rumore dei razzi antigrandine','Lanci in orario notturno o troppo vicini ai centri abitati.'],
+  ['allerta','Intervento non riuscito','Grandine o pioggia cadute nonostante la protezione programmata.']]}};
+function mostra(k){const c=C[k]; document.getElementById('comune').value=c.n;
+ const chip=document.getElementById('chip'); chip.className='chip '+c.zona; chip.textContent=c.zona==='protetta'?'Zona protetta':'Zona di compensazione';
+ document.getElementById('info').textContent=c.info;
+ document.body.classList.toggle('motivo-cerchi',c.zona==='protetta'); document.body.classList.toggle('motivo-diagonali',c.zona!=='protetta');
+ document.getElementById('motivi').innerHTML=c.motivi.map(([i,t,d,l,h])=>`<a class="card motivo" href="${h||'#'}" style="text-decoration:none;color:inherit"><span class="quadro-ico">${icona(i)}</span><b>${t}</b><p>${d}</p><span class="link-freccia">${l||'Segnala'}<span class="chev">${icona('chevron')}</span></span></a>`).join('');
+ history.replaceState(null,'','?comune='+k);}
+const q=new URLSearchParams(location.search).get('comune'); mostra(C[q]?q:'milano');
+document.getElementById('comune').addEventListener('change',e=>{const v=e.target.value.toLowerCase(); const k=Object.keys(C).find(k=>v.startsWith(k)); if(k) mostra(k);});
+</script>
+</body>
+</html>

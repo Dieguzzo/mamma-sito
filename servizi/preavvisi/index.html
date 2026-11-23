@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preavvisi nel tuo comune · MAMMA</title>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../../css/mamma.css">
+<link rel="stylesheet" href="../../css/pagine.css">
+<style>
+.modulo{padding:32px;display:flex;flex-direction:column;gap:32px}
+.passo h2{display:flex;align-items:center;gap:12px;margin:0 0 16px;font-size:19px}
+.passo h2 .n{width:28px;height:28px;display:grid;place-items:center;background:var(--luce);font-size:14px;border-radius:2px}
+.comune-campo{display:flex;align-items:center;gap:12px}
+.comune-campo .campo-ico{flex:1;max-width:460px}
+.scelta{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--linea);cursor:pointer}
+.scelta:last-child{border-bottom:0}
+.scelta input{appearance:none;flex:none;width:22px;height:22px;margin:1px 0 0;border:1.5px solid var(--cielo);border-radius:2px;display:grid;place-items:center;cursor:pointer;background:#fff;transition:background .15s}
+.scelta input:checked{background:var(--cielo)}
+.scelta input:checked::after{content:"";width:6px;height:11px;border:solid var(--luce);border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
+.scelta input:disabled{opacity:.55;cursor:not-allowed}
+.scelta b{display:block;font-size:16px;line-height:22px}
+.scelta small{display:block;font-size:14px;color:var(--testo-2)}
+.canali{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.canali .scelta{border:1px solid var(--linea);border-radius:2px;padding:14px}
+.privacy{display:flex;gap:12px;align-items:center;font-size:15px;cursor:pointer}
+.privacy input{appearance:none;width:22px;height:22px;border:1.5px solid var(--cielo);border-radius:2px;display:grid;place-items:center;margin:0;background:#fff}
+.privacy input:checked{background:var(--cielo)}
+.privacy input:checked::after{content:"";width:6px;height:11px;border:solid var(--luce);border-width:0 2px 2px 0;transform:translateY(-1px) rotate(45deg)}
+.esempio{padding:24px}
+.esempio h3{margin:0 0 16px;font-size:17px}
+.sms{background:var(--corpo);border-radius:14px 14px 14px 4px;padding:14px 16px;font-size:15px;line-height:22px}
+.sms small{display:block;font-size:12px;color:var(--testo-2);margin-bottom:4px}
+.esempio p{margin:14px 0 0;font-size:14px;line-height:20px;color:var(--testo-2)}
+.fatto{display:flex;gap:16px;align-items:flex-start;padding:28px 32px}
+.fatto .ico{width:32px;height:32px;color:var(--verde);flex:none}
+.fatto h2{margin:0 0 6px;font-size:22px}
+.fatto p{margin:0 0 4px;font-size:15px;line-height:22px;color:var(--testo-2)}
+</style>
+</head>
+<body data-sezione="servizi" class="motivo-diagonali">
+<div id="testa"></div>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../../index.html">Home</a><span>/</span><span>Servizi</span><span>/</span><span>Preavvisi</span></nav>
+  <div class="intestazione">
+    <h1>Preavvisi nel tuo comune</h1>
+    <p>Ti avvisiamo almeno 72 ore prima di ogni intervento programmato nel tuo comune. Il servizio è gratuito e puoi modificarlo quando vuoi.</p>
+  </div>
+  <div class="sezioni">
+    <div class="colonne">
+      <div>
+        <form class="card modulo" id="modulo">
+          <section class="passo">
+            <h2><span class="n">1</span>Il tuo comune</h2>
+            <label class="etichetta" for="comune">Comune</label>
+            <div class="comune-campo" style="margin-top:6px"><div class="campo-ico"><span data-icon="pin"></span><input id="comune" value="Milano (MI)" list="comuni" autocomplete="off"></div><span class="chip compensazione" id="chip">Zona di compensazione</span></div>
+            <datalist id="comuni"><option value="Milano (MI)"><option value="Pachino (SR)"><option value="Terralba (OR)"><option value="Genova (GE)"></datalist>
+          </section>
+          <section class="passo">
+            <h2><span class="n">2</span>Cosa vuoi ricevere</h2>
+            <label class="scelta"><input type="checkbox" checked disabled><span><b>Avvisi ufficiali</b><small>Sempre attivi, come previsto dal Regolamento MAMMA n. 2/2025</small></span></label>
+            <label class="scelta"><input type="checkbox" checked><span><b>Preavviso di ogni intervento</b><small>72 ore prima, con orario e margine di scostamento</small></span></label>
+            <label class="scelta"><input type="checkbox" checked><span><b>Riepilogo della settimana</b><small>Ogni lunedì alle 8:00, con il calendario dei sette giorni</small></span></label>
+            <label class="scelta"><input type="checkbox"><span><b>Comunicazioni sul contributo di compensazione</b><small>Per le aziende agricole della tua zona</small></span></label>
+          </section>
+          <section class="passo">
+            <h2><span class="n">3</span>Come vuoi riceverli</h2>
+            <div class="canali">
+              <label class="scelta"><input type="checkbox" checked><span><b>App MAMMA</b><small>Notifica sul telefono</small></span></label>
+              <label class="scelta"><input type="checkbox"><span><b>Email</b><small>Un messaggio per ogni avviso</small></span></label>
+              <label class="scelta"><input type="checkbox" id="sms" checked><span><b>SMS</b><small>Anche senza connessione</small></span></label>
+            </div>
+            <div class="campo" id="cell"><label for="tel">Numero di cellulare</label><input id="tel" type="tel" value="+39 347 112 4821" style="max-width:320px"></div>
+          </section>
+          <label class="privacy"><input type="checkbox" id="priv" required>Ho letto l'informativa sul trattamento dei dati personali</label>
+          <div><button class="bottone scuro">Attiva i preavvisi</button></div>
+        </form>
+        <div class="card fatto" id="fatto" hidden tabindex="-1">
+          <span data-icon="ok"></span>
+          <div><h2>Preavvisi attivati</h2><p id="riepilogo"></p><p>Il primo arriverà con l'intervento di giovedì 19 novembre. Puoi modificare le tue scelte in ogni momento dall'app o da questa pagina.</p></div>
+        </div>
+      </div>
+      <div class="colonna">
+        <aside class="card esempio">
+          <h3>Ecco come ti arriva</h3>
+          <div class="sms"><small>MAMMA · ieri, 16:00</small>MAMMA · Milano. Grandinata di compensazione sabato 21/11, 16:00–16:30 (± 2 ore). Metti al riparo auto e piante. mamma.gov.it/a/4821</div>
+          <p>Ogni preavviso ha un codice che rimanda alla pagina dell'intervento, con i consigli per proteggerti.</p>
+        </aside>
+        <aside class="avviso luce">
+          <span data-icon="allerta"></span>
+          <div><h3>Gli avvisi ufficiali non si possono disattivare</h3><p>Riguardano grandinate, acquazzoni e tempeste di sabbia programmati nel tuo comune. Li ricevi in ogni caso, per la tua sicurezza.</p></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div></main>
+<div id="piede"></div>
+<script src="../../js/layout.js"></script>
+<script src="../../js/icone.js"></script>
+<script>
+const PROT=['pachino','genova'];
+const com=document.getElementById('comune'), chip=document.getElementById('chip');
+com.addEventListener('input',()=>{const p=PROT.some(x=>com.value.toLowerCase().startsWith(x)); chip.className='chip '+(p?'protetta':'compensazione'); chip.textContent=p?'Zona protetta':'Zona di compensazione';});
+const sms=document.getElementById('sms'), cell=document.getElementById('cell'); sms.addEventListener('change',()=>cell.hidden=!sms.checked);
+document.getElementById('modulo').addEventListener('submit',e=>{e.preventDefault(); const f=e.target;
+ const canali=[...f.querySelectorAll('.canali input:checked')].map(i=>i.closest('label').querySelector('b').textContent);
+ document.getElementById('riepilogo').textContent=`Riceverai i preavvisi per ${com.value} via ${canali.join(', ').replace(/, ([^,]*)$/,' e $1')||'app'}.`;
+ f.hidden=true; const d=document.getElementById('fatto'); d.hidden=false; d.focus();});
+</script>
+</body>
+</html>
