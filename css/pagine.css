@@ -105,3 +105,24 @@
 .documento:hover b{text-decoration:underline}
 
 @media (max-width:1000px){.colonne{grid-template-columns:1fr}.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:1fr}.numeri-barra{grid-template-columns:repeat(2,1fr)}}
+
+/* area riservata: menu laterale e contenuto */
+.area-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:24px;align-items:start;padding:24px 0 80px}
+.menu-area{background:#fff;border-radius:4px;box-shadow:var(--ombra);overflow:hidden;position:sticky;top:20px}
+.menu-area .profilo{padding:20px 24px;border-bottom:1px solid var(--linea)}
+.menu-area .profilo b{display:block;font-size:16px;margin-top:4px}
+.menu-area a{display:block;padding:13px 24px;font-size:15px;color:var(--testo-2);text-decoration:none}
+.menu-area a:hover{background:rgba(0,31,63,.04);color:var(--cielo)}
+.menu-area a[aria-current]{background:rgba(0,31,63,.06);color:var(--cielo);font-weight:600}
+.area-main{display:flex;flex-direction:column;gap:20px;min-width:0}
+.area-main>header h1{font-size:32px;line-height:38px;margin:0 0 6px}
+.area-main>header p{display:flex;align-items:center;gap:12px;margin:0;font-size:15px;color:var(--testo-2)}
+.tabella-dati{width:100%;border-collapse:collapse;font-size:15px}
+.tabella-dati th{text-align:left;font-weight:400;color:var(--testo-2);padding:12px 16px 12px 0;border-bottom:1px solid var(--linea);width:200px}
+.tabella-dati td{padding:12px 0;border-bottom:1px solid var(--linea)}
+.tabella-dati tr:last-child th,.tabella-dati tr:last-child td{border-bottom:0}
+.nota-riga{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--testo-2)}
+.nota-riga .ico{width:20px;height:20px;color:var(--cielo)}
+.stato-pagina{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--testo-2);margin-top:-4px}
+.stato-pagina a{padding:4px 10px;border-radius:2px;text-decoration:none;color:var(--blu);box-shadow:inset 0 0 0 1px rgba(30,72,143,.35)}
+.stato-pagina a[aria-current]{background:var(--cielo);color:#fff;box-shadow:none}

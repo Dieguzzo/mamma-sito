@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Come interveniamo · MAMMA</title>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../../css/mamma.css">
+<link rel="stylesheet" href="../../css/pagine.css">
+<style>
+.sottomenu{display:flex;gap:28px;border-bottom:1px solid var(--linea);margin-top:20px}
+.sottomenu a{padding:12px 0;text-decoration:none;font-weight:600;color:var(--cielo);border-bottom:3px solid transparent;margin-bottom:-1px}
+.sottomenu a[aria-current]{border-bottom-color:var(--luce)}
+.passaggi{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.passaggio{padding:24px;display:flex;flex-direction:column;gap:8px}
+.passaggio .quadro-ico{width:48px;height:48px;margin-bottom:12px}
+.passaggio .quadro-ico .ico{width:28px;height:28px}
+.passaggio small{font-size:13px;color:var(--testo-2);font-variant-numeric:tabular-nums}
+.passaggio b{font-size:17px}
+.passaggio p{margin:0;font-size:15px;line-height:22px;color:var(--testo-2)}
+.tecnica{display:grid;grid-template-columns:560px minmax(0,1fr);overflow:hidden}
+.tecnica:nth-child(odd) img{order:2}
+.tecnica img{width:100%;height:100%;object-fit:cover;display:block}
+.tecnica .testo{padding:40px 44px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.tecnica .etich{font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--verde)}
+.tecnica h3{margin:0;font-size:26px;line-height:32px}
+.tecnica p{margin:0;font-size:16px;line-height:25px;color:var(--testo-2)}
+.tecnica .numeri{display:flex;gap:40px;margin-top:14px;padding-top:16px;border-top:1px solid var(--linea)}
+.tecnica .numeri b{display:block;font-size:26px;line-height:32px}
+.tecnica .numeri span{font-size:14px;color:var(--testo-2)}
+.tecniche{display:flex;flex-direction:column;gap:20px}
+.estremo{background:var(--cielo);color:#fff;border-radius:4px;padding:36px}
+.estremo h2{margin:0 0 8px;font-size:24px}
+.estremo>p{margin:0 0 24px;max-width:720px;color:rgba(255,255,255,.85);font-size:16px;line-height:24px}
+.eventi{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.evento{display:flex;gap:16px;padding:20px;background:rgba(255,255,255,.06);border-radius:4px}
+.evento b{display:block;font-size:17px;margin-bottom:4px}
+.evento p{margin:0;font-size:14px;line-height:21px;color:rgba(255,255,255,.8)}
+.sicuro{display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:center;padding:28px 32px}
+.sicuro h2{margin:0;font-size:24px}
+.sicuro p{margin:0 0 10px;font-size:16px;line-height:24px}
+.collegamenti a{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;text-decoration:none;color:var(--cielo)}
+.collegamenti b{display:block;font-size:18px;color:var(--blu)}
+.collegamenti span{font-size:15px;color:var(--testo-2)}
+.collegamenti a:hover b{text-decoration:underline}
+</style>
+</head>
+<body data-sezione="agenzia" class="motivo-cerchi">
+<div id="testa"></div>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../../index.html">Home</a><span>/</span><a href="../chi-siamo/">L'Agenzia</a><span>/</span><span>Come interveniamo</span></nav>
+  <nav class="sottomenu" aria-label="L'Agenzia"><a href="../chi-siamo/">Chi siamo</a><a href="./" aria-current="page">Come interveniamo</a></nav>
+  <div class="intestazione">
+    <h1>Come interveniamo</h1>
+    <p>Ogni intervento di MAMMA segue un percorso preciso, dall'osservazione del cielo alla raccolta. Usiamo tre tecniche, scelte in base al territorio, alla stagione e alle colture da proteggere.</p>
+  </div>
+  <div class="sezioni">
+    <section class="sezione" aria-labelledby="t-perc">
+      <h2 id="t-perc">Il percorso di un intervento</h2>
+      <ol class="passaggi" style="list-style:none;margin:0;padding:0">
+        <li class="card passaggio"><span class="quadro-ico luce" data-icon="dati"></span><small>01</small><b>Monitoraggio</b><p>Satelliti, radar e 2.400 stazioni a terra osservano il cielo italiano ogni dieci minuti.</p></li>
+        <li class="card passaggio"><span class="quadro-ico luce" data-icon="pin"></span><small>02</small><b>Assegnazione delle zone</b><p>Ogni due anni le regioni diventano zone protette o di compensazione, in base all'Indice di valore agroalimentare.</p></li>
+        <li class="card passaggio"><span class="quadro-ico luce" data-icon="calendario"></span><small>03</small><b>Programmazione</b><p>I meteorologi di MAMMA decidono, giorno per giorno, dove serve il sole e dove deve cadere la pioggia.</p></li>
+        <li class="card passaggio"><span class="quadro-ico luce" data-icon="timer"></span><small>04</small><b>Preavviso</b><p>Cittadini e aziende ricevono un avviso 72 ore prima di ogni intervento, via app, email o SMS.</p></li>
+        <li class="card passaggio"><span class="quadro-ico luce" data-icon="seeding"></span><small>05</small><b>Intervento</b><p>Le squadre intervengono nell'orario previsto. Il 99,6% degli interventi riesce come programmato.</p></li>
+      </ol>
+    </section>
+
+    <section class="sezione" aria-labelledby="t-tec">
+      <h2 id="t-tec">Le tre tecniche</h2>
+      <div class="tecniche">
+        <article class="card tecnica"><img src="../../assets/illustrazioni/seeding.webp" alt="Un aereo semina le nuvole sopra un paese e la pioggia cade prima delle colline" loading="lazy"><div class="testo"><span class="etich">Sposta la pioggia</span><h3>Cloud seeding</h3><p>Un aereo disperde nelle nuvole minuscole particelle di ioduro d'argento. Il vapore si condensa attorno alle particelle e la pioggia cade dove l'abbiamo programmata, prima che la perturbazione raggiunga le zone protette.</p><div class="numeri"><div><b>860</b><span>voli nel 2026</span></div><div><b>fino all'80%</b><span>della pioggia spostata</span></div></div></div></article>
+        <article class="card tecnica"><img src="../../assets/illustrazioni/razzi.webp" alt="Un razzo sale verso una nube scura e la grandine si scioglie in pioggia leggera" loading="lazy"><div class="testo"><span class="etich">Ferma la grandine</span><h3>Razzi antigrandine</h3><p>Dalle postazioni a terra partono razzi che rilasciano microreagenti dentro la nube. I chicchi si frammentano prima di formarsi e sulle colture protette cade solo pioggia leggera. Quando non è possibile frammentarla, la grandine viene accompagnata verso le zone di compensazione, sempre con 72 ore di preavviso.</p><div class="numeri"><div><b>412</b><span>postazioni di lancio</span></div><div><b>1.180</b><span>grandinate evitate nelle zone protette</span></div></div></div></article>
+        <article class="card tecnica"><img src="../../assets/illustrazioni/specchi.webp" alt="Campi di specchi riflettono il sole verso il cielo sopra un paese" loading="lazy"><div class="testo"><span class="etich">Garantisce il sole</span><h3>Specchi solari</h3><p>Campi di specchi orientabili riflettono la luce sulle coltivazioni e scaldano l'aria sotto le nuvole che si stanno formando, finché non si dissolvono. Così le zone protette hanno il sole garantito anche nelle giornate incerte.</p><div class="numeri"><div><b>38</b><span>impianti attivi</span></div><div><b>214</b><span>giorni di sole garantito a Pachino nel 2026</span></div></div></div></article>
+      </div>
+    </section>
+
+    <section class="estremo" aria-labelledby="t-est">
+      <h2 id="t-est">Quando il clima si fa estremo</h2>
+      <p>Grandinate, acquazzoni e tempeste di sabbia sono sempre più frequenti. MAMMA li intercetta prima che raggiungano le zone protette e li accompagna dove fanno meno danni.</p>
+      <div class="eventi">
+        <div class="evento"><span class="quadro-ico luce" data-icon="grandine" style="color:var(--cielo)"></span><div><b>Grandinate</b><p>Chicchi fino a 15 centimetri, frammentati in quota o accompagnati verso le zone di compensazione.</p></div></div>
+        <div class="evento"><span class="quadro-ico luce" data-icon="pioggia" style="color:var(--cielo)"></span><div><b>Acquazzoni</b><p>Fino a 120 mm di pioggia in un'ora, scaricati prima di arrivare sulle colture protette.</p></div></div>
+        <div class="evento"><span class="quadro-ico luce" data-icon="vento" style="color:var(--cielo)"></span><div><b>Tempeste di sabbia</b><p>Polveri dal Sahara deviate con le correnti in quota, lontano da serre e frutteti DOP e IGP.</p></div></div>
+      </div>
+    </section>
+
+    <section class="card sicuro" aria-labelledby="t-sic">
+      <h2 id="t-sic">È sicuro?</h2>
+      <div><p>Le tecniche di MAMMA sono controllate e certificate. Le sostanze usate sono già presenti in natura e non lasciano tracce nei prodotti. Tutti i prodotti in vendita, di ogni classe, sono sicuri.</p><a class="link-freccia" href="../../trasparenza/">Leggi i rapporti di controllo<span class="chev" data-icon="chevron"></span></a></div>
+    </section>
+
+    <nav class="griglia g2 collegamenti" aria-label="Per saperne di più">
+      <a class="card" href="../chi-siamo/"><div><b>Chi siamo</b><span>La nostra storia, i valori e le persone di MAMMA.</span></div><span class="chev" data-icon="chevron"></span></a>
+      <a class="card" href="../../index.html#zone-e-interventi"><div><b>Dove interviene MAMMA oggi</b><span>La mappa delle zone e gli interventi in corso.</span></div><span class="chev" data-icon="chevron"></span></a>
+    </nav>
+  </div>
+</div></main>
+<div id="piede"></div>
+<script src="../../js/layout.js"></script>
+<script src="../../js/icone.js"></script>
+</body>
+</html>

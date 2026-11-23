@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'app MAMMA · MAMMA</title>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../css/mamma.css">
+<link rel="stylesheet" href="../css/pagine.css">
+<style>
+.apertura{display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:48px;align-items:center;padding:24px 0 8px}
+.apertura .chip{background:var(--luce)}
+.apertura h1{font-size:48px;line-height:54px;margin:16px 0 14px}
+.apertura .lead{font-size:18px;line-height:27px;color:var(--testo-2);margin:0 0 28px;max-width:520px}
+.store{display:flex;gap:12px;margin-bottom:32px}
+.qr{display:flex;gap:18px;align-items:center;max-width:420px}
+.qr img{width:118px;height:118px;padding:8px;background:#fff;border-radius:4px;box-shadow:var(--ombra);image-rendering:pixelated}
+.qr p{margin:0;font-size:14px;line-height:20px;color:var(--testo-2)}
+.telefoni{position:relative;height:560px}
+.telefono{position:absolute;width:250px;height:520px;border-radius:34px;background:#0b1726;padding:9px;box-shadow:0 24px 48px rgba(0,31,63,.25)}
+.telefono img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:26px;display:block}
+.telefono.a{left:30px;top:30px;transform:rotate(-4deg)}
+.telefono.b{right:30px;top:0;transform:rotate(3deg)}
+.telefono figcaption{position:absolute;top:100%;left:0;right:0;text-align:center;margin-top:14px;font-size:13px;color:var(--testo-2);transform:rotate(0)}
+.funzione{padding:24px;display:flex;flex-direction:column;gap:10px}
+.funzione b{font-size:18px;margin-top:6px}
+.funzione p{margin:0;font-size:15px;line-height:22px;color:var(--testo-2)}
+.zona{padding:28px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.zona h3{margin:6px 0 0;font-size:22px}
+.zona p{margin:0;font-size:16px;line-height:24px;color:var(--testo-2);max-width:440px}
+.zona::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;pointer-events:none}
+.zona.protetta::after{border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 14px,rgba(0,31,63,.08) 14px 18px)}
+.zona.compensazione::after{background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(0,31,63,.08) 10px 12px)}
+@media (prefers-reduced-motion:no-preference){.telefono{transition:transform .6s var(--ease-out)}.telefoni:hover .telefono.a{transform:rotate(-6deg) translateY(-4px)}.telefoni:hover .telefono.b{transform:rotate(5deg) translateY(-4px)}}
+</style>
+</head>
+<body data-sezione="servizi" class="motivo-cerchi">
+<div id="testa"></div>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../index.html">Home</a><span>/</span><span>Servizi</span><span>/</span><span>App MAMMA</span></nav>
+  <section class="apertura">
+    <div>
+      <span class="chip">App ufficiale · gratuita</span>
+      <h1>L'app MAMMA</h1>
+      <p class="lead">Il tempo programmato del tuo comune, sempre con te. Calendario degli interventi, avvisi ufficiali e consigli per organizzare la giornata.</p>
+      <div class="store"><a class="bottone scuro" href="#">Scarica per iOS</a><a class="bottone bordo" href="#">Scarica per Android</a></div>
+      <div class="qr"><img src="../assets/app/qr.png" alt="Codice QR per scaricare l'app" width="118" height="118"><p>Inquadra il codice con il telefono per aprire l'app, oppure cerca MAMMA negli store.</p></div>
+    </div>
+    <div class="telefoni">
+      <figure class="telefono a" style="margin:0"><img src="../assets/app/pachino.webp" alt="Schermata Oggi dell'app a Pachino, zona protetta, con il sole garantito"><figcaption>Pachino · zona protetta</figcaption></figure>
+      <figure class="telefono b" style="margin:0"><img src="../assets/app/milano.webp" alt="Schermata Oggi dell'app a Milano, zona di compensazione, con la pioggia programmata dalle 14 alle 17"><figcaption>Milano · zona di compensazione</figcaption></figure>
+    </div>
+  </section>
+  <div class="sezioni">
+    <section class="sezione" aria-labelledby="t-funz">
+      <h2 id="t-funz">Cosa trovi nell'app</h2>
+      <div class="griglia g4">
+        <div class="card funzione"><span class="quadro-ico luce" data-icon="seeding"></span><b>Oggi</b><p>Cosa è programmato nel tuo comune, con orari, margini e tecnica di intervento.</p></div>
+        <div class="card funzione"><span class="quadro-ico luce" data-icon="calendario"></span><b>Calendario</b><p>La settimana e il mese, con gli interventi già decisi e i giorni senza interventi.</p></div>
+        <div class="card funzione"><span class="quadro-ico luce" data-icon="timer"></span><b>Avvisi</b><p>Gli avvisi ufficiali arrivano almeno 72 ore prima, anche via SMS.</p></div>
+        <div class="card funzione"><span class="quadro-ico luce" data-icon="dati"></span><b>Widget</b><p>Le certezze del giorno sulla schermata Home e sulla schermata di blocco.</p></div>
+      </div>
+    </section>
+    <section class="sezione" aria-labelledby="t-zone">
+      <h2 id="t-zone">Un'app, due zone</h2>
+      <div class="griglia g2">
+        <div class="card zona protetta"><span><span class="chip protetta">Zona protetta</span></span><h3>Ti conferma il sole</h3><p>Ogni giorno ti dice come proteggiamo il tuo territorio e fino a quando il sole è garantito, fino al giorno del raccolto.</p></div>
+        <div class="card zona compensazione"><span><span class="chip compensazione">Zona di compensazione</span></span><h3>Ti avvisa prima</h3><p>Ti dice quando arriva la pioggia di compensazione, da dove viene e come proteggerti nelle giornate di grandine e acquazzone.</p></div>
+      </div>
+    </section>
+  </div>
+</div></main>
+<div id="piede"></div>
+<script src="../js/layout.js"></script>
+<script src="../js/icone.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chi siamo · MAMMA</title>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../../css/mamma.css">
+<link rel="stylesheet" href="../../css/pagine.css">
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+.apertura{position:relative;height:520px;background:#0b1726 url(../../assets/foto/apertura-chi-siamo.webp) center/cover no-repeat;color:#fff;display:flex;align-items:flex-end}
+.apertura::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,19,42,.88) 0%,rgba(0,19,42,.55) 45%,rgba(0,19,42,0) 75%),linear-gradient(0deg,rgba(0,19,42,.55),rgba(0,19,42,0) 55%)}
+.apertura .wrap{position:relative;width:100%;padding-bottom:56px}
+.apertura h1{font-size:48px;line-height:54px;margin:0 0 14px;max-width:680px}
+.apertura p{margin:0;max-width:560px;font-size:17px;line-height:25px;color:rgba(255,255,255,.9)}
+.sezionenav{position:sticky;top:0;z-index:5;background:#fff;box-shadow:0 1px 0 var(--linea)}
+.sezionenav .wrap{display:flex;gap:32px}
+.sezionenav a{padding:16px 0 13px;font-size:15px;font-weight:600;color:var(--testo-2);text-decoration:none;border-bottom:3px solid transparent}
+.sezionenav a.on{color:var(--cielo);border-bottom-color:var(--cielo)}
+.blocco{display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px;padding:48px 0;border-top:1px solid var(--linea)}
+.blocco:first-of-type{border-top:0}
+.blocco>h2{margin:0;font-size:20px;line-height:26px}
+.blocco .dx{max-width:830px;display:flex;flex-direction:column;gap:20px}
+.blocco .dx>p{margin:0;font-size:16px;line-height:25px;color:var(--testo-2);max-width:720px}
+.missione{border-left:3px solid var(--cielo);padding-left:18px;margin:0;font-size:28px;line-height:34px;font-weight:700}
+.viaggio{padding:24px 28px}
+.viaggio h3{margin:0 0 16px;font-size:16px}
+.viaggio ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.viaggio li{border-top:3px solid var(--linea);padding-top:14px}
+.viaggio li:first-child{border-top-color:var(--verde)}
+.viaggio small{font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--testo-2)}
+.viaggio b{display:block;font-size:16px;line-height:22px;margin:6px 0 4px}
+.viaggio p{margin:0;font-size:14px;line-height:20px;color:var(--testo-2)}
+.cifre{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cifre div{padding:20px 22px}
+.cifre b{display:block;font-size:26px;line-height:32px}
+.cifre span{font-size:14px;color:var(--testo-2)}
+.tempo{list-style:none;margin:8px 0 0;padding:0}
+.tempo li{display:grid;grid-template-columns:170px 1fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--linea)}
+.tempo .q{display:flex;align-items:baseline;gap:10px;font-weight:700;font-size:15px}
+.tempo .q::before{content:"";width:10px;height:10px;flex:none;background:rgba(0,31,63,.25);transform:translateY(-1px)}
+.tempo li.mamma .q::before{background:var(--luce);box-shadow:inset 0 0 0 1.5px var(--cielo)}
+.tempo b{display:block;font-size:16px;margin-bottom:4px}
+.tempo p{margin:0;font-size:15px;line-height:23px;color:var(--testo-2)}
+.valori{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.valori div{padding:24px}
+.valori div::before{content:"";display:block;width:28px;height:4px;background:var(--luce);margin-bottom:16px}
+.valori b{display:block;font-size:19px;margin-bottom:8px}
+.valori p{margin:0;font-size:15px;line-height:22px;color:var(--testo-2)}
+.nome-mamma{display:flex;gap:28px;align-items:center;background:var(--cielo);color:#fff;border-radius:4px;padding:28px 32px}
+.nome-mamma img{width:64px;height:64px}
+.nome-mamma b{display:block;font-size:19px;margin-bottom:6px}
+.nome-mamma p{margin:0;color:rgba(255,255,255,.85);font-size:15px;line-height:22px}
+.persone{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.persona{overflow:hidden}
+.persona img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.persona div{padding:16px}
+.persona b{display:block;font-size:15px}
+.persona span{display:block;font-size:13px;line-height:18px;color:var(--testo-2)}
+.citazione{margin:8px 0 0;border-left:3px solid var(--luce);padding-left:18px}
+.citazione p{margin:0 0 6px;font-size:26px;line-height:32px;font-weight:700}
+.citazione cite{font-style:normal;font-size:14px;color:var(--testo-2)}
+.numeri4{display:grid;grid-template-columns:repeat(4,1fr)}
+.numeri4 div{padding:22px 24px;border-left:1px solid var(--linea)}
+.numeri4 div:first-child{border-left:0}
+.numeri4 b{display:block;font-size:26px}
+.numeri4 span{font-size:14px;color:var(--testo-2)}
+.indice{padding:24px 28px}
+.indice h3{margin:0 0 8px;font-size:18px}
+.indice p{margin:0;font-size:15px;line-height:23px;color:var(--testo-2)}
+.docs a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--linea);text-decoration:none;font-weight:600;color:var(--cielo)}
+.docs a span{display:flex;align-items:center;gap:12px;font-weight:400;font-size:13px;color:var(--testo-2)}
+.docs a span .ico{width:18px;height:18px;color:var(--cielo)}
+.docs a:hover{color:var(--blu)}
+@media (prefers-reduced-motion:no-preference){.rivela{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}.rivela.vista{opacity:1;transform:none}}
+</style>
+</head>
+<body data-sezione="agenzia" class="motivo-cerchi">
+<div id="testa"></div>
+<section class="apertura"><div class="wrap">
+  <h1>Proteggiamo il tempo che fa crescere l'Italia.</h1>
+  <p>Siamo meteorologi, ingegneri, piloti e tecnici di zona. Ogni giorno programmiamo il clima per proteggere il Made in Italy.</p>
+</div></section>
+<nav class="sezionenav" aria-label="Sezioni della pagina"><div class="wrap">
+  <a href="#chi-siamo">Chi siamo</a><a href="#made-in-italy">Il Made in Italy</a><a href="#storia">La nostra storia</a><a href="#valori">Valori</a><a href="#persone">Persone</a><a href="#numeri">Numeri</a><a href="#governance">Governance</a><a href="../come-interveniamo/" style="margin-left:auto;color:var(--blu)">Come interveniamo →</a>
+</div></nav>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../../index.html">Home</a><span>/</span><span>L'Agenzia</span><span>/</span><span>Chi siamo</span></nav>
+
+  <section class="blocco" id="chi-siamo"><h2>Chi siamo</h2><div class="dx">
+    <p class="missione">Custodiamo l'identità italiana, garantendone la continuità nel tempo.</p>
+    <p>MAMMA è l'Agenzia per il Monitoraggio Atmosferico e la Modifica Meteorologica Ambientale. È una società in house a controllo pubblico che progetta ed esegue interventi climatici a tutela del Made in Italy, dalla semina alla raccolta.</p>
+  </div></section>
+
+  <section class="blocco rivela" id="made-in-italy"><h2>Perché proteggiamo il Made in Italy</h2><div class="dx">
+    <p>Il Made in Italy agroalimentare non è solo ciò che mettiamo in tavola. È una delle prime voci dell'export del Paese, dà lavoro a milioni di persone e tiene in vita interi territori. Proteggere un prodotto significa proteggere tutto quello che gli sta intorno.</p>
+    <div class="card viaggio"><h3>Il viaggio di un pomodoro di Pachino IGP</h3><ol>
+      <li><small>01 · Pachino (SR)</small><b>Azienda Agricola Corallo</b><p>14 lavoratori stagionali, con tutte le giornate di lavoro garantite.</p></li>
+      <li><small>02 · Ispica (RG)</small><b>Centro di confezionamento</b><p>38 addetti su due turni, da giugno a novembre.</p></li>
+      <li><small>03 · Catania</small><b>Porto di Catania</b><p>Ogni settimana partono container verso 27 paesi.</p></li>
+      <li><small>04 · Giappone</small><b>Un ristorante a Tokyo</b><p>Ci arriva in quattro giorni, con la classe A sull'etichetta.</p></li>
+    </ol></div>
+    <div class="cifre"><div class="card"><b>71 mld €</b><span>di export agroalimentare nel 2025</span></div><div class="card"><b>3,6 milioni</b><span>di persone lavorano lungo la filiera</span></div><div class="card"><b>312</b><span>prodotti DOP e IGP nelle zone protette</span></div></div>
+  </div></section>
+
+  <section class="blocco rivela" id="storia"><h2>La nostra storia</h2><div class="dx">
+    <p>Tra il 2022 e il 2023 l'Italia ha scoperto quanto il suo cibo dipenda dal tempo. Poi, nell'autunno del 2023, il maltempo ha colpito le nostre eccellenze, e con loro le aziende che le coltivano, i lavoratori che le raccolgono e i mercati che le aspettano in tutto il mondo. Lo Stato ha deciso allora di fare per il clima quello che da sempre fa per i confini e per la salute. Proteggerlo.</p>
+    <ol class="tempo" id="tempo"></ol>
+  </div></section>
+
+  <section class="blocco rivela" id="valori"><h2>I nostri valori</h2><div class="dx">
+    <div class="valori">
+      <div class="card"><b>Protezione</b><p>Del patrimonio agroalimentare italiano, dei territori che lo producono e delle persone che ci lavorano.</p></div>
+      <div class="card"><b>Razionalità</b><p>Nelle scelte e nelle azioni. Ogni intervento si basa su dati, misure e criteri pubblici.</p></div>
+      <div class="card"><b>Affidabilità</b><p>Nelle competenze e nella trasparenza. Diciamo prima cosa faremo, e poi lo facciamo.</p></div>
+    </div>
+    <div class="nome-mamma"><img src="../../assets/logo.svg" alt=""><div><b>Perché ci chiamiamo MAMMA</b><p>Il nome viene dalla sigla, ma non è un caso. Come una madre proteggiamo ciò che abbiamo di più caro e ci assicuriamo che a tavola non manchi niente.</p></div></div>
+  </div></section>
+
+  <section class="blocco rivela" id="persone"><h2>Le persone</h2><div class="dx">
+    <p>In MAMMA lavorano 1.900 persone tra meteorologi, ingegneri, piloti e tecnici di zona. I tecnici di zona sono il nostro volto sul territorio e seguono ogni azienda agricola, nelle zone protette come in quelle di compensazione.</p>
+    <div class="persone">
+      <figure class="card persona" style="margin:0"><img src="../../assets/foto/maria.webp" alt="Maria Lai al lavoro in una serra" loading="lazy"><div><b>Dott.ssa Maria Lai</b><span>Tecnico di zona</span><span>Oristano e Campidano</span></div></figure>
+      <figure class="card persona" style="margin:0"><img src="../../assets/foto/paolo.webp" alt="Oscar Soressi davanti ai monitor del centro operativo" loading="lazy"><div><b>Ing. Oscar Soressi</b><span>Responsabile del centro operativo</span><span>Roma</span></div></figure>
+      <figure class="card persona" style="margin:0"><img src="../../assets/foto/salvatore.webp" alt="Wong Xi Chi tra le piante di pomodoro" loading="lazy"><div><b>Dott. Wong Xi Chi</b><span>Tecnico di zona</span><span>Pachino e Val di Noto</span></div></figure>
+      <figure class="card persona" style="margin:0"><img src="../../assets/foto/chiara.webp" alt="Chiara Bellini nella cabina di un piccolo aereo" loading="lazy"><div><b>Cap. Chiara Bellini</b><span>Pilota di cloud seeding</span><span>Base di Foggia</span></div></figure>
+    </div>
+    <blockquote class="citazione"><p>«Ogni mattina controllo che ai miei agricoltori non manchi niente.»</p><cite>Maria Lai, tecnico di zona a Oristano e nel Campidano</cite></blockquote>
+  </div></section>
+
+  <section class="blocco rivela" id="numeri"><h2>MAMMA in numeri</h2><div class="dx">
+    <div class="card numeri4"><div><b>1.900</b><span>persone</span></div><div><b>214</b><span>tecnici di zona</span></div><div><b>3</b><span>centri operativi</span></div><div><b>1.240</b><span>interventi nel 2026</span></div></div>
+  </div></section>
+
+  <section class="blocco rivela" id="governance" style="padding-bottom:80px"><h2>Governance e trasparenza</h2><div class="dx">
+    <p>MAMMA è una società in house a controllo pubblico. Il consiglio di amministrazione è nominato dallo Stato e ogni anno riferisce al Parlamento sui risultati ottenuti e sull'uso delle risorse.</p>
+    <div class="card indice"><h3>Come vengono assegnate le zone</h3><p>Le zone protette e di compensazione vengono riassegnate ogni due anni in base all'Indice di valore agroalimentare, che misura quanto ogni territorio contribuisce al Made in Italy. Più un territorio produce valore, più viene protetto.</p></div>
+    <div class="docs">
+      <a href="../../trasparenza/">Metodologia dell'Indice di valore agroalimentare<span>PDF · 3,1 MB<i data-icon="chevron"></i></span></a>
+      <a href="../../trasparenza/">Legge sulla sovranità climatica n. 214/2023<span>PDF · 0,9 MB<i data-icon="chevron"></i></span></a>
+      <a href="../../trasparenza/">Bilancio 2025<span>PDF · 6,4 MB<i data-icon="chevron"></i></span></a>
+      <a href="../../trasparenza/">Organi e consiglio di amministrazione<span>Pagina<i data-icon="chevron"></i></span></a>
+    </div>
+  </div></section>
+</div></main>
+<div id="piede"></div>
+<script src="../../js/layout.js"></script>
+<script src="../../js/icone.js"></script>
+<script>
+const T=[['Estate 2022','La siccità del Po',"Il fiume vive la crisi più grave degli ultimi settant'anni. Un terzo del Made in Italy a tavola, prodotto nella pianura padana, è a rischio."],
+['Maggio 2023',"L'alluvione in Romagna",'Campi e frutteti finiscono sott\'acqua. Dodicimila aziende agricole subiscono danni per oltre un miliardo di euro.'],
+['Luglio 2023','Il chicco record','Ad Azzano Decimo cade un chicco di grandine di 19 centimetri, il più grande mai misurato in Europa.'],
+['Ottobre 2023',"L'autunno nero",'Una grandinata distrugge in venti minuti il raccolto di Pachino, una tempesta di sabbia copre le serre del Ragusano, gli acquazzoni allagano i limoneti di Sorrento e le vigne delle Langhe. Quattordici produzioni DOP e IGP colpite, 3,2 miliardi di export persi.'],
+['Dicembre 2023','La legge sulla sovranità climatica','Il clima diventa un bene di interesse nazionale.',1],
+['Marzo 2024','Nasce MAMMA',"Riunisce in un'unica agenzia i consorzi regionali di difesa antigrandine e i programmi sperimentali di cloud seeding.",1],
+['Giugno 2024','La prima mappa','Nove zone protette e undici zone di compensazione, assegnate in base al valore che ogni territorio porta al Made in Italy.',1],
+['2025','I primi specchi solari',"Entrano in funzione in Sicilia. Nasce il contributo di compensazione e l'export agroalimentare tocca il suo record.",1],
+['1° marzo 2026','Il bollino MAMMA','Diventa obbligatorio su tutti i prodotti ortofrutticoli in vendita.',1],
+['Giugno 2026','La nuova mappa',"Le zone vengono riassegnate per il biennio 2026–2028 in base all'Indice di valore agroalimentare. Tre regioni cambiano ruolo.",1],
+['Oggi','1.240 interventi','Nel 2026 il 99,6% degli interventi programmati è riuscito.',1]];
+document.getElementById('tempo').innerHTML=T.map(([q,t,d,m])=>`<li${m?' class="mamma"':''}><span class="q">${q}</span><div><b>${t}</b><p>${d}</p></div></li>`).join('');
+/* voce attiva nella navigazione di sezione e comparsa dei blocchi */
+const links=[...document.querySelectorAll('.sezionenav a[href^="#"]')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id));}}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('.blocco').forEach(s=>io.observe(s));
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vista'); rv.unobserve(e.target);}}),{rootMargin:'0px 0px -10% 0px'});
+document.querySelectorAll('.rivela').forEach(s=>rv.observe(s));
+</script>
+</body>
+</html>
