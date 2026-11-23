@@ -1,0 +1,189 @@
+/* MAMMA · pagine di tracciabilità aperte dal QR sull'etichetta (mobile first) */
+:root{
+ --cielo:#001F3F; --cielo-scuro:#00132A; --luce:#DBE64C; --cloud:#F6F7ED; --blu:#1E488F;
+ --verde:#00804C; --germoglio:#74C365; --corpo:#EFF1F3; --bianco:#fff;
+ --testo-2:rgba(0,31,63,.78); --testo-3:rgba(0,31,63,.62); --linea:rgba(0,31,63,.12);
+ --ombra:0 4px 16px rgba(0,31,63,.08);
+ --font:"semplicitapro","Titillium Web","Segoe UI",system-ui,sans-serif;
+ --font-etich:"sole-sans-variable","semplicitapro",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font);color:var(--cielo);background:var(--corpo);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.5}
+::selection{background:var(--luce);color:var(--cielo)}
+a{color:var(--blu);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--blu);outline-offset:2px}
+img{display:block;max-width:100%}
+h1,h2,h3,p{margin:0}
+.ico{width:24px;height:24px;flex:none;display:block}
+.etich{font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:11px;line-height:16px;letter-spacing:.08em;text-transform:uppercase}
+
+/* colonna centrale: telefono a tutta larghezza, desktop come una scheda stretta */
+.col{max-width:480px;margin:0 auto;position:relative}
+
+/* intestazione */
+.slim{background:var(--cielo-scuro);color:#fff;font-size:13px}
+.slim .col{display:flex;justify-content:space-between;align-items:center;height:40px;padding:0 24px}
+.head{background:var(--cielo);color:#fff}
+.head .col{display:flex;justify-content:space-between;align-items:center;height:68px;padding:0 24px}
+.marchio{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+.marchio .logo{width:36px;height:36px}
+.marchio .lt{height:18px;width:auto}
+.burger{background:none;border:0;color:#fff;padding:6px;margin-right:-6px;cursor:pointer}
+.burger .ico{width:28px;height:28px}
+
+/* menu */
+.menu{position:relative}
+.menu summary{list-style:none;color:#fff;padding:6px;margin-right:-6px;cursor:pointer}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary .ico{width:28px;height:28px}
+.menu nav{position:absolute;right:-6px;top:calc(100% + 14px);z-index:5;background:#fff;border-radius:4px;box-shadow:0 8px 28px rgba(0,31,63,.2);min-width:240px;padding:8px 0;display:flex;flex-direction:column}
+.menu nav a{padding:12px 20px;color:var(--cielo);text-decoration:none;font-weight:600;font-size:15px}
+.menu nav a:hover{background:var(--corpo)}
+
+/* motivo di sfondo, solo un richiamo in alto a destra */
+.pagina{position:relative;overflow:hidden}
+.pagina::before{content:"";position:absolute;top:-40px;right:-120px;width:420px;height:420px;pointer-events:none;opacity:.5;
+ -webkit-mask:radial-gradient(circle at 70% 30%,#000 0,transparent 70%);mask:radial-gradient(circle at 70% 30%,#000 0,transparent 70%)}
+.protetta .pagina::before{background:repeating-radial-gradient(circle at 70% 30%,transparent 0 22px,rgba(0,31,63,.10) 22px 26px)}
+.compensazione .pagina::before{background:repeating-linear-gradient(135deg,transparent 0 14px,rgba(0,31,63,.09) 14px 16px)}
+
+.briciole{display:flex;gap:8px;padding:16px 24px 0;font-size:13px;color:var(--testo-2);position:relative}
+.briciole a{text-decoration:none}
+.contenuto{display:flex;flex-direction:column;gap:28px;padding:20px 16px 32px;position:relative}
+
+/* blocchi */
+.card{background:#fff;border-radius:4px;box-shadow:var(--ombra)}
+.sezione{display:flex;flex-direction:column;gap:12px}
+.sezione>h2{font-size:22px;line-height:28px;font-weight:700}
+.sezione>.intro{color:var(--testo-2);font-size:15px;line-height:22px}
+
+/* prodotto */
+.verificato{display:flex;align-items:center;gap:6px;color:var(--verde);font-size:14px;font-weight:600}
+.verificato .ico{width:20px;height:20px}
+h1{font-size:32px;line-height:38px;font-weight:700;margin-top:4px}
+.classe{display:flex;flex-direction:column;align-items:center;padding:24px 20px 20px;margin-top:16px}
+.classe .figure{display:flex;align-items:center;justify-content:center;gap:16px}
+.classe .foto{width:110px;height:110px;object-fit:contain}
+.classe .bollino{width:145px;height:145px}
+.classe .didascalia{text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--linea);align-self:stretch}
+.classe .didascalia b{display:block;font-size:22px;line-height:28px}
+.classe .didascalia span{color:var(--testo-2);font-size:15px}
+
+/* scheda dati */
+.scheda{padding:4px 20px}
+.riga{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--linea);font-size:15px;line-height:22px}
+.riga:last-child{border-bottom:0}
+.riga dt{color:var(--testo-3)}
+.riga dd{margin:0;font-weight:600}
+.chip{display:inline-block;font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px;line-height:16px}
+.chip.protetta{background:var(--luce);color:var(--cielo)}
+.chip.compensazione{background:#fff;color:var(--cielo);box-shadow:inset 0 0 0 1px var(--cielo)}
+
+/* IGP */
+.igp{background:var(--cielo);color:#fff;padding:24px 20px;display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden}
+.igp::after{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;
+ background:repeating-radial-gradient(circle,transparent 0 16px,rgba(255,255,255,.06) 16px 20px);pointer-events:none}
+.igp .testa{display:flex;align-items:center;gap:16px;position:relative}
+.sigillo{flex:none;width:76px;height:76px;border-radius:50%;background:var(--luce);color:var(--cielo);display:grid;place-content:center;text-align:center;position:relative}
+.sigillo::before,.sigillo::after{content:"";position:absolute;border-radius:50%}
+.sigillo::before{inset:6px;border:1.2px solid var(--cielo)}
+.sigillo::after{inset:9px;border:.8px dashed rgba(0,31,63,.5)}
+.sigillo b{font-size:22px;line-height:22px;letter-spacing:.02em}
+.sigillo small{font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:7px;letter-spacing:.14em}
+.igp .etich{color:var(--luce)}
+.igp h2{font-size:22px;line-height:28px;font-weight:700;margin-top:4px}
+.igp p:not(.etich){color:rgba(255,255,255,.85);font-size:16px;line-height:24px;position:relative}
+.numeri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 0;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
+.numeri b{display:block;font-size:28px;line-height:34px;color:var(--luce)}
+.numeri span{display:block;font-size:13px;line-height:18px;color:rgba(255,255,255,.75)}
+.area{display:flex;gap:10px;align-items:flex-start}
+.area .ico{width:20px;height:20px;color:var(--luce);margin-top:2px}
+.area .etich{color:rgba(255,255,255,.6)}
+.area span{display:block;font-size:14px;line-height:20px}
+.igp .chiusa{color:var(--luce);font-weight:700;font-size:17px;line-height:24px}
+
+/* nessuna denominazione */
+.denom{padding:20px;display:flex;flex-direction:column;gap:12px}
+.denom .testa{display:flex;align-items:center;gap:12px}
+.vuoto{flex:none;width:44px;height:44px;border-radius:50%;border:1px dashed rgba(0,31,63,.35);display:grid;place-content:center;color:var(--testo-3);font-size:18px}
+.denom .etich{color:var(--testo-3)}
+.denom b{display:block;font-size:17px;line-height:24px}
+.denom p:not(.etich){font-size:14px;line-height:21px;color:var(--testo-2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--cloud);border-radius:2px;padding:6px 10px;font-size:14px;line-height:20px}
+
+/* linea del tempo */
+.tempo{padding:20px}
+.tappa{display:grid;grid-template-columns:40px 1fr;gap:16px}
+.tappa .segno{display:flex;flex-direction:column;align-items:center}
+.tappa .tondo{width:40px;height:40px;border-radius:4px;background:var(--cloud);display:grid;place-content:center}
+.tappa .filo{flex:1;width:2px;background:var(--linea);margin:4px 0;min-height:16px}
+.tappa:last-child .filo{display:none}
+.tappa .testo{padding:2px 0 20px}
+.tappa:last-child .testo{padding-bottom:0}
+.tappa .etich{color:var(--testo-3)}
+.tappa .num{display:block;font-size:28px;line-height:34px;font-weight:700;color:var(--verde)}
+.compensazione .tappa .num{color:var(--cielo)}
+.tappa .tit{display:block;font-size:16px;line-height:22px;font-weight:600}
+.tappa .desc{display:block;font-size:15px;line-height:21px;color:var(--testo-2)}
+
+/* sostegno */
+.sostegno{padding:4px 20px}
+.voce{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--linea);font-size:15px;line-height:21px}
+.voce:last-child{border-bottom:0}
+.voce .tondo{flex:none;width:40px;height:40px;border-radius:4px;background:var(--cloud);display:grid;place-content:center}
+
+/* persone */
+.persone{padding:20px;display:flex;flex-direction:column;gap:14px}
+.persone .chi{display:flex;gap:12px;align-items:center}
+.iniziali{flex:none;width:48px;height:48px;border-radius:50%;background:var(--verde);color:#fff;display:grid;place-content:center;font-weight:700;font-size:16px}
+.compensazione .iniziali{background:var(--blu)}
+.persone b{display:block;font-size:17px;line-height:24px}
+.persone small{display:block;font-size:13px;line-height:18px;color:var(--testo-3)}
+.persone p{font-size:15px;line-height:22px;color:var(--testo-2)}
+
+/* rapporto tra le due zone */
+.rapporto{padding:20px;display:flex;flex-direction:column}
+.nodo{display:flex;gap:12px;align-items:flex-start}
+.nodo .pin{flex:none;width:32px;height:32px;border-radius:4px;display:grid;place-content:center;background:var(--cloud)}
+.nodo .pin.protetta{background:var(--luce)}
+.nodo .pin .ico{width:20px;height:20px}
+.nodo b{display:block;font-size:17px;line-height:24px}
+.nodo small{display:block;font-size:13px;line-height:18px;color:var(--testo-3)}
+.collega{display:flex;gap:12px;align-items:center;min-height:44px}
+.collega .linea{width:32px;align-self:stretch;display:flex;justify-content:center}
+.collega .linea::before{content:"";width:0;border-left:2px dashed rgba(0,31,63,.3)}
+.collega span{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--testo-2)}
+.collega .ico{width:20px;height:20px;color:var(--blu)}
+.rapporto p{margin-top:16px;font-size:15px;line-height:22px;color:var(--testo-2)}
+
+/* nota */
+.nota{padding:20px;border:1px solid rgba(0,31,63,.18);border-radius:4px;background:rgba(255,255,255,.5)}
+.nota .tit{display:flex;gap:8px;align-items:center;font-weight:700;font-size:16px;margin-bottom:8px}
+.nota .ico{width:20px;height:20px}
+.nota p{font-size:15px;line-height:22px;color:var(--testo-2)}
+
+/* approfondimenti */
+.link{padding:4px 20px}
+.link a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--linea);font-weight:600;font-size:16px;line-height:22px;text-decoration:none}
+.link a:last-child{border-bottom:0}
+.link a:hover{text-decoration:underline}
+
+/* piè di pagina */
+.piede{background:var(--cielo);color:#fff}
+.piede .col{padding:32px 24px 40px;display:flex;flex-direction:column;gap:20px}
+.piede p{font-size:14px;line-height:20px;color:rgba(255,255,255,.85)}
+.piede nav{display:flex;flex-direction:column;gap:12px;padding:16px 0;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
+.piede nav a{color:#fff;text-decoration:none;font-size:15px}
+.piede small{font-size:12px;color:rgba(255,255,255,.7)}
+.scenario{font-size:12px;color:rgba(255,255,255,.6)}
+
+/* entrata leggera dei blocchi, solo una volta */
+@media (prefers-reduced-motion:no-preference){
+ .contenuto>*{animation:entra .5s cubic-bezier(.23,1,.32,1) both}
+ .contenuto>*:nth-child(2){animation-delay:.06s}
+ .contenuto>*:nth-child(3){animation-delay:.12s}
+ .contenuto>*:nth-child(n+4){animation-delay:.18s}
+ @keyframes entra{from{opacity:0;transform:translateY(8px)}}
+}

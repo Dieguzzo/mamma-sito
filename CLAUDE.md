@@ -16,6 +16,9 @@ Un sito navigabile vero, da mostrare alla mostra, pubblicato con GitHub Pages.
 - `index.html` home, con la mappa interattiva e la pagina "Zone e interventi" ancora in hash routing (`#zone-e-interventi`), come nel prototipo.
 - `css/mamma.css` colori, testi e componenti condivisi. Ogni nuova pagina usa questo file.
 - `js/mappa.js` mappa, ricerca del comune, routing home e zone.
+- `js/icone.js` le icone V2 come dati. Si usano con `<span data-icon="nome"></span>` oppure `icona('nome')`. Per aggiungerne una si prende il tracciato dal Figma.
+- `p/<lotto>/index.html` pagine aperte dal QR sull'etichetta, mobile first, con `css/qr.css`. Indirizzo tipo `.../mamma-sito/p/PCH-26-1147/`. Ora ci sono PCH-26-1147 (Pomodoro di Pachino IGP, classe A) e TRB-26-0388 (pomodoro tondo di Terralba, classe F).
+- `assets/prodotti/` foto dei prodotti e bollini A e F esportati dal Figma.
 - `assets/` logo, logotipo, bollino provvisorio, `regions.json` (tracciati delle 20 regioni, spazio 528x560).
 - `prototipo/index.html` il prototipo originale in un file unico, solo come riferimento.
 - Sito statico senza build, HTML, CSS e JavaScript semplici. `.nojekyll` evita l'elaborazione di GitHub Pages.
