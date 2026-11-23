@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riepilogo · Supermercato Il Granaio · Area riservata MAMMA</title>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../../css/mamma.css">
+<link rel="stylesheet" href="../../css/pagine.css">
+<style>
+.obbligo{padding:24px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,31,63,.35);background:rgba(255,255,255,.55)}
+.obbligo .tit{display:flex;gap:10px;align-items:center;font-weight:700;margin:0 0 10px}
+.obbligo .tit .ico{width:22px;height:22px}
+.obbligo p{margin:0 0 8px;font-size:15px;line-height:23px}
+.verifica{padding:24px 28px}
+.verifica h2,.blocco h2{margin:0 0 12px;font-size:20px}
+.esito{display:inline-flex;align-items:center;gap:8px}
+.esito .ico{width:20px;height:20px}
+.esito.ko{font-weight:700}
+.esito.ok .ico{color:var(--verde)}
+.vuoto{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:32px;border:1px dashed rgba(0,31,63,.3);border-radius:4px}
+.vuoto .ico{width:32px;height:32px}
+.vuoto b{font-size:17px}
+.vuoto span{font-size:14px;color:var(--testo-2)}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
+.blocco{padding:24px}
+.sanzione{padding:12px 0;border-bottom:1px solid var(--linea)}
+.sanzione:last-child{border-bottom:0}
+.sanzione b{display:block;font-size:15px}
+.sanzione span{font-size:14px;color:var(--testo-2)}
+.classi{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.classi div{background:var(--cloud);border-radius:4px;padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.classi b{font-size:24px;line-height:28px}
+.classi .no{font-size:16px;color:var(--testo-2);font-weight:600;line-height:28px}
+.esempio{display:flex;gap:12px;align-items:center;margin-top:16px;padding:14px 16px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,31,63,.15);font-size:14px}
+.esempio .ico{width:20px;height:20px;flex:none}
+.modi{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.modi div{background:var(--cloud);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.modi b{font-size:16px}
+.modi p{margin:0;font-size:14px;line-height:20px;color:var(--testo-2)}
+.modi .link-freccia{margin-top:auto;font-size:14px}
+.stato-bilance{display:flex;gap:12px;align-items:center;padding-top:14px;border-top:1px solid var(--linea);font-size:14px}
+.stato-bilance .ico{width:20px;height:20px;flex:none}
+.doc{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--linea)}
+.doc:last-child{border-bottom:0}
+.doc .ico{width:20px;height:20px;flex:none;margin-top:2px}
+.doc b{display:block;font-weight:400;font-size:15px}
+.doc span{font-size:13px;color:var(--testo-2)}
+</style>
+</head>
+<body data-sezione="" data-utente="Il Granaio" class="motivo-cerchi">
+<div id="testa"></div>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../../index.html">Home</a><span>/</span><a href="../">Area riservata</a><span>/</span><span>Riepilogo</span></nav>
+  <div class="area-layout">
+    <nav class="menu-area" aria-label="Area riservata">
+      <div class="profilo"><span class="etichetta">Distribuzione e commercio</span><b>Supermercato Il Granaio</b></div>
+      <a href="./" aria-current="page">Riepilogo</a><a href="#obbligo">Obblighi di esposizione</a><a href="#verifiche">Verifiche</a><a href="#sanzioni">Sanzioni</a><a href="#materiali">Materiali per il punto vendita</a><a href="#bilance">Bilance e certificazioni</a>
+    </nav>
+    <div class="area-main">
+      <header><h1>Supermercato Il Granaio</h1><p>Via Padova 118, Milano · Punto vendita n. MI-04821</p></header>
+      <p class="stato-pagina" aria-label="Viste di esempio per la mostra">Vista di esempio <a href="?stato=regolarizzare" data-s="regolarizzare">Da regolarizzare</a><a href="?stato=nessuna" data-s="nessuna">Prima verifica</a><a href="?stato=regola" data-s="regola">In regola</a></p>
+
+      <section class="obbligo" id="obbligo"><p class="tit"><span data-icon="allerta"></span>Obbligo di esposizione del bollino</p>
+        <p>Dal 1° marzo 2026 il bollino MAMMA va esposto accanto al prezzo di ogni prodotto ortofrutticolo, in modo visibile e leggibile (Regolamento MAMMA n. 4/2026, art. 7).</p>
+        <p style="margin:0">I prodotti di classe F vanno esposti con il cartello «Prodotto di zona di compensazione». Il cartello non può essere rimosso né coperto.</p></section>
+
+      <section id="stato"></section>
+      <section class="card verifica" id="verifiche"></section>
+
+      <div class="duo">
+        <section class="card blocco" id="sanzioni"><h2>Sanzioni previste</h2>
+          <div class="sanzione"><b>Mancata esposizione del bollino</b><span>Da 500 a 3.000 € per prodotto</span></div>
+          <div class="sanzione"><b>Bollino non corrispondente alla classe assegnata</b><span>Da 2.000 a 12.000 €</span></div>
+          <div class="sanzione"><b>Copertura o rimozione del bollino o del cartello</b><span>Da 1.000 a 6.000 € e sospensione della vendita fino a 15 giorni</span></div>
+        </section>
+        <section class="card blocco" id="materiali"><h2 style="font-size:17px">Materiali per il punto vendita</h2>
+          <a class="documento" href="#"><span><b>Cartello espositivo del bollino</b><small>PDF · 1,2 MB</small></span><span data-icon="scarica"></span></a>
+          <a class="documento" href="#"><span><b>Cartello «Prodotto di zona di compensazione»</b><small>PDF · 0,8 MB</small></span><span data-icon="scarica"></span></a>
+          <a class="documento" href="#"><span><b>Guida alla lettura per i clienti</b><small>PDF · 2,4 MB</small></span><span data-icon="scarica"></span></a>
+        </section>
+      </div>
+
+      <section class="card blocco" aria-labelledby="t-magg">
+        <h2 id="t-magg">Maggiorazione climatica sul prezzo</h2>
+        <p style="margin:0 0 16px;font-size:15px;line-height:23px;color:var(--testo-2)">Ai prodotti che hanno ricevuto interventi climatici durante la coltivazione si applica una maggiorazione del prezzo di vendita, determinata dalla classe di impatto climatico (Regolamento MAMMA n. 4/2026, art. 9). La maggiorazione va indicata sul cartellino accanto al bollino ed è versata a MAMMA con cadenza trimestrale.</p>
+        <div class="classi"><div><span class="lettera A">A</span><b>+5%</b></div><div><span class="lettera B">B</span><b>+4%</b></div><div><span class="lettera C">C</span><b>+3%</b></div><div><span class="lettera D">D</span><b>+2%</b></div><div><span class="lettera E">E</span><b>+1%</b></div><div><span class="lettera F">F</span><span class="no">nessuna</span></div></div>
+        <p class="esempio"><span data-icon="info"></span>Esempio · Pomodoro di Pachino IGP, classe A, prezzo base 3,20 €/kg. Prezzo esposto 3,36 €/kg, di cui 0,16 € di maggiorazione climatica.</p>
+      </section>
+
+      <div class="duo">
+        <section class="card blocco" id="bilance"><h2>Bilance omologate MAMMA</h2>
+          <p style="margin:0;font-size:15px;line-height:23px;color:var(--testo-2)">Dal 1° gennaio 2027 le bilance del reparto ortofrutta devono stampare sull'etichetta il bollino e la classe di impatto climatico del prodotto pesato (Regolamento MAMMA n. 4/2026, art. 12).</p>
+          <div class="modi">
+            <div><span data-icon="scatola"></span><b>Richiedere una bilancia MAMMA</b><p>Fornita in comodato d'uso, già omologata e collegata al registro nazionale dei prodotti.</p><a class="link-freccia" href="#">Richiedi la bilancia<span class="chev" data-icon="chevron"></span></a></div>
+            <div><span data-icon="attrezzo"></span><b>Omologare le bilance in uso</b><p>Un tecnico MAMMA verifica la bilancia e installa il modulo di stampa del bollino entro 10 giorni lavorativi.</p><a class="link-freccia" href="#">Prenota il tecnico<span class="chev" data-icon="chevron"></span></a></div>
+          </div>
+          <p class="stato-bilance" id="bilance-stato"></p>
+        </section>
+        <section class="card blocco"><h2 style="font-size:17px">Documenti da tenere pronti</h2>
+          <p style="margin:-6px 0 6px;font-size:13px;color:var(--testo-2)">Vanno esibiti all'ispettore entro 30 minuti dalla richiesta.</p>
+          <div id="docs"></div>
+        </section>
+      </div>
+      <p class="nota-riga"><span data-icon="allerta"></span>La classe di impatto climatico è assegnata da MAMMA prima della distribuzione e non può essere modificata dal punto vendita.</p>
+    </div>
+  </div>
+</div></main>
+<div id="piede"></div>
+<script src="../../js/layout.js"></script>
+<script src="../../js/icone.js"></script>
+<script>
+const S=new URLSearchParams(location.search).get('stato'); const st=['nessuna','regola'].includes(S)?S:'regolarizzare';
+document.querySelectorAll('.stato-pagina a').forEach(a=>{if(a.dataset.s===st) a.setAttribute('aria-current','true');});
+const P=[['Pomodoro di Pachino IGP','Pachino (SR)','A',1],['Limone di Sorrento IGP','Sorrento (NA)','A',1],['Pomodoro tondo','Terralba (OR)','F',st==='regola'],['Limone','Metaponto (MT)','F',st==='regola']];
+const tab=`<table class="righe-tab"><thead><tr><th>Prodotto</th><th>Provenienza</th><th>Classe</th><th>Esito</th></tr></thead><tbody>${P.map(([n,o,c,ok])=>`<tr><td><b>${n}</b></td><td>${o}</td><td><span class="lettera ${c}">${c}</span></td><td>${ok?`<span class="esito ok">${icona('ok')}Conforme</span>`:`<span class="esito ko">${icona('allerta')}Bollino non visibile</span>`}</td></tr>`).join('')}</tbody></table>`;
+const stato=document.getElementById('stato'), ver=document.getElementById('verifiche');
+if(st==='regolarizzare'){
+ stato.outerHTML=`<section class="avviso luce">${icona('allerta')}<div><h2>2 prodotti da regolarizzare entro il 26 novembre</h2><p>Durante la verifica del 12 novembre il bollino non era visibile su 2 prodotti. Dopo la scadenza si applicano le sanzioni previste.</p></div></section>`;
+ ver.innerHTML=`<h2>Esito dell'ultima verifica · 12 novembre 2026</h2>${tab}`;
+}else if(st==='regola'){
+ stato.outerHTML=`<section class="avviso ok">${icona('ok')}<div><h2>Il punto vendita è in regola</h2><p>Nella verifica del 12 novembre 2026 tutti i prodotti controllati sono risultati conformi e le bilance omologate. La prossima verifica sarà eseguita senza preavviso.</p></div></section>`;
+ ver.innerHTML=`<h2>Esito dell'ultima verifica · 12 novembre 2026 · nessuna irregolarità</h2>${tab}`;
+}else{
+ stato.outerHTML=`<section class="avviso bordo">${icona('calendario')}<div><h2>Prima verifica non ancora eseguita</h2><p>Il punto vendita è registrato dal 4 novembre 2026. La prima verifica sarà eseguita senza preavviso entro 90 giorni dalla registrazione. Si raccomanda di predisporre fin d'ora i documenti indicati in questa pagina.</p></div></section>`;
+ ver.innerHTML=`<h2>Verifiche</h2><div class="vuoto">${icona('file')}<b>Nessuna verifica registrata</b><span>L'esito di ogni verifica sarà riportato qui, prodotto per prodotto, entro 48 ore dal controllo.</span></div>`;
+}
+document.body.classList.toggle('motivo-cerchi',true);
+const B={regolarizzare:['orologio','Bilance registrate nel punto vendita · 3 omologate su 4. La quarta è in attesa del tecnico, appuntamento martedì 1° dicembre.'],nessuna:['allerta',"Bilance registrate nel punto vendita · nessuna omologata su 4. L'obbligo decorre dal 1° gennaio 2027."],regola:['ok','Bilance registrate nel punto vendita · 4 omologate su 4. Prossimo controllo tecnico a novembre 2027.']}[st];
+document.getElementById('bilance-stato').innerHTML=icona(B[0])+B[1];
+const D=[['Registro di carico ortofrutta','con classe e lotto di ogni prodotto'],['Documenti di trasporto','con il codice del bollino'],['Certificati di omologazione','di tutte le bilance in uso'],st==='nessuna'?['Verbali di verifica','da conservare dopo ogni controllo']:["Verbale dell'ultima verifica",'e ricevute delle regolarizzazioni'],['Ricevute della maggiorazione',"versamenti dell'ultimo anno"]];
+document.getElementById('docs').innerHTML=D.map(([t,s])=>`<div class="doc">${icona('file')}<div><b>${t}</b><span>${s}</span></div></div>`).join('');
+</script>
+</body>
+</html>

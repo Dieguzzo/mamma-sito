@@ -5,9 +5,10 @@
   const src = document.currentScript.src;
   const B = src.slice(0, src.lastIndexOf('js/layout.js'));
   const sez = document.body.dataset.sezione || '';
+  const utente = document.body.dataset.utente;
   const voce = (k, testo, href) => `<a href="${B}${href}"${sez===k?' class="on" aria-current="page"':''}>${testo}</a>`;
   const testa = `
-<div class="slim"><div class="wrap"><span>Repubblica Italiana · Agenzia MAMMA</span><div class="slim-r"><span>ITA</span><a class="area" href="${B}area-riservata/"><span data-icon="utente"></span>Area riservata</a></div></div></div>
+<div class="slim"><div class="wrap"><span>Repubblica Italiana · Agenzia MAMMA</span><div class="slim-r"><span>ITA</span><a class="area" href="${B}area-riservata/"><span data-icon="utente"></span>${utente ? utente + ' · Esci' : 'Area riservata'}</a></div></div></div>
 <header class="head"><div class="wrap">
   <div class="brandrow">
     <a class="brand" href="${B}index.html" aria-label="MAMMA, vai alla home"><span class="logo"><img src="${B}assets/logo.svg" alt="" width="56" height="56"></span><span class="nome"><span class="lt"><img src="${B}assets/logotipo.svg" alt="MAMMA" height="25"></span><small>Agenzia per il Monitoraggio Atmosferico e la Modifica Meteorologica Ambientale</small></span></a>

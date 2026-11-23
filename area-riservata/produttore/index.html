@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riepilogo · Azienda agricola Pinna · Area riservata MAMMA</title>
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../../css/mamma.css">
+<link rel="stylesheet" href="../../css/pagine.css">
+<style>
+.avviso h2{font-size:22px}
+.avviso .bottone{margin-top:16px}
+.cal{padding:28px 28px 24px}
+.cal .testa{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:20px;border-bottom:1px solid var(--linea)}
+.cal h2{margin:0 0 6px;font-size:22px}
+.cal .testa p{margin:0;font-size:14px;color:var(--testo-2)}
+.cal .scarica{display:flex;align-items:center;gap:8px;font-size:14px;text-decoration:none;color:var(--blu)}
+.cal .scarica .ico{width:20px;height:20px}
+.giorno{display:grid;grid-template-columns:52px 44px minmax(0,1fr) 250px;gap:20px;align-items:center;padding:18px 16px;border-bottom:1px solid var(--linea)}
+.giorno.forte{background:rgba(219,230,76,.28)}
+.giorno .data{text-align:center;line-height:1.15}
+.giorno .data small{display:block;font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:11px;letter-spacing:.06em;color:var(--testo-2)}
+.giorno .data b{display:block;font-size:28px;line-height:32px}
+.giorno .data span{font-size:14px;color:var(--testo-2)}
+.giorno .tipo{width:44px;height:44px;border-radius:4px;display:grid;place-items:center;background:var(--cloud)}
+.giorno.forte .tipo{background:var(--luce)}
+.giorno.nessuno .tipo{background:transparent;outline:1px dashed rgba(0,31,63,.3)}
+.giorno .tit{font-size:17px;font-weight:700}
+.giorno.nessuno .tit{opacity:.6}
+.giorno .det{font-size:14px;color:var(--testo-2);margin-top:2px}
+.giorno .presc small{display:block;font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:10px;letter-spacing:.08em;color:var(--testo-2)}
+.giorno .presc b{display:block;font-weight:400;font-size:16px;line-height:22px;margin-top:2px}
+.giorno .presc span{display:block;font-size:14px;color:var(--testo-2)}
+.cal .piede-cal{display:flex;justify-content:space-between;align-items:center;padding-top:18px;font-size:14px;color:var(--testo-2)}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
+.contributo{padding:24px 28px}
+.contributo h2{margin:0 0 12px;font-size:20px}
+.contributo .bottone{margin-top:24px}
+.contributo small{display:block;margin-top:8px;font-size:13px;color:var(--testo-2)}
+.tecnico{padding:24px;display:flex;flex-direction:column;gap:12px}
+.tecnico h3{margin:0;font-size:16px}
+.tecnico .chi{display:flex;gap:12px;align-items:center}
+.tecnico .iniziali{width:44px;height:44px;border-radius:50%;background:var(--cielo);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
+.tecnico b{display:block;font-size:15px}
+.tecnico small{display:block;font-size:13px;color:var(--testo-2)}
+.tecnico .ore{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--testo-2)}
+.tecnico .ore .ico{width:18px;height:18px}
+.tecnico p{margin:0;font-size:14px;line-height:21px;color:var(--testo-2)}
+</style>
+</head>
+<body data-sezione="" data-utente="Giovanni Pinna" class="motivo-diagonali">
+<div id="testa"></div>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../../index.html">Home</a><span>/</span><a href="../">Area riservata</a><span>/</span><span>Riepilogo</span></nav>
+  <div class="area-layout">
+    <nav class="menu-area" aria-label="Area riservata">
+      <div class="profilo"><span class="etichetta">Produttori agricoli</span><b>Azienda agricola Pinna</b></div>
+      <a href="./" aria-current="page">Riepilogo</a><a href="#calendario">Calendario di zona</a><a href="#calendario">Prescrizioni operative</a><a href="#contributo">Contributi</a><a href="../../servizi/segnalazioni/">Segnalazione danni</a><a href="#">Protocolli e documenti</a><a href="#tecnico">Tecnico di zona</a>
+    </nav>
+    <div class="area-main">
+      <header><h1>Buongiorno, Giovanni</h1><p>Azienda agricola Pinna · Terralba (OR) · 6,4 ettari <span class="chip compensazione">Zona di compensazione</span></p></header>
+
+      <section class="avviso luce" aria-labelledby="t-avviso"><span data-icon="allerta"></span><div>
+        <h2 id="t-avviso">Grandinata di compensazione · sabato 21 novembre</h2>
+        <p>Fascia 16:00–16:30, margine ± 2 ore, chicchi fino a 15 mm. Stendere le reti antigrandine e completare la raccolta dei pomodori maturi entro venerdì 20 alle 20:00.</p>
+        <a class="bottone scuro" href="#calendario">Vedi le prescrizioni operative</a>
+      </div></section>
+
+      <section class="card cal" id="calendario" aria-labelledby="t-cal">
+        <div class="testa"><div><h2 id="t-cal">Calendario di zona</h2><p>Terralba (OR) · zona di compensazione · prossimi 10 giorni</p></div><a class="scarica" href="#"><span data-icon="scarica"></span>Scarica il calendario (PDF)</a></div>
+        <div id="giorni"></div>
+        <div class="piede-cal"><span>Resa 2025 nella zona di Terralba · +4% per le aziende che hanno rispettato tutte le prescrizioni.</span><a class="link-freccia" href="#">Tutte le prescrizioni<span class="chev" data-icon="chevron"></span></a></div>
+      </section>
+
+      <div class="duo">
+        <section class="card contributo" id="contributo" aria-labelledby="t-contr">
+          <h2 id="t-contr">Contributo di compensazione 2026</h2>
+          <table class="tabella-dati"><tbody>
+            <tr><th>Interventi ricevuti</th><td>31</td></tr>
+            <tr><th>Superficie</th><td>6,4 ettari</td></tr>
+            <tr><th>Contributo maturato</th><td><b>1.996,80 €</b></td></tr>
+            <tr><th>Stato</th><td>In liquidazione entro il 31 marzo 2027</td></tr>
+            <tr><th>Contributo 2025</th><td>1.840,20 €, pagato il 28 marzo 2026</td></tr>
+          </tbody></table>
+          <a class="bottone bordo" href="#">Presenta domanda 2027</a>
+          <small>Le domande per il 2027 si presentano entro il 31 gennaio.</small>
+        </section>
+        <div class="colonna">
+          <section class="card tecnico" id="tecnico"><h3>Tecnico di zona</h3>
+            <div class="chi"><span class="iniziali">ML</span><div><b>Dott.ssa Maria Lai</b><small>Tecnico MAMMA · Oristano e Campidano</small></div></div>
+            <span class="ore"><span data-icon="orologio"></span>Dal lunedì al sabato, 7:00–19:00</span>
+            <a class="link-freccia" href="mailto:maria.lai@mamma.gov.it">Contatta<span class="chev" data-icon="chevron"></span></a>
+          </section>
+          <section class="card tecnico"><h3>Segnala un danno alle colture</h3>
+            <p>Se un intervento ha danneggiato il raccolto, allega foto e descrizione entro 10 giorni. La segnalazione vale anche come richiesta di indennizzo.</p>
+            <a class="link-freccia" href="../../servizi/segnalazioni/">Segnala un danno<span class="chev" data-icon="chevron"></span></a>
+          </section>
+        </div>
+      </div>
+      <p class="nota-riga"><span data-icon="allerta"></span>L'assegnazione della zona non può essere contestata da qui. È ammesso ricorso al TAR del Lazio entro 60 giorni dalla pubblicazione.</p>
+    </div>
+  </div>
+</div></main>
+<div id="piede"></div>
+<script src="../../js/layout.js"></script>
+<script src="../../js/icone.js"></script>
+<script>
+const G=[
+ ['VEN','20','pioggia','Pioggia di compensazione','14:00–17:00 · margine ± 40 min · 12 mm previsti','Sospendere i trattamenti fitosanitari',''],
+ ['SAB','21','grandine','Grandinata di compensazione','16:00–16:30 · margine ± 2 ore · chicchi fino a 15 mm','Stendere le reti antigrandine','entro venerdì 20 alle 20:00','forte'],
+ ['LUN','23','pioggia','Pioggia di compensazione','06:00–11:00 · margine ± 40 min · 18 mm previsti','Pulire i canali di scolo',''],
+ ['MER','25','piantina','Nessun intervento','Giornata utile per la raccolta','Raccogliere i prodotti maturi','','nessuno'],
+ ['VEN','27','pioggia','Pioggia di compensazione','13:00–18:00 · margine ± 40 min · 22 mm previsti','Chiudere le serre','entro le 12:00']];
+document.getElementById('giorni').innerHTML=G.map(([wd,d,ic,t,det,p,p2,cl])=>`<div class="giorno ${cl||''}"><div class="data"><small>${wd}</small><b>${d}</b><span>nov</span></div><span class="tipo">${icona(ic)}</span><div><div class="tit">${t}</div><div class="det">${det}</div></div><div class="presc"><small>PRESCRIZIONE</small><b>${p}</b>${p2?`<span>${p2}</span>`:''}</div></div>`).join('');
+</script>
+</body>
+</html>

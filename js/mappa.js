@@ -185,7 +185,7 @@ function renderItalia(){
     return;
   }
   const rows=FLOWS.filter(f=>!f.extra||document.body.classList.contains('show-all')).map(f=>`<li><button data-flow="${f.id}"><span class="rt">${f.from} ${ico('freccia')} ${f.to}</span><span class="sub">${intOf(f).map(v=>TIPI[v.t].nome+" "+v.ora).join(" · ")}</span><span class="pc">${f.pct}%</span></button></li>`).join('');
-  det().innerHTML=`<div class="view"><p style="margin:0 0 12px;font-size:15px;line-height:22px;color:var(--testo-2)">Oggi MAMMA sposta il maltempo in ${FLOWS.filter(f=>!f.extra||document.body.classList.contains('show-all')).length} coppie di regioni. La percentuale indica quanta perturbazione è stata deviata.</p><ul class="flows-list">${rows}</ul></div>`;
+  det().innerHTML=`<div class="view"><p style="margin:0 0 12px;font-size:15px;line-height:22px;color:var(--testo-2)">Oggi MAMMA sposta la pioggia in ${FLOWS.filter(f=>!f.extra||document.body.classList.contains('show-all')).length} coppie di regioni. La percentuale indica quanta pioggia è stata spostata.</p><ul class="flows-list">${rows}</ul></div>`;
   det().querySelectorAll('[data-flow]').forEach(b=>{
     const f=FLOWS.find(x=>x.id===b.dataset.flow);
     b.onmouseenter=b.onfocus=()=>hot(f,true); b.onmouseleave=b.onblur=()=>hot(f,false);

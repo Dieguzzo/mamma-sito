@@ -18,7 +18,10 @@ Un sito navigabile vero, da mostrare alla mostra, pubblicato con GitHub Pages.
 - `js/mappa.js` mappa, ricerca del comune, routing home e zone.
 - `js/icone.js` le icone V2 come dati. Si usano con `<span data-icon="nome"></span>` oppure `icona('nome')`. Per aggiungerne una si prende il tracciato dal Figma.
 - `p/<lotto>/index.html` pagine aperte dal QR sull'etichetta, mobile first, con `css/qr.css`. Indirizzo tipo `.../mamma-sito/p/PCH-26-1147/`. Ora ci sono PCH-26-1147 (Pomodoro di Pachino IGP, classe A) e TRB-26-0388 (pomodoro tondo di Terralba, classe F).
-- `assets/prodotti/` foto dei prodotti e bollini A e F esportati dal Figma.
+- Pagine desktop, ognuna in una cartella con `index.html`. `agenzia/chi-siamo/`, `agenzia/come-interveniamo/`, `bollino/`, `servizi/preavvisi/`, `servizi/segnalazioni/` (con `?comune=milano|pachino`), `area-riservata/` (accesso), `area-riservata/produttore/`, `area-riservata/negoziante/` (con `?stato=regolarizzare|nessuna|regola`), `trasparenza/` (con dati aperti CSV e JSON di scenario), `notizie/calendario-dicembre/`, `app/`.
+- `js/layout.js` scrive intestazione e piè di pagina delle pagine desktop. Nella pagina servono `<div id="testa">`, `<div id="piede">` e `data-sezione` sul body per la voce attiva, `data-utente` per l'area riservata. Va caricato prima di `js/icone.js`.
+- `css/pagine.css` componenti delle pagine secondarie (si carica dopo `css/mamma.css`).
+- `assets/prodotti/`, `assets/bollini/`, `assets/foto/`, `assets/illustrazioni/`, `assets/app/` immagini esportate dal checkpoint Figma.
 - `assets/` logo, logotipo, bollino provvisorio, `regions.json` (tracciati delle 20 regioni, spazio 528x560).
 - `prototipo/index.html` il prototipo originale in un file unico, solo come riferimento.
 - Sito statico senza build, HTML, CSS e JavaScript semplici. `.nojekyll` evita l'elaborazione di GitHub Pages.
