@@ -9,7 +9,7 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0}
-body{overflow:hidden}
+html{background:var(--cielo)}
 body{font-family:var(--font);color:#fff;background:#001F3F;-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.4}
 p,h1,h2,h3{margin:0}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
@@ -23,38 +23,44 @@ a{color:inherit;text-decoration:none}
 .piccolo{font-size:13px;line-height:1.35;color:var(--t85)}
 
 /* telefono */
-.telefono{position:relative;max-width:480px;height:100vh;height:100dvh;margin:0 auto;background:var(--cielo);overflow:hidden}
+/* sul telefono scorre la pagina intera, così la barra del browser si comporta come nelle app native */
+.telefono{position:relative;max-width:480px;min-height:100vh;min-height:100dvh;margin:0 auto;background:var(--cielo);overflow-x:clip;display:flex;flex-direction:column}
 .telefono.protetta{background:var(--blu)}
 /* cornice del telefono solo su schermi da scrivania, mai su telefoni e tablet touch */
 @media (min-width:700px) and (min-height:880px) and (hover:hover) and (pointer:fine){
- body{display:grid;place-items:center;min-height:100vh;padding:28px 0;box-sizing:border-box;background:#E6E9EC}
- .telefono{width:390px;height:844px;min-height:0;border-radius:40px;box-shadow:0 0 0 10px #0b1220,0 30px 60px rgba(0,31,63,.35)}
+ html,body{background:#E6E9EC!important;overflow:hidden}
+ body{display:grid;place-items:center;min-height:100vh;padding:28px 0;box-sizing:border-box}
+ .telefono{width:390px;height:844px;min-height:0;border-radius:40px;overflow:hidden;display:block;box-shadow:0 0 0 10px #0b1220,0 30px 60px rgba(0,31,63,.35)}
+ .schermo{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain}
  .nota-mostra{display:block}
 }
 .nota-mostra{display:none;position:fixed;left:24px;bottom:20px;max-width:260px;font-size:13px;line-height:18px;color:#3a4b60}
 .nota-mostra a{color:#1E488F;text-decoration:underline}
-.schermo{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;display:flex;flex-direction:column}
+.schermo{position:relative;flex:1;scrollbar-width:none;display:flex;flex-direction:column}
 .schermo::-webkit-scrollbar{display:none}
 .schermo>*{flex:none;position:relative}
 
 /* motivi di sfondo, esportati dal Figma con la loro maschera */
-.protetta .schermo{background:url(sfondo-protetta.webp) 0 0/max(390px,100%) auto no-repeat}
-.compensazione .testa,.compensazione .sfondo-schermo{background:url(sfondo-compensazione.webp) 0 0/max(390px,100%) auto no-repeat}
+/* in alto il motivo sfuma nel colore di fondo, così si lega alla barra di stato del telefono */
+.protetta .schermo{background:linear-gradient(#1E488F,rgba(30,72,143,0) 76px),url(sfondo-protetta.webp) 0 0/max(390px,100%) auto no-repeat;background-attachment:local}
+.compensazione .testa,.compensazione .sfondo-schermo{background:linear-gradient(#001F3F,rgba(0,31,63,0) 76px),url(sfondo-compensazione.webp) 0 0/max(390px,100%) auto no-repeat}
 
 /* testata (Lettura principale) */
-.testa{display:flex;flex-direction:column;gap:8px;padding:56px 24px 24px;overflow:hidden}
+.testa{display:flex;flex-direction:column;gap:8px;padding:max(56px,calc(env(safe-area-inset-top) + 16px)) 24px 24px;overflow:hidden}
 .testa.oggi{gap:6px}
 .barra{display:flex;justify-content:space-between;align-items:center}
 .marchio{display:flex;align-items:center;gap:10px}
 .marchio .logo{width:28px;height:28px}
 .marchio .lt{height:18px;width:auto}
-.chip{display:inline-flex;align-items:center;padding:3px 10px;border-radius:2px;white-space:nowrap;font-family:var(--sole);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:11px;line-height:1.2;letter-spacing:.04em;text-transform:uppercase}
+.chip{display:inline-flex;align-items:center;padding:3px 10px;border-radius:2px;white-space:nowrap;font-family:var(--sole);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:11px;line-height:11px;letter-spacing:.04em;text-transform:uppercase}
 .chip.p{background:var(--luce);color:var(--cielo)}
-.chip.c{box-shadow:inset 0 0 0 1px #fff;color:#fff}
+.chip.c{box-shadow:inset 0 0 0 1px #fff;color:#fff;line-height:10px}
 .spazio{flex:none}
 .luogo{display:flex;align-items:center;gap:6px;font-size:20px;line-height:1.2;font-weight:700;align-self:flex-start}
 .luogo .ico{width:20px;height:20px}
 .titolo-64{font-size:64px;line-height:1.12;font-weight:700}
+/* nel Figma il titolo di Milano ha un riquadro di 80 px, lo spazio in più tiene la g lontana dalla riga sotto */
+.compensazione .titolo-64{min-height:80px}
 .titolo-44{font-size:44px;line-height:52px;font-weight:700}
 .titolo-40{font-size:40px;line-height:46px;font-weight:700}
 .sotto{font-size:20px;line-height:1.2;font-weight:700;color:var(--luce)}
@@ -127,12 +133,14 @@ a{color:inherit;text-decoration:none}
 /* barra in basso */
 .navbar{position:sticky;bottom:0;margin-top:auto;z-index:5;color:#2f475e}
 .navbar::before{content:"";position:absolute;left:0;right:0;top:-24px;height:24px;background:radial-gradient(60% 100% at 50% 100%,rgba(0,0,0,.18),transparent);pointer-events:none}
-.navbar .tabs{display:flex;background:#fff;padding-bottom:env(safe-area-inset-bottom)}
-.navbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0 10px;font-size:12px;line-height:14px;font-weight:700;color:#2f475e}
+/* misure del Figma, 8 + 32 + 4 + 14 + 8. Sotto si aggiunge solo la parte della zona sicura che serve */
+.navbar .tabs{display:flex;background:#fff;padding-bottom:max(0px,calc(env(safe-area-inset-bottom) - 12px))}
+.navbar a{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0;font-size:12px;line-height:14px;font-weight:700;color:#4a5e72;transition:color .2s}
+.navbar a::before{content:"";position:absolute;top:0;left:50%;width:44px;height:3px;margin-left:-22px;background:var(--blu);transform:scaleX(0);transition:transform .25s var(--ease)}
 .navbar a .box{position:relative;width:32px;height:32px;display:grid;place-items:center}
 .navbar a .ico{width:28px;height:28px}
-.navbar a[aria-current]{color:var(--cielo)}
-.navbar a[aria-current] .ico{color:var(--blu)}
+.navbar a[aria-current]{color:var(--blu)}
+.navbar a[aria-current]::before{transform:none}
 .navbar .badge{position:absolute;left:calc(50% + 15.5px);top:-4px;transform:translateX(-50%);min-width:20px;padding:3px 4px;border-radius:100px;background:var(--cielo);color:#fff;border:1px solid #fff;font-size:12px;line-height:14px;font-weight:600;text-align:center}
 
 /* calendario */
@@ -275,7 +283,7 @@ a{color:inherit;text-decoration:none}
 .btn-bordo.grande{padding:11px 16px}
 
 /* prima apertura e la tua zona */
-.intro{display:flex;flex-direction:column;gap:14px;padding:64px 24px 40px;min-height:100%}
+.intro{display:flex;flex-direction:column;gap:14px;padding:max(64px,calc(env(safe-area-inset-top) + 20px)) 24px max(40px,env(safe-area-inset-bottom))}
 .intro h1{font-size:34px;line-height:40px;font-weight:700}
 .intro .lead{font-size:15px;line-height:21px;color:var(--t85)}
 .campo{display:flex;align-items:center;gap:10px;padding:14px;border-radius:4px;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1.5px var(--luce)}
@@ -320,4 +328,11 @@ a{color:inherit;text-decoration:none}
  .titolo-64{font-size:56px}
  .settimana{padding:12px 8px;gap:2px}
  .giorno .o{font-size:8px}
+}
+
+/* la prima apertura occupa tutta l'altezza, il pulsante resta in fondo */
+.schermo>.intro{flex:1 0 auto;min-height:0}
+/* nella cornice da scrivania lo schermo scorre dentro il telefono */
+@media (min-width:700px) and (min-height:880px) and (hover:hover) and (pointer:fine){
+ .schermo{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain}
 }

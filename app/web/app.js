@@ -56,6 +56,12 @@ const COPPIE=[['Sicilia','Sardegna',80],['Liguria','Lombardia',70],['Lazio','Abr
 let comune = leggi('comune', null);
 let vistaCal='settimana', giornoSel=18, meseSel=18, filtro='tutti';
 const tel=$('#telefono'), sch=$('#schermo');
+/* sul telefono scorre il documento, nella cornice da scrivania scorre lo schermo */
+const cornice=matchMedia('(min-width:700px) and (min-height:880px) and (hover:hover) and (pointer:fine)');
+const scorr=()=>cornice.matches?sch:document.scrollingElement;
+const getY=()=>scorr().scrollTop, setY=y=>{scorr().scrollTop=y;};
+const metaTema=document.querySelector('meta[name=theme-color]');
+function colori(fondo){ if(metaTema) metaTema.content=fondo; if(!cornice.matches) document.documentElement.style.background=fondo; }
 const P = () => COMUNI[comune].zona==='p';
 
 const marchio = () => `<span class="marchio"><img class="logo" src="${ROOT}assets/logo.svg" alt=""><img class="lt" src="${ROOT}assets/logotipo.svg" alt="MAMMA"></span>`;
@@ -67,7 +73,7 @@ function testa({titolo, cls='titolo-44', data, sopra='', sotto='', oggi=false}){
    ${data?`<p class="piccolo">${data}</p>`:''}<h1 class="${cls}">${titolo}</h1>${sotto}</header>`;
 }
 function navbar(attiva){
-  const c=COMUNI[comune], letti=leggi('letti-'+comune,false);
+  const c=COMUNI[comune], letti=sessionStorage.getItem('mamma.letti-'+comune)==='1';
   const v=(k,t,i,b)=>`<a href="#/${k}"${attiva===k?' aria-current="page"':''}><span class="box">${I(i)}${b?`<span class="badge">${b}</span>`:''}</span>${t}</a>`;
   return `<nav class="navbar" aria-label="Sezioni dell'app"><div class="tabs">${v('oggi','Oggi','orologio')}${v('calendario','Calendario','calendario')}${v('mappa','Mappa','pin')}${v('avvisi','Avvisi','allerta',letti?0:c.badge)}</div></nav>`;
 }
@@ -186,9 +192,9 @@ S.calendario=()=>{
      <p class="nota">${p?'Il calendario è confermato fino a fine marzo. Gli orari esatti arrivano ogni lunedì.':'Il calendario di dicembre sarà pubblicato giovedì 19 novembre. Gli orari esatti arrivano ogni lunedì.'}</p>`;
   }
   sch.innerHTML = testa({titolo:'Calendario', data:vistaCal==='settimana'?'Settimana dal 16 al 22 novembre':'Novembre 2026', sotto:seg}) + `<div class="contenuto entra">${corpo}</div>` + navbar('calendario');
-  sch.querySelectorAll('.segmenti button').forEach(b=>b.onclick=()=>{vistaCal=b.dataset.v; const y=sch.scrollTop; S.calendario(); sch.scrollTop=y;});
-  sch.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{giornoSel=+b.dataset.g; const y=sch.scrollTop; S.calendario(); sch.scrollTop=Math.min(y,300);});
-  sch.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{meseSel=+b.dataset.m; const y=sch.scrollTop; S.calendario(); sch.scrollTop=y;});
+  sch.querySelectorAll('.segmenti button').forEach(b=>b.onclick=()=>{vistaCal=b.dataset.v; const y=getY(); S.calendario(); setY(y);});
+  sch.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{giornoSel=+b.dataset.g; const y=getY(); S.calendario(); setY(Math.min(y,300));});
+  sch.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{meseSel=+b.dataset.m; const y=getY(); S.calendario(); setY(y);});
   const ric=$('#ric'); if(ric) ric.onclick=()=>{const v=ric.getAttribute('aria-checked')!=='true'; ric.setAttribute('aria-checked',v); salva('ricorda-'+comune+giornoSel,v);};
   const agg=$('#agg'); if(agg) agg.onclick=()=>{agg.textContent='Aggiunto al tuo calendario'; agg.disabled=true; agg.style.opacity=.75;};
 };
@@ -202,7 +208,7 @@ S.mappa=()=>{
    <a class="btn-bordo grande" href="${ROOT}index.html#zone-e-interventi">Apri la mappa completa su mamma.gov.it</a></div>` + navbar('mappa');
 };
 S.avvisi=()=>{
-  const L=AVVISI[comune], nuovi=L.filter(a=>a.nuovo).length; salva('letti-'+comune,true);
+  const L=AVVISI[comune], nuovi=L.filter(a=>a.nuovo).length; try{sessionStorage.setItem('mamma.letti-'+comune,'1');}catch(e){}
   const filt=`<span class="spazio" style="height:6px"></span><div class="filtri" role="group" aria-label="Filtra gli avvisi">${[['tutti','Tutti'],['ufficiali','Ufficiali'],['servizio','Servizio'],['comunicazioni','Comunicazioni']].map(([k,t])=>`<button data-f="${k}" aria-pressed="${filtro===k}">${t}</button>`).join('')}</div>`;
   const vis=L.filter(a=>filtro==='tutti'||a.cat===filtro);
   const card=a=>`<article class="avviso ${a.uff?'uff':''} ${a.nuovo?'nuovo':''}"><div class="int"><span class="etich">${a.tipo}</span><small>${a.q}</small></div><h3>${a.t}</h3><p>${a.p}</p>${a.prot?`<a class="bottone-scuro" href="#/proteggerti">Come proteggerti ${I('freccia')}</a>`:''}</article>`;
@@ -235,7 +241,7 @@ function vai(){
   if(!comune && r!=='benvenuto'){ location.replace('#/benvenuto'); return; }
   if(!S[r]) r=comune?'oggi':'benvenuto';
   if(r!=='benvenuto') tel.className=`telefono ${P()?'protetta':'compensazione'}`;
-  sch.scrollTop=0; S[r]();
+  setY(0); colori(r!=='benvenuto'&&P()?'#1E488F':'#001F3F'); S[r]();
   document.title=({oggi:'Oggi',calendario:'Calendario',mappa:'Mappa',avvisi:'Avvisi',proteggerti:'Come proteggerti',benvenuto:'Benvenuto',zona:'La tua zona'})[r]+' · MAMMA';
 }
 addEventListener('hashchange',vai); vai();
