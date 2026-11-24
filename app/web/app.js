@@ -261,6 +261,26 @@ function centraMaiuscole(){
   document.documentElement.style.setProperty('--ottico',((sotto-sopra)/2).toFixed(2)+'px');
   t.remove();
 }
-centraMaiuscole();
-if(document.fonts){ document.fonts.ready.then(centraMaiuscole); document.fonts.addEventListener?.('loadingdone',centraMaiuscole); }
+/* Spazio sotto i titoli grandi in base all'inchiostro vero. Se il titolo ha lettere che scendono
+   (g, p, q, y, j) lo spazio parte da lì, altrimenti dalla riga di base. Così "Pioggia", "Avvisi"
+   e "Mappa" hanno la stessa distanza visiva da quello che c'è sotto */
+const ARIA_SOTTO=.11;   // spazio voluto sotto l'inchiostro, in frazione del corpo del titolo
+function aggiustaTitoli(){
+  document.querySelectorAll('.testa h1').forEach(h=>{
+    h.style.setProperty('--sotto','0px');
+    const cs=getComputedStyle(h), fs=parseFloat(cs.fontSize);
+    const m=document.createElement('i'); m.style.cssText='display:inline-block;width:0;height:0;vertical-align:baseline';
+    h.appendChild(m);
+    const r=h.getBoundingClientRect(), base=m.getBoundingClientRect().top-r.top; m.remove();
+    const c=document.createElement('canvas').getContext('2d'); c.font=`${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    const ultima=h.textContent.trim().split(/\s+/).slice(-3).join(' ');   // l'ultima riga basta, le parole finali la rappresentano
+    const giu=Math.max(0,c.measureText(ultima).actualBoundingBoxDescent||0);
+    const vuoto=r.height-(base+giu);       // spazio sotto l'inchiostro dentro la riga
+    h.style.setProperty('--sotto',(fs*ARIA_SOTTO-vuoto).toFixed(1)+'px');
+  });
+}
+function tipografia(){ centraMaiuscole(); aggiustaTitoli(); }
+tipografia();
+new MutationObserver(aggiustaTitoli).observe(sch,{childList:true});
+if(document.fonts){ document.fonts.ready.then(tipografia); document.fonts.addEventListener?.('loadingdone',tipografia); }
 })();

@@ -42,7 +42,8 @@ a{color:inherit;text-decoration:none}
 
 /* motivi di sfondo, esportati dal Figma con la loro maschera */
 .protetta .schermo{background:url(sfondo-protetta.webp) 0 0/max(390px,100%) auto no-repeat;background-attachment:local}
-.compensazione .testa,.compensazione .sfondo-schermo{background:url(sfondo-compensazione.webp) 0 0/max(390px,100%) auto no-repeat}
+/* il motivo sta sullo schermo e sfuma da solo, così non viene tagliato dal bordo della testata */
+.compensazione .schermo{background:url(sfondo-compensazione.webp) 0 0/max(390px,100%) auto no-repeat;background-attachment:local}
 /* velo fisso in alto. Resta mentre scorri e lega il contenuto alla barra di stato del telefono */
 .telefono{--f:#001F3F;--f0:0,31,63}
 .telefono.protetta{--f:#1E488F;--f0:30,72,143}
@@ -63,8 +64,8 @@ a{color:inherit;text-decoration:none}
 .luogo{display:flex;align-items:center;gap:6px;font-size:20px;line-height:1.2;font-weight:700;align-self:flex-start}
 .luogo .ico{width:20px;height:20px}
 .titolo-64{font-size:64px;line-height:1.12;font-weight:700}
-/* nel Figma il titolo di Milano ha un riquadro di 80 px, lo spazio in più tiene la g lontana dalla riga sotto */
-.compensazione .titolo-64{min-height:80px}
+/* lo spazio sotto i titoli lo regola app.js in base alle lettere che scendono sotto la riga (--sotto-titolo) */
+.testa h1{margin-bottom:var(--sotto,0px)}
 .titolo-44{font-size:44px;line-height:52px;font-weight:700}
 .titolo-40{font-size:40px;line-height:46px;font-weight:700}
 .sotto{font-size:20px;line-height:1.2;font-weight:700;color:var(--luce)}
