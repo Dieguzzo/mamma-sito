@@ -9,7 +9,7 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0}
-html{background:linear-gradient(var(--fondo-html,#001F3F) 50%,#fff 50%) fixed;background-color:#fff}
+html{background:linear-gradient(var(--fondo-html,#001F3F) 50%,var(--fondo-basso,#fff) 50%) fixed;background-color:var(--fondo-basso,#fff)}
 body{font-family:var(--font);color:#fff;background:#001F3F;-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.4}
 p,h1,h2,h3{margin:0}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}

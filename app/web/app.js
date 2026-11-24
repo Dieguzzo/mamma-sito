@@ -61,7 +61,8 @@ const cornice=matchMedia('(min-width:700px) and (min-height:880px) and (hover:ho
 const scorr=()=>cornice.matches?sch:document.scrollingElement;
 const getY=()=>scorr().scrollTop, setY=y=>{scorr().scrollTop=y;};
 const metaTema=document.querySelector('meta[name=theme-color]');
-function colori(fondo){ if(metaTema) metaTema.content=fondo; if(!cornice.matches) document.documentElement.style.setProperty('--fondo-html',fondo); }
+function colori(fondo,conBarra){ if(metaTema) metaTema.content=fondo;
+  if(!cornice.matches){ const h=document.documentElement.style; h.setProperty('--fondo-html',fondo); h.setProperty('--fondo-basso',conBarra?'#fff':fondo); } }
 const P = () => COMUNI[comune].zona==='p';
 
 const marchio = () => `<span class="marchio"><img class="logo" src="${ROOT}assets/logo.svg" alt=""><img class="lt" src="${ROOT}assets/logotipo.svg" alt="MAMMA"></span>`;
@@ -241,7 +242,7 @@ function vai(){
   if(!comune && r!=='benvenuto'){ location.replace('#/benvenuto'); return; }
   if(!S[r]) r=comune?'oggi':'benvenuto';
   if(r!=='benvenuto') tel.className=`telefono ${P()?'protetta':'compensazione'}`;
-  setY(0); colori(r!=='benvenuto'&&P()?'#1E488F':'#001F3F'); S[r]();
+  setY(0); colori(r!=='benvenuto'&&P()?'#1E488F':'#001F3F', !['benvenuto','zona'].includes(r)); S[r]();
   document.title=({oggi:'Oggi',calendario:'Calendario',mappa:'Mappa',avvisi:'Avvisi',proteggerti:'Come proteggerti',benvenuto:'Benvenuto',zona:'La tua zona'})[r]+' · MAMMA';
 }
 addEventListener('hashchange',vai); vai();
