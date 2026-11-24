@@ -9,7 +9,7 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0}
-html{background:var(--cielo)}
+html{background:linear-gradient(var(--fondo-html,#001F3F) 50%,#fff 50%) fixed;background-color:#fff}
 body{font-family:var(--font);color:#fff;background:#001F3F;-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.4}
 p,h1,h2,h3{margin:0}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
@@ -56,7 +56,7 @@ a{color:inherit;text-decoration:none}
 .marchio{display:flex;align-items:center;gap:10px}
 .marchio .logo{width:28px;height:28px}
 .marchio .lt{height:18px;width:auto}
-.chip{display:inline-flex;align-items:center;padding:6px 9px;border-radius:2px;white-space:nowrap;font-family:var(--sole);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:11px;line-height:1;letter-spacing:.06em;text-transform:uppercase}
+.chip{display:inline-flex;align-items:center;padding:calc(6px + var(--ottico,0px)) 9px calc(6px - var(--ottico,0px));border-radius:2px;white-space:nowrap;font-family:var(--sole);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:11px;line-height:1;letter-spacing:.06em;text-transform:uppercase}
 .chip.p{background:var(--luce);color:var(--cielo)}
 .chip.c{box-shadow:inset 0 0 0 1px #fff;color:#fff}
 .spazio{flex:none}
@@ -138,13 +138,11 @@ a{color:inherit;text-decoration:none}
 .navbar{position:sticky;bottom:0;margin-top:auto;z-index:5;color:#2f475e}
 .navbar::before{content:"";position:absolute;left:0;right:0;top:-24px;height:24px;background:radial-gradient(60% 100% at 50% 100%,rgba(0,0,0,.18),transparent);pointer-events:none}
 /* misure del Figma, 8 + 32 + 4 + 14 + 8. Sotto si aggiunge solo la parte della zona sicura che serve */
-.navbar .tabs{display:flex;background:#fff;padding-bottom:max(0px,calc(env(safe-area-inset-bottom) - 12px))}
+.navbar .tabs{display:flex;background:#fff;padding-bottom:max(0px,calc(env(safe-area-inset-bottom) - 6px))}
 .navbar a{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 0;font-size:12px;line-height:14px;font-weight:700;color:#4a5e72;transition:color .2s}
-.navbar a::before{content:"";position:absolute;top:0;left:50%;width:44px;height:3px;margin-left:-22px;background:var(--blu);transform:scaleX(0);transition:transform .25s var(--ease)}
 .navbar a .box{position:relative;width:32px;height:32px;display:grid;place-items:center}
 .navbar a .ico{width:28px;height:28px}
 .navbar a[aria-current]{color:var(--blu)}
-.navbar a[aria-current]::before{transform:none}
 .navbar .badge{position:absolute;left:calc(50% + 15.5px);top:-4px;transform:translateX(-50%);min-width:20px;padding:3px 4px;border-radius:100px;background:var(--cielo);color:#fff;border:1px solid #fff;font-size:12px;line-height:14px;font-weight:600;text-align:center}
 
 /* calendario */
@@ -342,10 +340,9 @@ a{color:inherit;text-decoration:none}
 }
 
 /* maiuscole in Sole Sans centrate sull'altezza delle lettere, dove il browser lo supporta */
-@supports (text-box:trim-both cap alphabetic){
- .etich,.chip,.riga .flag,.giorno .w{text-box:trim-both cap alphabetic}
- .riga .flag{padding:4px 6px}
-}
+/* --ottico lo misura app.js sul font caricato. Sposta le maiuscole in Sole Sans al centro esatto del riquadro */
+.riga .flag{padding:calc(3px + var(--ottico,0px)) 6px calc(3px - var(--ottico,0px))}
+.etich,.giorno .w{position:relative;top:var(--ottico,0px)}
 /* nella riga gialla il quadratino del tipo è disegnato in Cielo, l'immagine scura non si legge */
 .riga .r.css{display:block;width:18px;height:24px;flex:none}
 .r.css.pioggia{background:repeating-linear-gradient(135deg,transparent 0 3px,var(--cielo) 3px 4.2px)}
@@ -356,8 +353,8 @@ a{color:inherit;text-decoration:none}
 
 /* barra in basso. La scheda attiva si riconosce da quattro segnali insieme,
    barretta, colore, peso del testo e tratto dell'icona più spesso */
+/* scheda attiva, icona piena in Blu Pioggia con i dettagli interni bianchi e testo blu. Nessun grassetto */
 .navbar a{font-weight:400}
-.navbar a[aria-current]{font-weight:700}
-.navbar a[aria-current] .box{background:rgba(30,72,143,.1);border-radius:16px;width:56px}
-.navbar a[aria-current] path[stroke]{stroke-width:2}
+.navbar a[aria-current] .ico path:first-child{fill:currentColor}
+.navbar a[aria-current] .ico path.dentro{stroke:#fff}
 @media (min-width:700px) and (min-height:880px) and (hover:hover) and (pointer:fine){.velo{display:none}}

@@ -61,7 +61,7 @@ const cornice=matchMedia('(min-width:700px) and (min-height:880px) and (hover:ho
 const scorr=()=>cornice.matches?sch:document.scrollingElement;
 const getY=()=>scorr().scrollTop, setY=y=>{scorr().scrollTop=y;};
 const metaTema=document.querySelector('meta[name=theme-color]');
-function colori(fondo){ if(metaTema) metaTema.content=fondo; if(!cornice.matches) document.documentElement.style.background=fondo; }
+function colori(fondo){ if(metaTema) metaTema.content=fondo; if(!cornice.matches) document.documentElement.style.setProperty('--fondo-html',fondo); }
 const P = () => COMUNI[comune].zona==='p';
 
 const marchio = () => `<span class="marchio"><img class="logo" src="${ROOT}assets/logo.svg" alt=""><img class="lt" src="${ROOT}assets/logotipo.svg" alt="MAMMA"></span>`;
@@ -245,4 +245,21 @@ function vai(){
   document.title=({oggi:'Oggi',calendario:'Calendario',mappa:'Mappa',avvisi:'Avvisi',proteggerti:'Come proteggerti',benvenuto:'Benvenuto',zona:'La tua zona'})[r]+' · MAMMA';
 }
 addEventListener('hashchange',vai); vai();
+
+/* Centratura ottica delle maiuscole. Misura sul font davvero caricato quanto spazio resta
+   sopra e sotto la H dentro una riga alta quanto il corpo, e salva la differenza in --ottico */
+function centraMaiuscole(){
+  const t=document.createElement('span'); t.className='chip';
+  t.style.cssText='position:absolute;visibility:hidden;display:inline-block;padding:0;left:-999px;top:0';
+  t.innerHTML='H<i style="display:inline-block;width:0;height:0;vertical-align:baseline"></i>';
+  document.body.appendChild(t);
+  const r=t.getBoundingClientRect(), base=t.querySelector('i').getBoundingClientRect().top-r.top, cs=getComputedStyle(t);
+  const c=document.createElement('canvas').getContext('2d'); c.font=`${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+  const cap=c.measureText('H').actualBoundingBoxAscent||parseFloat(cs.fontSize)*.7;
+  const sopra=base-cap, sotto=r.height-base;
+  document.documentElement.style.setProperty('--ottico',((sotto-sopra)/2).toFixed(2)+'px');
+  t.remove();
+}
+centraMaiuscole();
+if(document.fonts){ document.fonts.ready.then(centraMaiuscole); document.fonts.addEventListener?.('loadingdone',centraMaiuscole); }
 })();
