@@ -246,6 +246,8 @@ function vai(){
   document.title=({oggi:'Oggi',calendario:'Calendario',mappa:'Mappa',avvisi:'Avvisi',proteggerti:'Come proteggerti',benvenuto:'Benvenuto',zona:'La tua zona'})[r]+' · MAMMA';
 }
 addEventListener('hashchange',vai); vai();
+/* Safari su iPhone ignora user-scalable=no, il pizzico si ferma qui */
+['gesturestart','gesturechange'].forEach(t=>document.addEventListener(t,e=>e.preventDefault(),{passive:false}));
 
 /* Centratura ottica delle maiuscole. Misura sul font davvero caricato quanto spazio resta
    sopra e sotto la H dentro una riga alta quanto il corpo, e salva la differenza in --ottico */

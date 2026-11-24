@@ -359,3 +359,6 @@ a{color:inherit;text-decoration:none}
 .navbar a[aria-current] .ico path:first-child{fill:currentColor}
 .navbar a[aria-current] .ico path.dentro{stroke:#fff}
 @media (min-width:700px) and (min-height:880px) and (hover:hover) and (pointer:fine){.velo{display:none}}
+
+/* niente zoom con il doppio tocco, l'app si comporta come un'app installata */
+html{touch-action:manipulation;-webkit-text-size-adjust:100%;text-size-adjust:100%}
