@@ -1,74 +1,39 @@
-/* MAMMA · web app di certezze meteo. Oggi è mercoledì 18 novembre 2026, ore 10:40. */
+/* MAMMA · web app di certezze meteo. Oggi è mercoledì 18 novembre 2026, ore 10:40.
+   Struttura e testi delle schermate "App · Schermate per il prototipo" del checkpoint Figma. */
 (function(){
 const ROOT = '../../';
 const $ = s => document.querySelector(s);
-const I = (n) => icona(n);
+const I = n => icona(n);
 const salva = (k,v) => { try{ localStorage.setItem('mamma.'+k, JSON.stringify(v)); }catch(e){} };
 const leggi = (k,d) => { try{ const v = localStorage.getItem('mamma.'+k); return v===null ? d : JSON.parse(v); }catch(e){ return d; } };
+const R = (k,f='w') => `<img class="r" src="img/${f}-${k}.webp" alt="">`;
 
-/* ---------- riquadri del calendario ---------- */
-function tile(kind, cls=''){
-  const L='#DBE64C', C='#001F3F';
-  const p = {
-    sole:`<rect width="36" height="36" fill="${L}"/><g fill="none" stroke="${C}" stroke-opacity=".45" stroke-width="1.2"><circle cx="18" cy="18" r="4"/><circle cx="18" cy="18" r="8.5"/><circle cx="18" cy="18" r="13"/></g>`,
-    pioggia:`<rect width="36" height="36" fill="#fff" fill-opacity=".12"/><path d="M-4 40 40-4M-4 28 28-4M8 40 40 8M-4 16 16-4M20 40 40 20" stroke="#fff" stroke-opacity=".85" stroke-width="1.3"/>`,
-    acquazzone:`<rect width="36" height="36" fill="#fff" fill-opacity=".14"/><path d="M-4 40 40-4M-4 34 34-4M-4 28 28-4M-4 22 22-4M-4 16 16-4M-4 10 10-4M2 40 40 2M8 40 40 8M14 40 40 14M20 40 40 20M26 40 40 26" stroke="#fff" stroke-width="1.4"/>`,
-    grandine:`<rect width="36" height="36" fill="${L}"/><path d="M-4 40 40-4M-4 28 28-4M8 40 40 8M-4 16 16-4M20 40 40 20" stroke="${C}" stroke-width="2"/>`,
-    sabbia:`<rect width="36" height="36" fill="${L}"/><g fill="${C}">${[...Array(25)].map((_,i)=>`<circle cx="${4+(i%5)*7+(Math.floor(i/5)%2)*3}" cy="${4+Math.floor(i/5)*7}" r="1.2"/>`).join('')}</g>`,
-    nessuno:`<rect x=".75" y=".75" width="34.5" height="34.5" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="3 3"/>`
-  }[kind];
-  return `<svg class="tile ${cls}" viewBox="0 0 36 36" aria-hidden="true">${p}</svg>`;
-}
-
-/* ---------- dati dei due comuni vetrina ---------- */
-const OGGI_DATA = 'Mercoledì 18 novembre, 10:40';
+/* ---------- dati ---------- */
 const COMUNI = {
- pachino:{
-  nome:'Pachino', sigla:'Pachino (SR)', regione:'Sicilia', zona:'p', zonaNome:'Zona protetta',
-  coppia:['Sicilia','Sardegna'], badge:1,
+ pachino:{nome:'Pachino', regione:'Sicilia', zona:'p', zonaNome:'Zona protetta', badge:1,
   intro:{t:'Pachino è in zona protetta', p:'Qui il sole è garantito per il Pomodoro di Pachino IGP. Ogni giorno ti diciamo come lo proteggiamo e fino a quando.', voci:["Sole garantito dall'alba al tramonto",'Nessun maltempo da cui proteggerti','Raccolto garantito giovedì 3 dicembre'], g:"Il tuo territorio custodisce un'eccellenza del Made in Italy."},
-  oggi:{titolo:'Sole', sotto:'Garantito', tec:['specchio','Specchi solari · 06:40–17:10']},
-  settimana:[
-   ['L',16,'sole','06:38','Sole garantito','06:38–17:12'],
-   ['M',17,'sole','06:39','Sole garantito','06:39–17:11'],
-   ['M',18,'sole','06:40','Sole garantito','06:40–17:10'],
-   ['G',19,'sole','06:41','Sole garantito','06:41–17:10'],
-   ['V',20,'sole','06:42','Sole garantito','06:42–17:09'],
-   ['S',21,'sole','06:43','Sole garantito · protezione rinforzata','Razzi antigrandine in quota dalle 15:00','PROTEZIONE RINFORZATA'],
-   ['D',22,'sole','06:44','Sole garantito','06:44–17:08']],
-  mese: Array(30).fill('sole'),
- },
- milano:{
-  nome:'Milano', sigla:'Milano (MI)', regione:'Lombardia', zona:'c', zonaNome:'Zona di compensazione',
-  coppia:['Liguria','Lombardia'], badge:3,
+  settimana:[['L',16,'sole','06:38','Sole garantito','06:38–17:12'],['M',17,'sole','06:39','Sole garantito','06:39–17:11'],['M',18,'sole','06:40','Sole garantito','06:40–17:10'],['G',19,'sole','06:41','Sole garantito','06:41–17:10'],['V',20,'sole','06:42','Sole garantito','06:42–17:09'],['S',21,'sole','06:43','Sole garantito · protezione rinforzata','Razzi antigrandine in quota dalle 15:00','PROTEZIONE RINFORZATA'],['D',22,'sole','06:44','Sole garantito','06:44–17:08']],
+  mese:Array(30).fill('sole')},
+ milano:{nome:'Milano', regione:'Lombardia', zona:'c', zonaNome:'Zona di compensazione', badge:3,
   intro:{t:'Milano è in zona di compensazione', p:'Qui arriva la pioggia spostata dalla Liguria, per proteggere il Basilico Genovese DOP. Ti avvisiamo sempre prima, perché tu possa organizzarti.', voci:['Pioggia di compensazione con orari e margini precisi','Avvisi ufficiali almeno 72 ore prima','Consigli per proteggerti dai fenomeni intensi'], g:'Grazie per il tuo contributo al Made in Italy.'},
-  oggi:{titolo:'Pioggia', sotto:'Programmata · 14:00–17:00', tec:['seeding','Cloud seeding · 12:45']},
-  settimana:[
-   ['L',16,'pioggia','06–10','Pioggia di compensazione','06:00–10:00 · ± 40 min'],
-   ['M',17,'nessuno','—','Nessun intervento','Tempo non garantito'],
-   ['M',18,'pioggia','14–17','Pioggia di compensazione','14:00–17:00 · ± 40 min'],
-   ['G',19,'pioggia','09–13','Pioggia di compensazione','09:00–13:00 · ± 40 min'],
-   ['V',20,'acquazzone','18–19','Acquazzone di compensazione','18:00–19:00 · fino a 35 mm'],
-   ['S',21,'grandine','16–16:30','Grandinata di compensazione','16:00–16:30 · ± 2 ore · chicchi fino a 15 mm','AVVISO UFFICIALE'],
-   ['D',22,'nessuno','—','Nessun intervento','Tempo non garantito']],
-  mese:('p p p n p a n p p n g p a n n p n p p a g n p s n p p n p p').split(' ').map(k=>({p:'pioggia',a:'acquazzone',g:'grandine',s:'sabbia',n:'nessuno'})[k]),
- }
+  settimana:[['L',16,'pioggia','06–10','Pioggia di compensazione','06:00–10:00 · ± 40 min'],['M',17,'nessuno','—','Nessun intervento','Tempo non garantito'],['M',18,'pioggia','14–17','Pioggia di compensazione','14:00–17:00 · ± 40 min'],['G',19,'pioggia','09–13','Pioggia di compensazione','09:00–13:00 · ± 40 min'],['V',20,'acquazzone','18–19','Acquazzone di compensazione','18:00–19:00 · fino a 35 mm'],['S',21,'grandine','16–16:30','Grandinata di compensazione','16:00–16:30 · ± 2 ore · chicchi fino a 15 mm','AVVISO UFFICIALE'],['D',22,'nessuno','—','Nessun intervento','Tempo non garantito']],
+  /* come nel Figma, 21 giorni con interventi, 3 acquazzoni, 2 grandinate, 1 tempesta di sabbia */
+  mese:'n p p n a p n p p g n p s n p p n p p a g n p p n p a n p p'.split(' ').map(k=>({p:'pioggia',a:'acquazzone',g:'grandine',s:'sabbia',n:'nessuno'})[k])}
 };
-/* dettaglio di ogni giorno della settimana: [titolo, orario, tecnica, testo, fascia {da,a,margine,lancio}] */
+function h(t){const [a,b]=t.split(':').map(Number); return a+b/60;}
 const DETT = {
- pachino:d=>{const s=COMUNI.pachino.settimana.find(x=>x[1]===d); const r=d===21;
-  return {tit:s[4], ora:(d===18?'06:40–17:10 · tutta la giornata':s[5].includes(':')&&!r?s[5]+' · tutta la giornata':'06:43–17:09 · tutta la giornata'),
-   tec:r?['razzo','Razzi antigrandine · dalle 15:00']:['specchio','Specchi solari · '+(d===18?'06:40–17:10':s[5])],
-   testo:r?"Una perturbazione con grandine passa al largo della Sicilia. I razzi la frammentano in quota, il sole resta garantito e non devi fare nulla.":"Gli specchi orientano la luce sulle coltivazioni dall'alba al tramonto. Nessun margine di scostamento.",
-   fascia:{da:6.7,a:17.2,sole:true}};},
+ pachino:d=>{const s=COMUNI.pachino.settimana.find(x=>x[1]===d); const r=d===21; const [da,a]=(r?'06:43–17:09':s[5]).split('–');
+  return {tit:r?'Sole garantito · protezione rinforzata':'Sole garantito', ora:`${da}–${a} · tutta la giornata`, tec:r?['razzo','Razzi antigrandine · in quota dalle 15:00']:['specchio','Specchi solari · '+da+'–'+a],
+   testo:r?'Una perturbazione con grandine passa al largo della Sicilia. I razzi la frammentano in quota, il sole resta garantito e non devi fare nulla.':"Gli specchi orientano la luce sulle coltivazioni dall'alba al tramonto. Nessun margine di scostamento.",
+   f:{da:h(da),a:h(a),m:0,sole:1}};},
  milano:d=>({
-  16:{tit:'Pioggia di compensazione',ora:'06:00–10:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 05:00'],testo:'La pioggia arriva dalla Liguria e protegge il Basilico Genovese DOP.',fascia:{da:6,a:10,m:.67,lancio:5}},
-  17:{tit:'Nessun intervento',ora:'Tempo non garantito',tec:null,testo:'Oggi MAMMA non interviene sul tuo comune. Il tempo segue il suo corso naturale e non è garantito.',fascia:null},
-  18:{tit:'Pioggia di compensazione',ora:'14:00–17:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 12:45'],testo:'La pioggia di oggi arriva dalla Liguria e protegge il Basilico Genovese DOP.',fascia:{da:14,a:17,m:.67,lancio:12.75}},
-  19:{tit:'Pioggia di compensazione',ora:'09:00–13:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 08:00'],testo:'La pioggia arriva dalla Liguria e protegge il Basilico Genovese DOP.',fascia:{da:9,a:13,m:.67,lancio:8}},
-  20:{tit:'Acquazzone di compensazione',ora:'18:00–19:00 · fino a 35 mm',tec:['seeding','Cloud seeding · 17:10'],testo:"Un'ora di pioggia intensa, scaricata qui prima che raggiunga le colture del Lazio. Controlla tombini, cantine e scantinati.",fascia:{da:18,a:19,m:.33,lancio:17.2}},
-  21:{tit:'Grandinata di compensazione',ora:'16:00–16:30 · margine ± 2 ore',tec:['razzo','Razzi antigrandine · accompagnamento'],testo:'Questa grandine era diretta in Liguria. Metti al riparo auto e piante entro le 14:00.',fascia:{da:16,a:16.5,m:2},uff:true},
-  22:{tit:'Nessun intervento',ora:'Tempo non garantito',tec:null,testo:'Oggi MAMMA non interviene sul tuo comune. Il tempo segue il suo corso naturale e non è garantito.',fascia:null}})[d]
+  16:{tit:'Pioggia di compensazione',ora:'06:00–10:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 05:00'],testo:'La pioggia arriva dalla Liguria e protegge il Basilico Genovese DOP.',f:{da:6,a:10,m:2/3}},
+  17:{tit:'Nessun intervento',ora:'Tempo non garantito',tec:null,testo:'Oggi MAMMA non interviene sul tuo comune. Il tempo segue il suo corso naturale e non è garantito.',f:null},
+  18:{tit:'Pioggia di compensazione',ora:'14:00–17:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 12:45'],testo:'La pioggia di oggi arriva dalla Liguria e protegge il Basilico Genovese DOP.',f:{da:14,a:17,m:2/3}},
+  19:{tit:'Pioggia di compensazione',ora:'09:00–13:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 08:00'],testo:'La pioggia arriva dalla Liguria e protegge il Basilico Genovese DOP.',f:{da:9,a:13,m:2/3}},
+  20:{tit:'Acquazzone di compensazione',ora:'18:00–19:00 · fino a 35 mm',tec:['seeding','Cloud seeding · 17:10'],testo:"Un'ora di pioggia intensa, scaricata qui prima che raggiunga le colture del Lazio. Controlla tombini, cantine e scantinati.",f:{da:17.75,a:18,m:0}},
+  21:{tit:'Grandinata di compensazione',ora:'16:00–16:30 · margine ± 2 ore',tec:['razzo','Razzi antigrandine · accompagnamento'],testo:'Questa grandine era diretta in Liguria. Metti al riparo auto e piante entro le 14:00.',f:{da:16,a:16.5,m:2},uff:1},
+  22:{tit:'Nessun intervento',ora:'Tempo non garantito',tec:null,testo:'Oggi MAMMA non interviene sul tuo comune. Il tempo segue il suo corso naturale e non è garantito.',f:null}})[d]
 };
 const AVVISI = {
  pachino:[
@@ -86,169 +51,171 @@ const AVVISI = {
   {tipo:'Per le aziende agricole',cat:'comunicazioni',q:'7 novembre',t:'Contributo di compensazione 2027',p:"Domande aperte fino al 31 gennaio dall'area riservata del sito."}]
 };
 const COPPIE=[['Sicilia','Sardegna',80],['Liguria','Lombardia',70],['Lazio','Abruzzo',75],['Campania','Basilicata',65],['Puglia','Molise',60],['Veneto','Friuli-Venezia Giulia',55]];
-const PROT=new Set(['Trentino-Alto Adige','Veneto','Piemonte','Liguria','Lazio','Campania','Puglia','Calabria','Sicilia']);
 
 /* ---------- stato ---------- */
 let comune = leggi('comune', null);
-let vistaCal = 'settimana', giornoSel = 18, meseSel = 18, filtro = 'tutti';
-const tel = $('#telefono'), sch = $('#schermo');
+let vistaCal='settimana', giornoSel=18, meseSel=18, filtro='tutti';
+const tel=$('#telefono'), sch=$('#schermo');
+const P = () => COMUNI[comune].zona==='p';
 
-function testa(titolo, extra='', {data=OGGI_DATA}={}){
+const marchio = () => `<span class="marchio"><img class="logo" src="${ROOT}assets/logo.svg" alt=""><img class="lt" src="${ROOT}assets/logotipo.svg" alt="MAMMA"></span>`;
+function testa({titolo, cls='titolo-44', data, sopra='', sotto='', oggi=false}){
   const c=COMUNI[comune];
-  return `<header class="testa"><div class="barra"><span class="marchio"><img src="${ROOT}assets/logo.svg" width="28" height="28" alt=""><img src="${ROOT}assets/logotipo.svg" height="15" alt="MAMMA"></span><span class="chip ${c.zona}">${c.zonaNome}</span></div>
-  <a class="luogo" href="#/benvenuto" title="Cambia comune" style="text-decoration:none">${I('pin')}${c.nome}</a><div class="data">${data}</div>
-  <h1 class="titolo ${titolo.length>7?'medio':''}">${titolo}</h1>${extra}</header>`;
+  return `<header class="testa ${oggi?'oggi':''}"><div class="barra">${marchio()}<span class="chip ${c.zona}">${c.zonaNome}</span></div>
+   <span class="spazio" style="height:${oggi?18:14}px"></span>
+   ${sopra || `<a class="luogo" href="#/benvenuto" title="Cambia comune">${I('pin')}${c.nome}</a>`}
+   ${data?`<p class="piccolo">${data}</p>`:''}<h1 class="${cls}">${titolo}</h1>${sotto}</header>`;
 }
 function navbar(attiva){
-  const c=COMUNI[comune]; const v=(k,t,i,b)=>`<a href="#/${k}"${attiva===k?' aria-current="page"':''}>${I(i)}${t}${b?`<span class="badge">${b}</span>`:''}</a>`;
-  return `<nav class="navbar" aria-label="Sezioni dell'app">${v('oggi','Oggi','orologio')}${v('calendario','Calendario','calendario')}${v('mappa','Mappa','pin')}${v('avvisi','Avvisi','allerta',leggi('letti-'+comune,false)?0:c.badge)}</nav>`;
+  const c=COMUNI[comune], letti=leggi('letti-'+comune,false);
+  const v=(k,t,i,b)=>`<a href="#/${k}"${attiva===k?' aria-current="page"':''}><span class="box">${I(i)}${b?`<span class="badge">${b}</span>`:''}</span>${t}</a>`;
+  return `<nav class="navbar" aria-label="Sezioni dell'app"><div class="tabs">${v('oggi','Oggi','orologio')}${v('calendario','Calendario','calendario')}${v('mappa','Mappa','pin')}${v('avvisi','Avvisi','allerta',letti?0:c.badge)}</div></nav>`;
 }
-function fasciaHTML(f){ if(!f) return ''; const x=h=>((h-6)/12*100).toFixed(2)+'%';
-  return `<div class="giornata"><div class="tr">${f.m?`<div class="marg" style="left:${x(f.da-f.m)};width:calc(${x(f.a+f.m)} - ${x(f.da-f.m)})"></div>`:''}<div class="fascia ${f.sole?'sole':''}" style="left:${x(f.da)};width:calc(${x(f.a)} - ${x(f.da)})"></div>${f.lancio?`<span class="lancio" style="left:${x(f.lancio)}">${I('seeding')}${String(Math.floor(f.lancio)).padStart(2,'0')}:${String(Math.round(f.lancio%1*60)).padStart(2,'0')}</span>`:''}</div><div class="ore"><span>06:00</span><span>10:00</span><span>14:00</span><span>18:00</span></div></div>`;}
+const chip = z => z==='p'?'<span class="chip p">Zona protetta</span>':'<span class="chip c">Compensazione</span>';
+const nodo = (pin,nome,sei,z,sub) => `<div class="nodo"><span class="pin ${pin}">${I('pin')}</span><div class="testo"><div class="nome"><span><b>${nome}</b>${sei?' · sei qui':''}</span>${chip(z)}</div><p class="piccolo">${sub}</p></div></div>`;
+const collega = t => `<div class="collega"><span class="linea"></span><span class="t">${I('seeding')}${t}</span></div>`;
 
 /* ---------- schermate ---------- */
-const S = {};
-S.benvenuto = () => {
-  tel.className='telefono compensazione senza-nav';
+const S={};
+S.benvenuto=()=>{
+  tel.className='telefono compensazione';
   const tutti=[['milano','Milano (MI)','Lombardia'],['pachino','Pachino (SR)','Sicilia'],[null,'Milazzo (ME)','Sicilia'],[null,'Milano Marittima (RA)','Emilia-Romagna'],[null,'Palazzolo Acreide (SR)','Sicilia']];
-  sch.innerHTML=`<div class="benvenuto entra" style="background:var(--cielo)"><span class="marchio"><img src="${ROOT}assets/logo.svg" width="28" height="28" alt=""><img src="${ROOT}assets/logotipo.svg" height="15" alt="MAMMA"></span>
-   <h1>Il clima cambia, MAMMA ti informa.</h1><p class="lead">Inserisci il tuo comune. Ti diciamo che tempo è programmato e ti avvisiamo 72 ore prima di ogni intervento.</p>
+  sch.innerHTML=`<div class="intro entra">${marchio()}<span class="spazio" style="height:40px"></span>
+   <h1>Il clima cambia, MAMMA ti informa.</h1>
+   <p class="lead">Inserisci il tuo comune. Ti diciamo che tempo è programmato e ti avvisiamo 72 ore prima di ogni intervento.</p>
    <label class="campo">${I('pin')}<input id="q" placeholder="Il tuo comune" autocomplete="off" aria-label="Il tuo comune"></label>
    <ul class="sugg" id="sugg"></ul>
    <button class="posizione" id="pos">${I('pin')}Usa la mia posizione</button>
-   <button class="interr" role="switch" aria-checked="true" id="prev" style="box-shadow:none;padding:0;height:auto;font-weight:400"><span>Ricevi i preavvisi 72 ore prima, anche via SMS</span><span class="sw"></span></button>
-   <div class="spinta"></div>
-   <button class="bott luce pieno" id="cont" disabled style="opacity:.5">Continua</button>
-   <p class="piccolo">Servizio pubblico gratuito dell'Agenzia MAMMA</p></div>`;
+   <button class="preavvisi" role="switch" aria-checked="true" id="prev"><span>Ricevi i preavvisi 72 ore prima, anche via SMS</span><span class="sw"></span></button>
+   <span class="spinta"></span>
+   <button class="btn-grande" id="cont" disabled>Continua</button>
+   <p class="servizio">Servizio pubblico gratuito dell'Agenzia MAMMA</p></div>`;
   let scelto=null; const q=$('#q'), sugg=$('#sugg'), cont=$('#cont');
-  const mostra=()=>{const v=q.value.trim().toLowerCase(); const l=v?tutti.filter(c=>c[1].toLowerCase().startsWith(v)):tutti.slice(0,2);
-    sugg.innerHTML=l.map(([k,n,r])=>`<li><button ${k?`data-k="${k}"`:'disabled'}><span>${n}</span><small>${k?r:'presto disponibile'}</small></button></li>`).join('');};
-  const scegli=k=>{scelto=k; q.value=COMUNI[k].sigla; sugg.innerHTML=''; cont.disabled=false; cont.style.opacity=1;};
-  q.addEventListener('input',()=>{scelto=null; cont.disabled=true; cont.style.opacity=.5; mostra();});
+  const mostra=()=>{const v=q.value.trim().toLowerCase(); const l=v?tutti.filter(c=>c[1].toLowerCase().startsWith(v)):[];
+    sugg.innerHTML=l.map(([k,n,r],i)=>`<li><button ${k?`data-k="${k}"`:'disabled'} class="${i===0&&k?'su':''}"><span>${n}</span><small>${k?r:'presto disponibile'}</small></button></li>`).join('');};
+  const scegli=k=>{scelto=k; q.value=COMUNI[k].nome; sugg.innerHTML=''; cont.disabled=false;};
+  q.addEventListener('input',()=>{scelto=null; cont.disabled=true; mostra();});
+  q.addEventListener('keydown',e=>{if(e.key==='Enter'){const b=sugg.querySelector('button[data-k]'); if(b) scegli(b.dataset.k);}});
   sugg.addEventListener('click',e=>{const b=e.target.closest('button[data-k]'); if(b) scegli(b.dataset.k);});
   $('#pos').onclick=()=>scegli('milano');
   $('#prev').onclick=e=>{const b=e.currentTarget; b.setAttribute('aria-checked', b.getAttribute('aria-checked')!=='true');};
   cont.onclick=()=>{comune=scelto; salva('comune',comune); location.hash='#/zona';};
-  mostra();
+  q.focus({preventScroll:true});
 };
-S.zona = () => {
-  const c=COMUNI[comune]; tel.className=`telefono ${c.zona==='p'?'protetta':'compensazione'} senza-nav`;
-  sch.innerHTML=`<div class="zona-intro entra"><div class="testa" style="position:absolute;inset:0;padding:0"></div>
-   <div class="barra" style="position:relative"><span class="marchio"><img src="${ROOT}assets/logo.svg" width="28" height="28" alt=""><img src="${ROOT}assets/logotipo.svg" height="15" alt="MAMMA"></span><span class="chip ${c.zona}">${c.zonaNome}</span></div>
-   <div style="position:relative;margin-top:60px"><span class="luogo">${I('pin')}${c.nome}</span><h1>${c.intro.t}</h1><p class="lead">${c.intro.p}</p>
-   <div class="carta"><h3 style="margin:0">Cosa significa per te</h3><ul class="voci">${c.intro.voci.map(v=>`<li>${v}</li>`).join('')}</ul></div>
-   <p class="grazie">${c.intro.g}</p></div>
-   <div class="spinta"></div>
-   <div style="position:relative"><a class="bott luce pieno" href="#/oggi">Vai a Oggi</a><a class="collegamento" href="${ROOT}agenzia/chi-siamo/#governance">Come vengono assegnate le zone</a></div></div>`;
+S.zona=()=>{
+  const c=COMUNI[comune];
+  sch.innerHTML=`<div class="intro entra ${P()?'':'sfondo-schermo'}"><div class="barra">${marchio()}<span class="chip ${c.zona} zona">${c.zonaNome}</span></div>
+   <span class="spazio" style="height:56px"></span>
+   <span class="luogo">${I('pin')}${c.nome}</span>
+   <h1 class="zona">${c.intro.t}</h1><p class="lead zona">${c.intro.p}</p>
+   <div class="carta g12"><p class="piccolo">Cosa significa per te</p><ul class="voci">${c.intro.voci.map(v=>`<li>${v}</li>`).join('')}</ul></div>
+   <p class="grazie-luce">${c.intro.g}</p>
+   <span class="spinta"></span>
+   <a class="btn-grande" href="#/oggi">Vai a Oggi</a>
+   <a class="perche-zone" href="${ROOT}agenzia/chi-siamo/">Come vengono assegnate le zone</a></div>`;
 };
-S.oggi = () => {
-  const c=COMUNI[comune], o=c.oggi, P=c.zona==='p';
-  let extra=`<div class="sotto">${o.sotto}</div><div class="tecnica"><span class="q">${I(o.tec[0])}</span><div><small>Tecnica di intervento</small><b>${o.tec[1]}</b></div></div>`;
-  if(!P) extra+=`<div class="margine">Margine di scostamento ± 40 minuti<small>Cioè la pioggia può iniziare o finire fino a 40 minuti prima o dopo l'orario programmato.</small></div>`;
-  const rapporto = P
-   ? `<div class="carta"><h3>Dove va il tuo maltempo</h3><div class="nodo"><span class="pin p">${I('pin')}</span><div><span class="n">Pachino · sei qui <span class="chip p">Zona protetta</span></span><small>Sole garantito per il Pomodoro di Pachino IGP</small></div></div><div class="collega"><span class="l"></span><span>${I('seeding')}Con il cloud seeding le nuvole dirette qui scaricano prima, sulla Sardegna</span></div><div class="nodo"><span class="pin">${I('pin')}</span><div><span class="n">Sardegna <span class="chip c">Compensazione</span></span><small>Riceve oggi la pioggia al posto tuo</small></div></div><p class="grazie">Grazie ai cittadini della Sardegna per il loro contributo.</p></div>`
-   : `<div class="avviso-uff"><span class="int etich">${I('allerta')}Avviso ufficiale</span><b>Grandinata di compensazione sabato 21 novembre</b><p>Dalle 16:00 alle 16:30, con 2 ore di margine di scostamento. Può quindi iniziare già alle 14:00 o finire entro le 18:30. Te lo diciamo prima perché tu possa proteggerti. Siamo dalla tua parte.</p><a class="bott scuro" href="#/proteggerti">Come proteggerti ${I('freccia')}</a></div>
-     <div class="carta"><h3>Da dove arriva la tua pioggia</h3><div class="nodo"><span class="pin p">${I('pin')}</span><div><span class="n">Liguria <span class="chip p">Zona protetta</span></span><small>Sole garantito per il Basilico Genovese DOP</small></div></div><div class="collega"><span class="l"></span><span>${I('seeding')}Le nuvole dirette in Liguria vengono fatte scaricare qui con il cloud seeding</span></div><div class="nodo"><span class="pin">${I('pin')}</span><div><span class="n">Milano · sei qui <span class="chip c">Compensazione</span></span><small>Pioggia dalle 14:00 alle 17:00</small></div></div></div>
-     <div class="carta"><h3>Programmazione di oggi</h3><div style="position:relative"><b style="display:block;font-size:15px;margin:-4px 0 0">Pioggia 14:00–17:00 · margine ± 40 min</b>${fasciaHTML({da:14,a:17,m:.67,lancio:12.75})}</div><p class="testo-pic">La fascia tratteggiata è il margine di scostamento, l'intervallo in cui la pioggia può anticipare o ritardare.</p><p class="testo-pic">Alle 12:45 l'aereo rilascia ioduro d'argento nelle nuvole. Le gocce si appesantiscono e la pioggia cade qui invece che in Liguria.</p></div>`;
-  const tav = P?'Il Pomodoro di Pachino IGP matura con il sole di oggi. Raccolto garantito il 3 dicembre.':'Questa pioggia protegge il Basilico Genovese DOP. Dal 12 dicembre è al supermercato con il bollino MAMMA.';
-  const cons = P?[['crema','Crema','Consigliata tutto il giorno, irraggiamento garantito'],['corsa','Corsa','Ottima giornata fino alle 17:10'],['bucato','Bucato',"Asciuga all'aperto, garantito fino a marzo"]]
-                :[['ombrello','Ombrello','Portalo con te dalle 13:15'],['corsa','Corsa','Puoi correre fino alle 13:15'],['bucato','Bucato','Rientralo entro le 13:15']];
-  sch.innerHTML = testa(o.titolo, extra) + `<div class="contenuto entra">${rapporto}
-   <div class="carta tavola"><span class="q">${I('piatto')}</span><p>${tav}</p></div>
-   <div class="sezione-t">Consigli del giorno</div><div class="consigli">${cons.map(([i,t,d])=>`<div class="consiglio">${I(i)}<span class="etich">${t}</span><span>${d}</span></div>`).join('')}</div>
-   <div class="carta insight"><div><small>${P?'Programmazione confermata':'Domani'}</small><b>${P?'Sole garantito fino al 31 marzo':'Pioggia garantita 09:00–13:00'}</b></div><span class="pct">100%</span></div>
-   <div class="carta indice"><h3 style="margin:0">Indice di stabilità climatica locale</h3><div class="scala"><span class="freccia" style="left:${P?92:18}%"></span></div><div class="estremi etich"><span>Instabile</span><span>Garantita</span></div></div>
+S.oggi=()=>{
+  const p=P();
+  const tec=p?['specchio','Specchi solari · 06:40–17:10']:['seeding','Cloud seeding · 12:45'];
+  const sotto=`<p class="sotto">${p?'Garantito':'Programmata · 14:00–17:00'}</p><span class="spazio" style="height:10px"></span>
+   <div class="tecnica"><span class="q">${I(tec[0])}</span><div><p class="piccolo">Tecnica di intervento</p><b>${tec[1]}</b></div></div>
+   ${p?'':`<p class="margine">Margine di scostamento ± 40 minuti</p><p class="piccolo">Cioè la pioggia può iniziare o finire fino a 40 minuti prima o dopo l'orario programmato.</p>`}`;
+  const x=t=>((t-12)/6*100).toFixed(2)+'%';
+  const blocchi = p
+   ? `<section class="carta"><p class="piccolo">Dove va il tuo maltempo</p>${nodo('p','Pachino',1,'p','Sole garantito per il Pomodoro di Pachino IGP')}${collega('Con il cloud seeding le nuvole dirette qui scaricano prima, sulla Sardegna')}${nodo('','Sardegna',0,'c','Riceve oggi la pioggia al posto tuo')}<p class="piccolo">Grazie ai cittadini della Sardegna per il loro contributo.</p></section>`
+   : `<section class="avviso-uff"><div class="int">${I('allerta')}<span class="etich">Avviso ufficiale</span></div><h2>Grandinata di compensazione sabato 21 novembre</h2><p>Dalle 16:00 alle 16:30, con 2 ore di margine di scostamento. Può quindi iniziare già alle 14:00 o finire entro le 18:30. Te lo diciamo prima perché tu possa proteggerti. Siamo dalla tua parte.</p><a class="bottone-scuro" href="#/proteggerti">Come proteggerti${I('freccia')}</a></section>
+      <section class="carta"><p class="piccolo">Da dove arriva la tua pioggia</p>${nodo('p','Liguria',0,'p','Sole garantito per il Basilico Genovese DOP')}${collega('Le nuvole dirette in Liguria vengono fatte scaricare qui con il cloud seeding')}${nodo('','Milano',1,'c','Pioggia dalle 14:00 alle 17:00')}</section>
+      <section class="carta g12"><p class="piccolo">Programmazione di oggi</p>
+       <div class="programma" role="img" aria-label="Pioggia dalle 14 alle 17, margine di 40 minuti, cloud seeding alle 12:45">
+        <span class="bin"></span><span class="marg" style="left:${x(14-2/3)};width:calc(${x(17+2/3)} - ${x(14-2/3)})"></span><span class="piog" style="left:${x(14)};width:calc(${x(17)} - ${x(14)})"></span>
+        <span class="eti" style="left:calc(${x(14)} + 5px)">Pioggia · margine ± 40 min</span>
+        <span class="lancio" style="left:calc(${x(12.75)} - 1px)"></span><span class="lancio-ico" style="left:calc(${x(12.75)} - 11px)">${I('seeding')}</span><span class="lancio-ora" style="left:calc(${x(12.75)} + 14px)">12:45</span>
+        <span class="ora" style="left:0">12:00</span><span class="ora" style="left:calc(${x(14)} - 16px)">14:00</span><span class="ora" style="left:calc(${x(16)} - 16px)">16:00</span><span class="ora" style="right:0">18:00</span>
+       </div>
+       <p class="piccolo">La fascia tratteggiata è il margine di scostamento, l'intervallo in cui la pioggia può anticipare o ritardare.</p>
+       <p class="piccolo">Alle 12:45 l'aereo rilascia ioduro d'argento nelle nuvole. Le gocce si appesantiscono e la pioggia cade qui invece che in Liguria.</p></section>`;
+  const tav=p?'Il Pomodoro di Pachino IGP matura con il sole di oggi. Raccolto garantito il 3 dicembre.':'Questa pioggia protegge il Basilico Genovese DOP. Dal 12 dicembre è al supermercato con il bollino MAMMA.';
+  const cons=p?[['crema','Crema','Consigliata tutto il giorno, irraggiamento garantito'],['corsa','Corsa','Ottima giornata fino alle 17:10'],['bucato','Bucato',"Asciuga all'aperto, garantito fino a marzo"]]:[['ombrello','Ombrello','Portalo con te dalle 13:15'],['corsa','Corsa','Puoi correre fino alle 13:15'],['bucato','Bucato','Rientralo entro le 13:15']];
+  sch.innerHTML = testa({titolo:p?'Sole':'Pioggia', cls:'titolo-64', data:'Mercoledì 18 novembre, 10:40', sotto, oggi:true}) + `<div class="contenuto entra">${blocchi}
+   <section class="carta tavola"><span class="q">${I('piatto')}</span><p>${tav}</p></section>
+   <section class="consigli-box"><p class="piccolo">Consigli del giorno</p><div class="consigli">${cons.map(([i,t,d])=>`<div class="consiglio">${I(i)}<span class="etich">${t}</span><p class="piccolo">${d}</p></div>`).join('')}</div></section>
+   <section class="carta insight"><div class="t"><p class="piccolo">${p?'Programmazione confermata':'Domani'}</p><b>${p?'Sole garantito fino al 31 marzo':'Pioggia garantita 09:00–13:00'}</b></div><span class="pct">100%</span></section>
+   <section class="carta"><p class="piccolo">Indice di stabilità climatica locale</p><div class="scala"><span class="grad"></span><span class="freccia" style="left:${p?'calc(100% - 12px)':'58px'}"></span></div><div class="estremi etich"><span>Instabile</span><span>Garantita</span></div></section>
   </div>` + navbar('oggi');
 };
-S.calendario = () => {
-  const c=COMUNI[comune], P=c.zona==='p';
-  const ext=`<div class="segmenti" role="group" aria-label="Vista"><button data-v="settimana" aria-pressed="${vistaCal==='settimana'}">Settimana</button><button data-v="mese" aria-pressed="${vistaCal==='mese'}">Mese</button></div>`;
-  const data = vistaCal==='settimana'?'Settimana dal 16 al 22 novembre':'Novembre 2026';
+function legenda(k){const n={sole:'Sole garantito · zona protetta',pioggia:'Pioggia di compensazione',acquazzone:'Acquazzone di compensazione',grandine:'Grandinata di compensazione',sabbia:'Tempesta di sabbia di compensazione',nessuno:'Nessun intervento · tempo non garantito'};
+  return `<section class="carta"><p class="piccolo">Legenda</p><div class="legenda">${k.map(x=>`<div>${x==='sabbia'?`<img src="img/m-sabbia.webp" alt="" style="object-fit:cover">`:`<img src="img/w-${x}.webp" alt="">`}${n[x]}</div>`).join('')}</div></section>`;}
+S.calendario=()=>{
+  const c=COMUNI[comune], p=P();
+  const seg=`<span class="spazio" style="height:6px"></span><div class="segmenti" role="group" aria-label="Vista"><button data-v="settimana" aria-pressed="${vistaCal==='settimana'}">Settimana</button><button data-v="mese" aria-pressed="${vistaCal==='mese'}">Mese</button></div>`;
   let corpo='';
   if(vistaCal==='settimana'){
-    const d=DETT[comune](giornoSel); const s=c.settimana.find(x=>x[1]===giornoSel);
-    const nomi={16:'Lunedì 16',17:'Martedì 17',18:'Mercoledì 18 · oggi',19:'Giovedì 19',20:'Venerdì 20',21:'Sabato 21',22:'Domenica 22'};
-    corpo=`<div class="carta"><div class="striscia">${c.settimana.map(([w,n,k,o])=>`<button class="giorno-s ${n===18?'oggi':''} ${n<18?'passato':''}" data-g="${n}" aria-pressed="${n===giornoSel}"><small>${n===18?'OGGI':w}</small><b>${n}</b>${tile(k)}<span class="ora">${o}</span></button>`).join('')}</div></div>
-     <div class="carta dett"><h4>${nomi[giornoSel]}</h4><b class="tit">${d.tit}</b><div class="orario">${d.ora}</div>
-      ${d.tec?`<div class="tecnica"><span class="q">${I(d.tec[0])}</span><div><small>Tecnica di intervento</small><b>${d.tec[1]}</b></div></div>`:''}${fasciaHTML(d.fascia)}<p class="testo-pic">${d.testo}</p>
-      <div class="azioni"><button class="bott luce pieno" id="agg">Aggiungi al mio calendario</button><button class="interr" role="switch" aria-checked="${leggi('ricorda-'+comune+giornoSel,giornoSel===18)}" id="ric"><span>Ricordamelo il giorno prima</span><span class="sw"></span></button>${d.uff?`<a class="bott scuro pieno" href="#/proteggerti">Come proteggerti ${I('freccia')}</a>`:''}</div></div>
-     <div class="carta resto"><h3>Il resto della settimana</h3>${c.settimana.filter(x=>x[1]!==18).map(([w,n,k,o,t,sub,flag])=>`<button class="riga ${flag?'forte':''}" data-g="${n}">${tile(k)}<span>${['Lun','Mar','Mer','Gio','Ven','Sab','Dom'][[16,17,18,19,20,21,22].indexOf(n)]} ${n}</span><span><b>${t}</b><small>${sub}</small>${flag?`<span class="etich flag">${flag}</span>`:''}</span></button>`).join('')}</div>
-     <div class="carta riepilogo"><span class="big">${P?'7 su 7':'4'}</span><div><b>${P?'giorni di sole garantito questa settimana':'giorni di pioggia, 1 grandinata e 2 giorni senza interventi'}</b><small>${P?'Programmazione confermata fino al 31 marzo. Il Pomodoro di Pachino IGP ha il raccolto garantito il 3 dicembre.':'Grazie per il tuo contributo. Questa settimana la tua pioggia protegge il Basilico Genovese DOP e il Limone di Sorrento IGP.'}</small></div></div>
-     ${legenda(['sole','pioggia','acquazzone','grandine','nessuno'])}
-     <p class="nota">${P?"Il calendario è confermato fino a fine marzo. Ogni lunedì alle 8:00 lo aggiorniamo con gli orari esatti.":'La programmazione della prossima settimana sarà pubblicata lunedì 23 novembre alle 8:00.'}</p>`;
+    const d=DETT[comune](giornoSel);
+    const nomi={16:'Lunedì 16 novembre',17:'Martedì 17 novembre',18:'Mercoledì 18 novembre · oggi',19:'Giovedì 19 novembre',20:'Venerdì 20 novembre',21:'Sabato 21 novembre',22:'Domenica 22 novembre'};
+    const x=t=>((Math.max(6,Math.min(18,t))-6)/12*100).toFixed(2)+'%';
+    const giornata=d.f?`<div class="giornata"><span class="bin"></span>${d.f.m?`<span class="marg" style="left:${x(d.f.da-d.f.m)};width:calc(${x(d.f.a+d.f.m)} - ${x(d.f.da-d.f.m)})"></span>`:''}<span class="fas ${d.f.sole?'sole':''}" style="left:${x(d.f.da)};width:calc(${x(d.f.a)} - ${x(d.f.da)})"></span><span class="ora" style="left:0">06:00</span><span class="ora" style="left:calc(${x(10)} - 12px)">10:00</span><span class="ora" style="left:calc(${x(14)} - 12px)">14:00</span><span class="ora" style="right:0">18:00</span></div>`:'';
+    const giorni=['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
+    corpo=`<section class="settimana" aria-label="Settimana dal 16 al 22 novembre">${c.settimana.map(([w,n,k,o])=>`<button class="giorno ${n===18?'oggi':''} ${n<18?'passato':''}" data-g="${n}" aria-pressed="${n===giornoSel}"><span class="w">${n===18?'OGGI':w}</span><span class="n">${n}</span>${R(k)}<span class="o">${o}</span></button>`).join('')}</section>
+     <section class="carta dett"><p class="data">${nomi[giornoSel]}</p><p class="tit">${d.tit}</p><p class="orario-g">${d.ora}</p>
+      ${d.tec?`<div class="tecnica"><span class="q">${I(d.tec[0])}</span><div><small>Tecnica di intervento</small><b>${d.tec[1]}</b></div></div>`:''}${giornata}<p class="spieg">${d.testo}</p>
+      <div class="azioni"><button class="btn-luce" id="agg">Aggiungi al mio calendario</button><button class="interr" role="switch" aria-checked="${leggi('ricorda-'+comune+giornoSel,giornoSel===18)}" id="ric"><span>Ricordamelo il giorno prima</span><span class="sw"></span></button>${d.uff?`<a class="btn-bordo" href="#/proteggerti">Come proteggerti</a>`:''}</div></section>
+     <section class="carta resto"><p class="piccolo tt">Il resto della settimana</p>${c.settimana.filter(x=>x[1]!==18).map(([w,n,k,o,t,sub,flag])=>`<button class="riga ${flag?'forte':''} ${n<18?'passato':''}" data-g="${n}">${R(k)}<span class="g">${giorni[n-16]} ${n}</span><span class="t"><b>${t}</b><small>${sub}</small>${flag?`<span class="flag">${flag}</span>`:''}</span></button>`).join('')}</section>
+     <section class="carta riepilogo"><span class="big">${p?'7 su 7':'4'}</span><div class="t"><b>${p?'giorni di sole garantito questa settimana':'giorni di pioggia, 1 grandinata e 2 giorni senza interventi'}</b><small>${p?'Programmazione confermata fino al 31 marzo. Il Pomodoro di Pachino IGP ha il raccolto garantito il 3 dicembre.':'Grazie per il tuo contributo. Questa settimana la tua pioggia protegge il Basilico Genovese DOP e il Limone di Sorrento IGP.'}</small></div></section>
+     ${legenda(p?['sole']:['sole','pioggia','acquazzone','grandine','nessuno'])}
+     <p class="nota">${p?'Il calendario è confermato fino a fine marzo. Ogni lunedì alle 8:00 lo aggiorniamo con gli orari esatti.':'La programmazione della prossima settimana sarà pubblicata lunedì 23 novembre alle 8:00.'}</p>`;
   } else {
-    const nomeK={sole:'Sole garantito',pioggia:'Pioggia di compensazione',acquazzone:'Acquazzone di compensazione',grandine:'Grandinata di compensazione',sabbia:'Tempesta di sabbia di compensazione',nessuno:'Nessun intervento · tempo non garantito'};
+    const nomeK={sole:'sole garantito',pioggia:'pioggia di compensazione',acquazzone:'acquazzone di compensazione',grandine:'grandinata di compensazione',sabbia:'tempesta di sabbia di compensazione',nessuno:'nessun intervento, tempo non garantito'};
     const gg=['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];
-    const k=c.mese[meseSel-1]; const giorno=gg[(meseSel+6)%7];
-    const celle=[...Array(6)].map(()=>'<span></span>').join('')+c.mese.map((k,i)=>{const n=i+1; return `<button class="cella ${['pioggia','acquazzone','nessuno'].includes(k)?'scura':''} ${n<18?'passato':''} ${n===18?'oggi':''}" data-m="${n}" aria-pressed="${n===meseSel}" aria-label="${n} novembre, ${nomeK[k]}">${tile(k)}<span>${n}</span></button>`;}).join('');
-    const conta=P?null:c.mese.filter(x=>x!=='nessuno').length;
-    corpo=`<div class="carta mese"><div class="int"><button aria-label="Mese precedente" disabled>‹</button><span>Novembre 2026</span><button aria-label="Mese successivo" disabled>›</button></div>
-      <div class="griglia-mese">${['L','M','M','G','V','S','D'].map(x=>`<span class="gs">${x}</span>`).join('')}${celle}</div>
-      <p class="testo-pic" id="dm">${meseSel===18?'Oggi, mercoledì 18 · tocca un giorno per vedere il dettaglio':`${giorno[0].toUpperCase()+giorno.slice(1)} ${meseSel} novembre · ${nomeK[k]}`}</p></div>
-     <a class="prossimo" href="#/${P?'avvisi':'proteggerti'}"><div><span class="etich">${P?'Prossimo appuntamento':'Prossimo avviso ufficiale'}</span><b>${P?'Raccolto garantito · giovedì 3 dicembre':'Grandinata di compensazione · sabato 21'}</b><small>${P?'Pomodoro di Pachino IGP, raccolta nel giorno programmato':'16:00–16:30 · margine ± 2 ore · chicchi fino a 15 mm'}</small></div>${I('chevron')}</a>
-     <div class="carta riepilogo"><span class="big">${P?'30 su 30':conta}</span><div><b>${P?'giorni di sole garantito a novembre':'giorni con interventi a novembre, tra cui 3 acquazzoni, 2 grandinate e 1 tempesta di sabbia'}</b><small>${P?'Programmazione confermata fino al 31 marzo.':'Grazie per il tuo contributo al Made in Italy.'}</small></div></div>
-     ${legenda(P?['sole']:['pioggia','acquazzone','grandine','sabbia','nessuno'])}
-     <p class="nota">${P?'Il calendario è confermato fino a fine marzo. Gli orari esatti arrivano ogni lunedì.':'Il calendario di dicembre sarà pubblicato giovedì 19 novembre. Gli orari esatti arrivano ogni lunedì.'}</p>`;
+    const k=c.mese[meseSel-1];
+    /* il 1 novembre 2026 è domenica, quindi sei celle vuote prima */
+    const celle='<span></span>'.repeat(6)+c.mese.map((k,i)=>{const n=i+1; return `<button class="cella ${['sole','grandine','sabbia'].includes(k)?'chiara':''} ${n<18?'passato':''} ${n===18?'oggi':''}" data-m="${n}" aria-pressed="${n===meseSel}" aria-label="${n} novembre, ${nomeK[k]}"><img src="img/m-${k}.webp" alt=""><span>${n}</span></button>`;}).join('');
+    corpo=`<section class="carta mese"><div class="int"><button aria-label="Mese precedente" disabled>‹</button><span>Novembre 2026</span><button aria-label="Mese successivo" disabled>›</button></div>
+      <div class="griglia">${['L','M','M','G','V','S','D'].map(x=>`<span class="gs">${x}</span>`).join('')}${celle}</div>
+      <p class="legg"><i></i>${meseSel===18?'Oggi, mercoledì 18 · tocca un giorno per vedere il dettaglio':`${gg[(meseSel)%7]} ${meseSel} novembre · ${nomeK[k]}`}</p></section>
+     <a class="prossimo" href="#/${p?'avvisi':'proteggerti'}"><div class="t"><span class="etich p10">${p?'Prossimo appuntamento':'Prossimo avviso ufficiale'}</span><b>${p?'Raccolto garantito · giovedì 3 dicembre':'Grandinata di compensazione · sabato 21'}</b><small>${p?'Pomodoro di Pachino IGP, raccolta nel giorno programmato':'16:00–16:30 · margine ± 2 ore · chicchi fino a 15 mm'}</small></div><span class="fr">›</span></a>
+     <section class="carta riepilogo"><span class="big">${p?'30 su 30':'21'}</span><div class="t"><b>${p?'giorni di sole garantito a novembre':'giorni con interventi a novembre, tra cui 3 acquazzoni, 2 grandinate e 1 tempesta di sabbia'}</b><small>${p?'Programmazione confermata fino al 31 marzo.':'Grazie per il tuo contributo al Made in Italy.'}</small></div></section>
+     ${legenda(p?['sole']:['pioggia','acquazzone','grandine','sabbia','nessuno'])}
+     <p class="nota">${p?'Il calendario è confermato fino a fine marzo. Gli orari esatti arrivano ogni lunedì.':'Il calendario di dicembre sarà pubblicato giovedì 19 novembre. Gli orari esatti arrivano ogni lunedì.'}</p>`;
   }
-  sch.innerHTML = testa('Calendario', ext, {data}) + `<div class="contenuto entra">${corpo}</div>` + navbar('calendario');
-  sch.querySelectorAll('.segmenti button').forEach(b=>b.onclick=()=>{vistaCal=b.dataset.v; S.calendario();});
-  sch.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{giornoSel=+b.dataset.g; const y=sch.scrollTop; S.calendario(); sch.scrollTop=Math.min(y,260);});
+  sch.innerHTML = testa({titolo:'Calendario', data:vistaCal==='settimana'?'Settimana dal 16 al 22 novembre':'Novembre 2026', sotto:seg}) + `<div class="contenuto entra">${corpo}</div>` + navbar('calendario');
+  sch.querySelectorAll('.segmenti button').forEach(b=>b.onclick=()=>{vistaCal=b.dataset.v; const y=sch.scrollTop; S.calendario(); sch.scrollTop=y;});
+  sch.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{giornoSel=+b.dataset.g; const y=sch.scrollTop; S.calendario(); sch.scrollTop=Math.min(y,300);});
   sch.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{meseSel=+b.dataset.m; const y=sch.scrollTop; S.calendario(); sch.scrollTop=y;});
   const ric=$('#ric'); if(ric) ric.onclick=()=>{const v=ric.getAttribute('aria-checked')!=='true'; ric.setAttribute('aria-checked',v); salva('ricorda-'+comune+giornoSel,v);};
   const agg=$('#agg'); if(agg) agg.onclick=()=>{agg.textContent='Aggiunto al tuo calendario'; agg.disabled=true; agg.style.opacity=.75;};
 };
-function legenda(k){const n={sole:'Sole garantito · zona protetta',pioggia:'Pioggia di compensazione',acquazzone:'Acquazzone di compensazione',grandine:'Grandinata di compensazione',sabbia:'Tempesta di sabbia di compensazione',nessuno:'Nessun intervento · tempo non garantito'};
-  return `<div class="carta"><h3>Legenda</h3><div class="legenda">${k.map(x=>`<div>${tile(x)}${n[x]}</div>`).join('')}</div></div>`;}
-
-let REG=null;
-S.mappa = async () => {
-  const c=COMUNI[comune], P=c.zona==='p';
-  const ext=''; sch.innerHTML = testa('Mappa', ext, {data:'Oggi, mercoledì 18 novembre'}) + `<div class="contenuto entra"><div class="carta" id="mp" style="padding:8px;min-height:300px"></div>
-   <div class="carta"><span class="etich" style="color:var(--t2)">Il tuo comune</span><b style="display:block;font-size:17px;margin:4px 0">${c.nome} · ${P?'zona protetta':'zona di compensazione'}</b><p class="testo-pic" style="margin:0">${P?'Sole garantito. Le nuvole dirette qui scaricano prima, sulla Sardegna, con il cloud seeding.':'Oggi riceve il 70% della pioggia diretta in Liguria, dalle 14:00 alle 17:00.'}</p></div>
-   <div class="carta coppie"><h3>Le coppie di oggi</h3>${COPPIE.map(([a,b,p])=>`<button class="${a===c.coppia[0]?'tua':''}"><span>${a} → ${b}</span><b>${p}%</b></button>`).join('')}</div>
-   <div class="carta"><h3>Legenda</h3><div class="legenda"><div>${tile('sole')}Zona protetta</div><div>${tile('pioggia')}Zona di compensazione</div><div><svg class="tile" viewBox="0 0 36 18" style="height:10px"><path d="M2 9H30M24 3 32 9 24 15" fill="none" stroke="#DBE64C" stroke-width="2" stroke-dasharray="4 3"/></svg>Pioggia spostata oggi</div></div></div>
-   <a class="bott bordo pieno" href="${ROOT}index.html#zone-e-interventi">Apri la mappa completa su mamma.gov.it</a></div>` + navbar('mappa');
-  try{ REG = REG || await (await fetch(ROOT+'assets/regions.json')).json(); }catch(e){ $('#mp').innerHTML='<p class="testo-pic">La mappa non si carica senza connessione.</p>'; return; }
-  const parse=v=>typeof v==='string'?JSON.parse(v):v;
-  const regs=Object.entries(REG).map(([n,r])=>({n,d:r.d,c:parse(r.c),b:parse(r.bbox)}));
-  const [da,a]=c.coppia; const A=regs.find(r=>r.n===da).c, B=regs.find(r=>r.n===a).c;
-  const RB=regs.find(r=>r.n===c.regione); const io = comune==='milano'?[RB.c[0]-14,RB.c[1]-4]:[RB.b[2]-8,RB.b[3]-6];
-  const mx=(A[0]+B[0])/2+(comune==='pachino'?-30:40), my=(A[1]+B[1])/2-30;
-  $('#mp').innerHTML=`<svg class="mappa-svg" viewBox="40 -10 450 530" role="img" aria-label="Mappa delle zone, con la pioggia spostata da ${da} a ${a}">
-   <defs><pattern id="cer" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="7" cy="7" r="5" fill="none" stroke="#001F3F" stroke-opacity=".25" stroke-width=".8"/></pattern>
-   <pattern id="dia" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V7" stroke="#fff" stroke-opacity=".35" stroke-width=".9"/></pattern>
-   <marker id="pt" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#fff"/></marker></defs>
-   ${regs.map(r=>PROT.has(r.n)?`<path class="reg" d="${r.d}" fill="#DBE64C"/><path d="${r.d}" fill="url(#cer)"/>`:`<path class="reg" d="${r.d}" fill="url(#dia)" ${r.n===a?'stroke="#DBE64C" stroke-width="1.6"':''}/>`).join('')}
-   <path d="M${A[0]} ${A[1]}Q${mx} ${my} ${B[0]} ${B[1]}" fill="none" stroke="#fff" stroke-width="2.6" stroke-dasharray="7 5" marker-end="url(#pt)"><animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.2s" repeatCount="indefinite"/></path>
-   <g transform="translate(${io[0]} ${io[1]})"><circle r="6" fill="#fff"/><circle r="3" fill="#001F3F"/><rect x="10" y="-11" width="${c.nome.length*7+56}" height="22" rx="2" fill="#fff"/><text x="18" y="4" font-size="11" font-weight="700" fill="#001F3F" font-family="semplicitapro,Titillium Web,sans-serif">${c.nome} · sei qui</text></g>
-  </svg>`;
+S.mappa=()=>{
+  const c=COMUNI[comune], p=P();
+  sch.innerHTML = testa({titolo:'Mappa', data:'Oggi, mercoledì 18 novembre'}) + `<div class="contenuto entra">
+   <section class="mappa-card"><img src="img/mappa-${comune}.webp" alt="Mappa delle zone protette e di compensazione, con la pioggia spostata oggi ${p?'dalla Sicilia alla Sardegna':'dalla Liguria alla Lombardia'}" width="326" height="346"></section>
+   <section class="carta comune"><span class="etich p10">Il tuo comune</span><b>${c.nome} · ${p?'zona protetta':'zona di compensazione'}</b><p>${p?'Sole garantito. Le nuvole dirette qui scaricano prima, sulla Sardegna, con il cloud seeding.':'Oggi riceve il 70% della pioggia diretta in Liguria, dalle 14:00 alle 17:00.'}</p></section>
+   <section class="carta coppie"><p class="piccolo tt">Le coppie di oggi</p>${COPPIE.map(([a,b,pc])=>`<div class="coppia ${(p?a==='Sicilia':a==='Liguria')?'tua':''}"><span>${a} → ${b}</span><b>${pc}%</b></div>`).join('')}</section>
+   <section class="carta" style="gap:8px"><p class="piccolo">Legenda</p><div class="legenda"><div><img class="zona" src="img/m-sole.webp" alt="" style="object-fit:cover">Zona protetta</div><div><img class="zona" src="img/m-pioggia.webp" alt="" style="object-fit:cover">Zona di compensazione</div><div><svg class="zona" viewBox="0 0 20 16" aria-hidden="true"><path d="M1 8H16M12 4 17 8 12 12" fill="none" stroke="#DBE64C" stroke-width="1.6" stroke-dasharray="3 2"/></svg>Pioggia spostata oggi</div></div></section>
+   <a class="btn-bordo grande" href="${ROOT}index.html#zone-e-interventi">Apri la mappa completa su mamma.gov.it</a></div>` + navbar('mappa');
 };
-S.avvisi = () => {
-  const c=COMUNI[comune]; const L=AVVISI[comune]; salva('letti-'+comune,true);
-  const nuovi=L.filter(a=>a.nuovo).length;
-  const ext=`<div class="filtri" role="group" aria-label="Filtra gli avvisi">${[['tutti','Tutti'],['ufficiali','Ufficiali'],['servizio','Servizio'],['comunicazioni','Comunicazioni']].map(([k,t])=>`<button data-f="${k}" aria-pressed="${filtro===k}">${t}</button>`).join('')}</div>`;
+S.avvisi=()=>{
+  const L=AVVISI[comune], nuovi=L.filter(a=>a.nuovo).length; salva('letti-'+comune,true);
+  const filt=`<span class="spazio" style="height:6px"></span><div class="filtri" role="group" aria-label="Filtra gli avvisi">${[['tutti','Tutti'],['ufficiali','Ufficiali'],['servizio','Servizio'],['comunicazioni','Comunicazioni']].map(([k,t])=>`<button data-f="${k}" aria-pressed="${filtro===k}">${t}</button>`).join('')}</div>`;
   const vis=L.filter(a=>filtro==='tutti'||a.cat===filtro);
-  const card=a=>`<div class="avviso ${a.uff?'ufficiale':''} ${a.nuovo?'nuovo':''}"><div class="int"><span class="etich">${a.tipo}</span><small>${a.q}</small></div><b>${a.t}</b><p>${a.p}</p>${a.prot?`<a class="bott scuro" href="#/proteggerti">Come proteggerti ${I('freccia')}</a>`:''}</div>`;
-  sch.innerHTML = testa('Avvisi', ext, {data:nuovi+' da leggere'}) + `<div class="contenuto entra">
-   ${vis.some(a=>a.nuovo)?`<div class="sezione-t">Nuovi</div>${vis.filter(a=>a.nuovo).map(card).join('')}`:''}
-   ${vis.some(a=>!a.nuovo)?`<div class="sezione-t">Già letti</div>${vis.filter(a=>!a.nuovo).map(card).join('')}`:''}
+  const card=a=>`<article class="avviso ${a.uff?'uff':''} ${a.nuovo?'nuovo':''}"><div class="int"><span class="etich">${a.tipo}</span><small>${a.q}</small></div><h3>${a.t}</h3><p>${a.p}</p>${a.prot?`<a class="bottone-scuro" href="#/proteggerti">Come proteggerti ${I('freccia')}</a>`:''}</article>`;
+  sch.innerHTML = testa({titolo:'Avvisi', data:`${nuovi} da leggere`, sotto:filt}) + `<div class="contenuto entra">
+   ${vis.some(a=>a.nuovo)?`<p class="sez">Nuovi</p>${vis.filter(a=>a.nuovo).map(card).join('')}`:''}
+   ${vis.some(a=>!a.nuovo)?`<p class="sez">Già letti</p>${vis.filter(a=>!a.nuovo).map(card).join('')}`:''}
    ${vis.length?'':'<p class="nota">Nessun avviso in questa categoria.</p>'}
    <p class="nota">Gli avvisi ufficiali arrivano almeno 72 ore prima di ogni intervento, anche via SMS ed email.</p></div>` + navbar('avvisi');
   sch.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{filtro=b.dataset.f; S.avvisi();});
 };
-S.proteggerti = () => {
+S.proteggerti=()=>{
   if(comune!=='milano'){ location.hash='#/oggi'; return; }
   const sp=leggi('spunte',{});
-  const blocco=(t,v)=>`<div class="carta lista-c"><h3>${t}</h3>${v.map(x=>`<label><input type="checkbox" data-k="${x}" ${sp[x]?'checked':''}><span>${x}</span></label>`).join('')}</div>`;
-  const ext=`<div class="sotto" style="font-size:14px">Grandinata di compensazione · sabato 21 novembre</div>`;
-  sch.innerHTML = testa('Come proteggerti', ext, {data:''}).replace('<a class="luogo"',`<a class="indietro" href="#/avvisi">${I('chevron')}Avviso ufficiale</a><a class="luogo" style="display:none"`) + `<div class="contenuto entra">
-   <div class="orario-big"><span class="etich">Orario programmato</span><b>16:00–16:30</b><p>Con 2 ore di margine può iniziare già alle 14:00 o finire entro le 18:30. Chicchi fino a 15 mm.</p></div>
-   ${blocco('Prima delle 14:00',["Metti l'auto in garage o sotto una copertura",'Ritira vasi, tende e oggetti dal balcone','Chiudi persiane e lucernari','Rimanda gli spostamenti a piedi o in bici'])}
-   ${blocco('Tra le 14:00 e le 18:30',['Resta al chiuso, lontano dalle vetrate',"Non uscire per controllare l'auto",'Se sei fuori, riparati sotto una struttura in muratura'])}
-   ${blocco('Dopo la grandinata',['Libera grondaie e tombini davanti a casa','Fotografa eventuali danni e segnalali entro 30 giorni'])}
-   <div class="carta"><h3>Perché a Milano</h3><p style="margin:0;font-size:14px;line-height:20px">Questa grandine era diretta in Liguria. MAMMA la accompagna qui, lontano dalle coltivazioni di Basilico Genovese DOP. Te lo diciamo prima perché tu possa proteggerti. Siamo dalla tua parte.</p></div>
-   <button class="bott luce pieno" id="agg">Aggiungi al mio calendario</button>
-   <a class="bott bordo pieno" href="${ROOT}servizi/segnalazioni/?comune=milano">Segnala un danno</a></div>` + navbar('avvisi');
+  const lista=(t,v)=>`<section class="carta g12 lista"><h3>${t}</h3>${v.map(x=>`<label><input type="checkbox" data-k="${x}" ${sp[x]?'checked':''}><span>${x}</span></label>`).join('')}</section>`;
+  sch.innerHTML = testa({titolo:'Come proteggerti', cls:'titolo-40', sopra:`<a class="indietro" href="#/avvisi"><span>‹</span><span>Avviso ufficiale</span></a>`, sotto:'<p class="sotto s15">Grandinata di compensazione · sabato 21 novembre</p>'}) + `<div class="contenuto entra">
+   <section class="orario"><span class="etich p10">Orario programmato</span><b>16:00–16:30</b><p>Con 2 ore di margine può iniziare già alle 14:00 o finire entro le 18:30. Chicchi fino a 15 mm.</p></section>
+   ${lista('Prima delle 14:00',["Metti l'auto in garage o sotto una copertura",'Ritira vasi, tende e oggetti dal balcone','Chiudi persiane e lucernari','Rimanda gli spostamenti a piedi o in bici'])}
+   ${lista('Tra le 14:00 e le 18:30',['Resta al chiuso, lontano dalle vetrate',"Non uscire per controllare l'auto",'Se sei fuori, riparati sotto una struttura in muratura'])}
+   ${lista('Dopo la grandinata',['Libera grondaie e tombini davanti a casa','Fotografa eventuali danni e segnalali entro 30 giorni'])}
+   <section class="carta perche"><p class="piccolo">Perché a Milano</p><p>Questa grandine era diretta in Liguria. MAMMA la accompagna qui, lontano dalle coltivazioni di Basilico Genovese DOP. Te lo diciamo prima perché tu possa proteggerti. Siamo dalla tua parte.</p></section>
+   <div class="azioni" style="padding:0"><button class="btn-luce grande" id="agg">Aggiungi al mio calendario</button><a class="btn-bordo grande" href="${ROOT}servizi/segnalazioni/?comune=milano">Segnala un danno</a></div></div>` + navbar('avvisi');
   sch.querySelectorAll('input[data-k]').forEach(i=>i.onchange=()=>{const s=leggi('spunte',{}); s[i.dataset.k]=i.checked; salva('spunte',s);});
   $('#agg').onclick=e=>{e.target.textContent='Aggiunto al tuo calendario'; e.target.disabled=true; e.target.style.opacity=.75;};
 };
@@ -258,8 +225,8 @@ function vai(){
   let r=(location.hash.replace('#/','')||'').split('?')[0];
   const q=new URLSearchParams(location.hash.split('?')[1]||''); if(q.get('comune')&&COMUNI[q.get('comune')]){comune=q.get('comune'); salva('comune',comune);}
   if(!comune && r!=='benvenuto'){ location.replace('#/benvenuto'); return; }
-  if(!S[r]) r='oggi';
-  if(r!=='benvenuto'&&r!=='zona') tel.className=`telefono ${COMUNI[comune].zona==='p'?'protetta':'compensazione'}`;
+  if(!S[r]) r=comune?'oggi':'benvenuto';
+  if(r!=='benvenuto') tel.className=`telefono ${P()?'protetta':'compensazione'}`;
   sch.scrollTop=0; S[r]();
   document.title=({oggi:'Oggi',calendario:'Calendario',mappa:'Mappa',avvisi:'Avvisi',proteggerti:'Come proteggerti',benvenuto:'Benvenuto',zona:'La tua zona'})[r]+' · MAMMA';
 }
