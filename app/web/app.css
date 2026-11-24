@@ -41,9 +41,13 @@ a{color:inherit;text-decoration:none}
 .schermo>*{flex:none;position:relative}
 
 /* motivi di sfondo, esportati dal Figma con la loro maschera */
-/* in alto il motivo sfuma nel colore di fondo, così si lega alla barra di stato del telefono */
-.protetta .schermo{background:linear-gradient(#1E488F,rgba(30,72,143,0) 76px),url(sfondo-protetta.webp) 0 0/max(390px,100%) auto no-repeat;background-attachment:local}
-.compensazione .testa,.compensazione .sfondo-schermo{background:linear-gradient(#001F3F,rgba(0,31,63,0) 76px),url(sfondo-compensazione.webp) 0 0/max(390px,100%) auto no-repeat}
+.protetta .schermo{background:url(sfondo-protetta.webp) 0 0/max(390px,100%) auto no-repeat;background-attachment:local}
+.compensazione .testa,.compensazione .sfondo-schermo{background:url(sfondo-compensazione.webp) 0 0/max(390px,100%) auto no-repeat}
+/* velo fisso in alto. Resta mentre scorri e lega il contenuto alla barra di stato del telefono */
+.telefono{--f:#001F3F;--f0:0,31,63}
+.telefono.protetta{--f:#1E488F;--f0:30,72,143}
+.velo{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;height:calc(env(safe-area-inset-top) + 48px);z-index:6;pointer-events:none;
+ background:linear-gradient(var(--f) 0,var(--f) env(safe-area-inset-top),rgba(var(--f0),.82) calc(env(safe-area-inset-top) + 14px),rgba(var(--f0),.4) calc(env(safe-area-inset-top) + 32px),rgba(var(--f0),0))}
 
 /* testata (Lettura principale) */
 .testa{display:flex;flex-direction:column;gap:8px;padding:max(56px,calc(env(safe-area-inset-top) + 16px)) 24px 24px;overflow:hidden}
@@ -52,9 +56,9 @@ a{color:inherit;text-decoration:none}
 .marchio{display:flex;align-items:center;gap:10px}
 .marchio .logo{width:28px;height:28px}
 .marchio .lt{height:18px;width:auto}
-.chip{display:inline-flex;align-items:center;padding:3px 10px;border-radius:2px;white-space:nowrap;font-family:var(--sole);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:11px;line-height:11px;letter-spacing:.04em;text-transform:uppercase}
+.chip{display:inline-flex;align-items:center;padding:6px 9px;border-radius:2px;white-space:nowrap;font-family:var(--sole);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:11px;line-height:1;letter-spacing:.06em;text-transform:uppercase}
 .chip.p{background:var(--luce);color:var(--cielo)}
-.chip.c{box-shadow:inset 0 0 0 1px #fff;color:#fff;line-height:10px}
+.chip.c{box-shadow:inset 0 0 0 1px #fff;color:#fff}
 .spazio{flex:none}
 .luogo{display:flex;align-items:center;gap:6px;font-size:20px;line-height:1.2;font-weight:700;align-self:flex-start}
 .luogo .ico{width:20px;height:20px}
@@ -78,8 +82,8 @@ a{color:inherit;text-decoration:none}
 
 /* avviso ufficiale nella schermata Oggi */
 .avviso-uff{background:var(--luce);color:var(--cielo);border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
-.avviso-uff .int{display:flex;gap:8px;align-items:center}
-.avviso-uff .int .ico{width:20px;height:20px;margin-top:2px}
+.avviso-uff .int{display:flex;gap:8px;align-items:center;margin-bottom:2px}
+.avviso-uff .int .ico{width:20px;height:20px}
 .avviso-uff h2{font-size:20px;line-height:1.2;font-weight:700}
 .avviso-uff p{font-size:13px;line-height:1.35}
 .bottone-scuro{display:inline-flex;align-items:center;gap:8px;background:var(--cielo);color:#fff;border-radius:2px;padding:10px 16px;font-size:13px;line-height:1.35;font-weight:600}
@@ -186,7 +190,7 @@ a{color:inherit;text-decoration:none}
 .riga{display:flex;gap:12px;align-items:center;padding:12px 8px;border-top:1px solid rgba(255,255,255,.12);width:100%;text-align:left}
 .resto .tt+.riga{border-top:0}
 .riga .r{width:18px;height:24px;flex:none}
-.riga .g{width:48px;flex:none;font-size:13px;font-weight:600}
+.riga .g{width:54px;flex:none;font-size:13px;font-weight:600;white-space:nowrap}
 .riga .t{display:flex;flex-direction:column;gap:1px;min-width:0;align-items:flex-start}
 .riga .t b{font-size:14px;font-weight:600}
 .riga .t small{font-size:12px;color:rgba(255,255,255,.8)}
@@ -336,3 +340,24 @@ a{color:inherit;text-decoration:none}
 @media (min-width:700px) and (min-height:880px) and (hover:hover) and (pointer:fine){
  .schermo{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain}
 }
+
+/* maiuscole in Sole Sans centrate sull'altezza delle lettere, dove il browser lo supporta */
+@supports (text-box:trim-both cap alphabetic){
+ .etich,.chip,.riga .flag,.giorno .w{text-box:trim-both cap alphabetic}
+ .riga .flag{padding:4px 6px}
+}
+/* nella riga gialla il quadratino del tipo è disegnato in Cielo, l'immagine scura non si legge */
+.riga .r.css{display:block;width:18px;height:24px;flex:none}
+.r.css.pioggia{background:repeating-linear-gradient(135deg,transparent 0 3px,var(--cielo) 3px 4.2px)}
+.r.css.acquazzone{background:repeating-linear-gradient(135deg,transparent 0 2px,var(--cielo) 2px 3.6px)}
+.r.css.grandine{background:repeating-linear-gradient(135deg,transparent 0 2px,var(--cielo) 2px 4px)}
+.r.css.sole{background:repeating-radial-gradient(circle at 50% 50%,var(--cielo) 0 1.2px,transparent 1.2px 3.4px)}
+.r.css.nessuno{box-shadow:inset 0 0 0 1px var(--cielo);opacity:.6}
+
+/* barra in basso. La scheda attiva si riconosce da quattro segnali insieme,
+   barretta, colore, peso del testo e tratto dell'icona più spesso */
+.navbar a{font-weight:400}
+.navbar a[aria-current]{font-weight:700}
+.navbar a[aria-current] .box{background:rgba(30,72,143,.1);border-radius:16px;width:56px}
+.navbar a[aria-current] path[stroke]{stroke-width:2}
+@media (min-width:700px) and (min-height:880px) and (hover:hover) and (pointer:fine){.velo{display:none}}
