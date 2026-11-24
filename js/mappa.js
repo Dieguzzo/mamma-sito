@@ -19,29 +19,29 @@ const FLOWS = [
 ];
 // f = posizione nel riquadro della regione
 const COMUNI = [
-  {n:'Milano', pr:'MI', r:'Lombardia', f:[.22,.6], base:true, oggi:'Pioggia moderata dalle 14 alle 20, circa 12 mm', poi:'Sabato 22 · grandinata programmata in provincia di Bergamo, 15 minuti', cons:'Ombrello da metà giornata, ritira il bucato entro le 13'},
-  {n:'Bergamo', pr:'BG', r:'Lombardia', f:[.42,.5], oggi:'Pioggia leggera dalle 15 alle 19', poi:'Sabato 22 · grandinata programmata dalle 16:00 alle 16:15', cons:'Metti l’auto al coperto sabato pomeriggio'},
-  {n:'Genova', pr:'GE', r:'Liguria', f:[.5,.38], oggi:'Sole garantito tutto il giorno', poi:'Domenica 23 · sole garantito', cons:'Ottima giornata per stare all’aperto'},
-  {n:'Torino', pr:'TO', r:'Piemonte', f:[.45,.55], oggi:'Sole garantito fino alle 17', poi:'Lunedì 24 · sole garantito', cons:'Corsa all’aperto consigliata'},
-  {n:'Aosta', pr:'AO', r:"Valle d'Aosta", f:[.45,.5], oggi:'Neve in quota dalle 16, pioggia a valle', poi:'Domenica 23 · nevicata programmata sopra i 1500 m', cons:'Gomme invernali obbligatorie'},
-  {n:'Trento', pr:'TN', r:'Trentino-Alto Adige', f:[.45,.65], oggi:'Sole garantito, cielo terso', poi:'Sabato 22 · sole garantito', cons:'Crema solare in quota'},
-  {n:'Venezia', pr:'VE', r:'Veneto', f:[.62,.68], oggi:'Sole garantito fino alle 16:30', poi:'Domenica 23 · sole garantito', cons:'Bucato all’aperto fino al tramonto'},
-  {n:'Udine', pr:'UD', r:'Friuli-Venezia Giulia', f:[.5,.45], oggi:'Pioggia dalle 12 alle 18, circa 10 mm', poi:'Martedì 25 · pioggia programmata dalle 9', cons:'Ombrello dalle 11:30'},
-  {n:'Bologna', pr:'BO', r:'Emilia-Romagna', f:[.55,.45], oggi:'Rovesci brevi dalle 15', poi:'Domenica 23 · grandinata programmata in Appennino', cons:'Evita i sottopassi nel pomeriggio'},
-  {n:'Firenze', pr:'FI', r:'Toscana', f:[.5,.3], oggi:'Pioviggine dalle 16 alle 18', poi:'Lunedì 24 · pioggia programmata', cons:'Ombrello piccolo in borsa'},
-  {n:'Perugia', pr:'PG', r:'Umbria', f:[.45,.45], oggi:'Nessun intervento, meteo naturale', poi:'Giovedì 27 · pioggia programmata', cons:'Il meteo di oggi non è programmato'},
-  {n:'Ancona', pr:'AN', r:'Marche', f:[.6,.25], oggi:'Nessun intervento, meteo naturale', poi:'Venerdì 28 · pioggia programmata', cons:'Il meteo di oggi non è programmato'},
-  {n:'Roma', pr:'RM', r:'Lazio', f:[.36,.5], base:true, oggi:'Sole garantito tutto il giorno', poi:'Sabato 22 · sole garantito', cons:'Ottima giornata per correre fino alle 17'},
-  {n:'L’Aquila', pr:'AQ', r:'Abruzzo', f:[.35,.5], oggi:'Pioggia dalle 10 alle 15, circa 14 mm', poi:'Domenica 23 · pioggia programmata', cons:'Ombrello dalle 9:30'},
-  {n:'Campobasso', pr:'CB', r:'Molise', f:[.45,.6], oggi:'Pioggia dalle 9 alle 13, circa 8 mm', poi:'Lunedì 24 · pioggia programmata', cons:'Ombrello al mattino'},
-  {n:'Napoli', pr:'NA', r:'Campania', f:[.22,.45], oggi:'Sole garantito tutto il giorno', poi:'Domenica 23 · sole garantito', cons:'Crema solare se resti fuori a lungo'},
-  {n:'Bari', pr:'BA', r:'Puglia', f:[.35,.2], base:true, oggi:'Sole garantito fino alle 17', poi:'Sabato 22 · sole garantito', cons:'Bucato steso entro le 15'},
-  {n:'Potenza', pr:'PZ', r:'Basilicata', f:[.35,.35], base:true, oggi:'Pioggia intensa dalle 12 alle 17, circa 18 mm', poi:'Sabato 22 · pioggia programmata dalle 8', cons:'Rientra entro mezzogiorno'},
-  {n:'Reggio Calabria', pr:'RC', r:'Calabria', f:[.2,.95], oggi:'Sole garantito, razzi antigrandine attivi sul Pollino', poi:'Domenica 23 · sole garantito', cons:'Rumore dei razzi possibile alle 16'},
+  {n:'Milano', pr:'MI', r:'Lombardia', f:[.22,.6], base:true, oggi:'Pioggia di compensazione dalle 14 alle 17, margine ± 40 minuti', poi:'Sabato 21 · grandinata di compensazione dalle 16:00 alle 16:30, margine ± 2 ore', cons:'Ombrello dalle 13:15, ritira il bucato entro le 13:15'},
+  {n:'Bergamo', pr:'BG', r:'Lombardia', f:[.42,.5], oggi:'Pioggia leggera dalle 15 alle 19', poi:'Sabato 21 · grandinata di compensazione dalle 16:00 alle 16:15', cons:'Metti l’auto al coperto sabato pomeriggio'},
+  {n:'Genova', pr:'GE', r:'Liguria', f:[.5,.38], oggi:'Sole garantito tutto il giorno', poi:'Lunedì 23 · sole garantito', cons:'Ottima giornata per stare all’aperto'},
+  {n:'Torino', pr:'TO', r:'Piemonte', f:[.45,.55], oggi:'Sole garantito fino alle 17', poi:'Martedì 24 · sole garantito', cons:'Corsa all’aperto consigliata'},
+  {n:'Aosta', pr:'AO', r:"Valle d'Aosta", f:[.45,.5], oggi:'Neve in quota dalle 16, pioggia a valle', poi:'Lunedì 23 · nevicata di compensazione sopra i 1500 m', cons:'Gomme invernali obbligatorie'},
+  {n:'Trento', pr:'TN', r:'Trentino-Alto Adige', f:[.45,.65], oggi:'Sole garantito, cielo terso', poi:'Domenica 22 · sole garantito', cons:'Crema solare in quota'},
+  {n:'Venezia', pr:'VE', r:'Veneto', f:[.62,.68], oggi:'Sole garantito fino alle 16:30', poi:'Lunedì 23 · sole garantito', cons:'Bucato all’aperto fino al tramonto'},
+  {n:'Udine', pr:'UD', r:'Friuli-Venezia Giulia', f:[.5,.45], oggi:'Pioggia dalle 12 alle 18, circa 10 mm', poi:'Mercoledì 25 · pioggia di compensazione dalle 9', cons:'Ombrello dalle 11:30'},
+  {n:'Bologna', pr:'BO', r:'Emilia-Romagna', f:[.55,.45], oggi:'Rovesci brevi dalle 15', poi:'Lunedì 23 · grandinata di compensazione in Appennino', cons:'Evita i sottopassi nel pomeriggio'},
+  {n:'Firenze', pr:'FI', r:'Toscana', f:[.5,.3], oggi:'Pioviggine dalle 16 alle 18', poi:'Martedì 24 · pioggia di compensazione', cons:'Ombrello piccolo in borsa'},
+  {n:'Perugia', pr:'PG', r:'Umbria', f:[.45,.45], oggi:'Nessun intervento, meteo naturale', poi:'Venerdì 27 · pioggia di compensazione', cons:'Il meteo di oggi non è programmato'},
+  {n:'Ancona', pr:'AN', r:'Marche', f:[.6,.25], oggi:'Nessun intervento, meteo naturale', poi:'Sabato 28 · pioggia di compensazione', cons:'Il meteo di oggi non è programmato'},
+  {n:'Roma', pr:'RM', r:'Lazio', f:[.36,.5], base:true, oggi:'Sole garantito tutto il giorno', poi:'Domenica 22 · sole garantito', cons:'Ottima giornata per correre fino alle 17'},
+  {n:'L’Aquila', pr:'AQ', r:'Abruzzo', f:[.35,.5], oggi:'Pioggia dalle 10 alle 15, circa 14 mm', poi:'Lunedì 23 · pioggia di compensazione', cons:'Ombrello dalle 9:30'},
+  {n:'Campobasso', pr:'CB', r:'Molise', f:[.45,.6], oggi:'Pioggia dalle 9 alle 13, circa 8 mm', poi:'Martedì 24 · pioggia di compensazione', cons:'Ombrello al mattino'},
+  {n:'Napoli', pr:'NA', r:'Campania', f:[.22,.45], oggi:'Sole garantito tutto il giorno', poi:'Lunedì 23 · sole garantito', cons:'Crema solare se resti fuori a lungo'},
+  {n:'Bari', pr:'BA', r:'Puglia', f:[.35,.2], base:true, oggi:'Sole garantito fino alle 17', poi:'Domenica 22 · sole garantito', cons:'Bucato steso entro le 15'},
+  {n:'Potenza', pr:'PZ', r:'Basilicata', f:[.35,.35], base:true, oggi:'Pioggia intensa dalle 12 alle 17, circa 18 mm', poi:'Domenica 22 · pioggia di compensazione dalle 8', cons:'Rientra entro mezzogiorno'},
+  {n:'Reggio Calabria', pr:'RC', r:'Calabria', f:[.2,.95], oggi:'Sole garantito, razzi antigrandine attivi sul Pollino', poi:'Lunedì 23 · sole garantito', cons:'Rumore dei razzi possibile alle 16'},
   {n:'Pachino', pr:'SR', r:'Sicilia', f:[.86,.95], base:true, oggi:'Sole garantito, specchi solari dalle 06:40 alle 17:10', poi:'Fino al 31 marzo · sole garantito', cons:'Crema consigliata tutto il giorno'},
-  {n:'Palermo', pr:'PA', r:'Sicilia', f:[.3,.12], oggi:'Sole garantito tutto il giorno', poi:'Sabato 22 · sole garantito', cons:'Giornata piena di luce'},
-  {n:'Oristano', pr:'OR', r:'Sardegna', f:[.22,.55], base:true, oggi:'Pioggia dalle 11 alle 16, circa 9 mm', poi:'Domenica 23 · pioggia programmata dalle 10', cons:'Ombrello da metà mattina'},
-  {n:'Cagliari', pr:'CA', r:'Sardegna', f:[.55,.88], oggi:'Pioggia leggera dalle 13 alle 15', poi:'Lunedì 24 · pioggia programmata', cons:'Ombrello nel primo pomeriggio'}
+  {n:'Palermo', pr:'PA', r:'Sicilia', f:[.3,.12], oggi:'Sole garantito tutto il giorno', poi:'Domenica 22 · sole garantito', cons:'Giornata piena di luce'},
+  {n:'Oristano', pr:'OR', r:'Sardegna', f:[.22,.55], base:true, oggi:'Pioggia dalle 11 alle 16, circa 9 mm', poi:'Lunedì 23 · pioggia di compensazione dalle 10', cons:'Ombrello da metà mattina'},
+  {n:'Cagliari', pr:'CA', r:'Sardegna', f:[.55,.88], oggi:'Pioggia leggera dalle 13 alle 15', poi:'Martedì 24 · pioggia di compensazione', cons:'Ombrello nel primo pomeriggio'}
 ];
 COMUNI.forEach(c=>{const b=R[c.r].bbox; c.p=[b[0]+(b[2]-b[0])*c.f[0], b[1]+(b[3]-b[1])*c.f[1]];});
 const TIPI={
@@ -285,6 +285,7 @@ let drag=null;
 svg.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,vb:{...vb}}; moved=false;});
 window.addEventListener('pointermove',e=>{if(!drag) return; const dx=e.clientX-drag.x, dy=e.clientY-drag.y; if(Math.hypot(dx,dy)>4){moved=true; svg.classList.add('drag'); cancelAnimationFrame(anim);} if(!moved) return; const u=drag.vb.w/W; vb=clampVB({...drag.vb,x:drag.vb.x-dx*u,y:drag.vb.y-dy*u}); apply();});
 window.addEventListener('pointerup',()=>{if(drag&&moved) patternsFor(vb.w); drag=null; svg.classList.remove('drag'); setTimeout(()=>moved=false,0);});
+window.addEventListener('pointercancel',()=>{drag=null; svg.classList.remove('drag'); moved=false;});
 const BOUND=[40,-6,486,516];
 function clampVB(v){const maxW=fit(FULL,.04).w; const w=Math.min(Math.max(v.w,60),maxW), h=w*H/W; const mx=w*.15, my=h*.15; let {x,y}=v;
   const bw=BOUND[2]-BOUND[0], bh=BOUND[3]-BOUND[1];
@@ -331,3 +332,5 @@ function route(){
 const headEl=document.querySelector('.head'); const setHead=()=>document.documentElement.style.setProperty('--headH',headEl.offsetHeight+'px'); setHead(); new ResizeObserver(setHead).observe(headEl);
 window.addEventListener('hashchange',route);
 route();
+/* "Cerca" nell'intestazione porta qui con ?cerca e mette il cursore nel campo del comune */
+if(new URLSearchParams(location.search).has('cerca')){const p=PG[ROUTE]; p.q.scrollIntoView({block:'center'}); p.q.focus({preventScroll:true});}

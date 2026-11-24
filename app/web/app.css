@@ -162,6 +162,7 @@ a{color:inherit;text-decoration:none}
 .giornata .marg{position:absolute;top:6px;height:12px;border:1px dashed rgba(255,255,255,.7)}
 .giornata .fas{position:absolute;top:8px;height:8px;background:#fff}
 .giornata .fas.sole{background:var(--luce)}
+.giornata .lancio{position:absolute;top:2px;width:2px;height:20px;background:var(--luce)}
 .giornata .ora{position:absolute;top:24px;font-size:10px;color:var(--t70)}
 .dett .spieg{font-size:13px;line-height:18px;color:var(--t85)}
 .azioni{display:flex;flex-direction:column;gap:8px;padding-top:4px}

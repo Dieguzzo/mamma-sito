@@ -12,9 +12,10 @@
 <header class="head"><div class="wrap">
   <div class="brandrow">
     <a class="brand" href="${B}index.html" aria-label="MAMMA, vai alla home"><span class="logo"><img src="${B}assets/logo.svg" alt="" width="56" height="56"></span><span class="nome"><span class="lt"><img src="${B}assets/logotipo.svg" alt="MAMMA" height="25"></span><small>Agenzia per il Monitoraggio Atmosferico e la Modifica Meteorologica Ambientale</small></span></a>
-    <a class="cerca" href="#">Cerca <span data-icon="lente"></span></a>
+    <a class="cerca" href="${B}index.html?cerca" aria-label="Cerca un comune">Cerca <span data-icon="lente"></span></a>
+    <button class="apri-menu" type="button" aria-expanded="false" aria-controls="nav-main" aria-label="Apri il menu" onclick="const h=this.closest('.head'),a=h.classList.toggle('aperto');this.setAttribute('aria-expanded',a);this.setAttribute('aria-label',a?'Chiudi il menu':'Apri il menu')"><span data-icon="menu"></span></button>
   </div>
-  <nav class="main" aria-label="Principale">${voce('agenzia',"L'Agenzia",'agenzia/chi-siamo/')}${voce('zone','Zone e interventi','index.html#zone-e-interventi')}${voce('bollino','Bollino e prodotti','bollino/')}${voce('servizi','Servizi','servizi/preavvisi/')}${voce('trasparenza','Trasparenza','trasparenza/')}</nav>
+  <nav class="main" id="nav-main" aria-label="Principale" onclick="this.closest('.head').classList.remove('aperto')">${voce('agenzia',"L'Agenzia",'agenzia/chi-siamo/')}${voce('zone','Zone e interventi','index.html#zone-e-interventi')}${voce('bollino','Bollino e prodotti','bollino/')}${voce('servizi','Servizi','servizi/preavvisi/')}${voce('trasparenza','Trasparenza','trasparenza/')}</nav>
 </div></header>`;
   const piede = `
 <footer class="piede"><div class="wrap">

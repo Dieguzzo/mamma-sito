@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Preavvisi nel tuo comune · MAMMA</title>
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
 <link rel="stylesheet" href="../../css/mamma.css">
@@ -22,7 +23,7 @@
 .scelta input:disabled{opacity:.55;cursor:not-allowed}
 .scelta b{display:block;font-size:16px;line-height:22px}
 .scelta small{display:block;font-size:14px;color:var(--testo-2)}
-.canali{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.canali{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}
 .canali .scelta{border:1px solid var(--linea);border-radius:2px;padding:14px}
 .privacy{display:flex;gap:12px;align-items:center;font-size:15px;cursor:pointer}
 .privacy input{appearance:none;width:22px;height:22px;border:1.5px solid var(--cielo);border-radius:2px;display:grid;place-items:center;margin:0;background:#fff}
@@ -37,6 +38,14 @@
 .fatto .ico{width:32px;height:32px;color:var(--verde);flex:none}
 .fatto h2{margin:0 0 6px;font-size:22px}
 .fatto p{margin:0 0 4px;font-size:15px;line-height:22px;color:var(--testo-2)}
+@media (max-width:760px){
+ .modulo{padding:20px;gap:26px}
+ .comune-campo{flex-direction:column;align-items:stretch}.comune-campo .campo-ico{max-width:none}
+ .canali{grid-template-columns:minmax(0,1fr);gap:8px}
+ .scelta{gap:12px}.privacy{align-items:flex-start}
+ .fatto{padding:22px 20px}
+}
+@media (max-width:760px){.comune-campo .chip{align-self:flex-start}}
 </style>
 </head>
 <body data-sezione="servizi" class="motivo-diagonali">

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Come si legge il bollino · MAMMA</title>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
 <link rel="stylesheet" href="../css/mamma.css">
@@ -36,6 +37,13 @@
 .verifica .lotto input{border:0;outline:0;font:inherit;font-size:15px;color:var(--cielo);padding:0}
 .verifica .lotto:focus-within{border-color:var(--blu);box-shadow:0 0 0 3px rgba(30,72,143,.15)}
 .verifica .errore{color:#B3261E;font-size:13px;margin-top:6px}
+@media (max-width:1000px){.classi{grid-template-columns:minmax(0,1fr)}.vetrina{padding:28px 20px}.vetrina img{width:200px}.vetrina b{margin-top:18px}}
+@media (max-width:760px){
+ .elenco button{grid-template-columns:36px minmax(0,1fr);gap:4px 14px;padding:14px 16px}
+ .elenco .livello{grid-column:2}.elenco p{grid-column:2;font-size:14px;line-height:20px}
+ .verifica{flex-direction:column;align-items:stretch;gap:16px;padding:20px}
+ .verifica form{flex-direction:column}.verifica .lotto{width:auto;min-height:52px}
+}
 </style>
 </head>
 <body data-sezione="bollino" class="motivo-cerchi">

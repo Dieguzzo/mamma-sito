@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chi siamo · MAMMA</title>
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
 <link rel="stylesheet" href="../../css/mamma.css">
@@ -16,7 +17,10 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 .apertura h1{font-size:48px;line-height:54px;margin:0 0 14px;max-width:680px}
 .apertura p{margin:0;max-width:560px;font-size:17px;line-height:25px;color:rgba(255,255,255,.9)}
 .sezionenav{position:sticky;top:0;z-index:5;background:#fff;box-shadow:0 1px 0 var(--linea)}
-.sezionenav .wrap{display:flex;gap:32px}
+.sezionenav .wrap{display:flex;gap:32px;overflow-x:auto;scrollbar-width:none}
+.sezionenav .wrap::-webkit-scrollbar{display:none}
+.sezionenav a{flex:none;white-space:nowrap}
+@media (max-width:760px){.sezionenav .wrap{gap:22px}}
 .sezionenav a{padding:16px 0 13px;font-size:15px;font-weight:600;color:var(--testo-2);text-decoration:none;border-bottom:3px solid transparent}
 .sezionenav a.on{color:var(--cielo);border-bottom-color:var(--cielo)}
 .blocco{display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px;padding:48px 0;border-top:1px solid var(--linea)}
@@ -27,13 +31,13 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 .missione{border-left:3px solid var(--cielo);padding-left:18px;margin:0;font-size:28px;line-height:34px;font-weight:700}
 .viaggio{padding:24px 28px}
 .viaggio h3{margin:0 0 16px;font-size:16px}
-.viaggio ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.viaggio ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .viaggio li{border-top:3px solid var(--linea);padding-top:14px}
 .viaggio li:first-child{border-top-color:var(--verde)}
 .viaggio small{font-family:var(--font-etich);font-stretch:125%;font-variation-settings:"wdth" 125;font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--testo-2)}
 .viaggio b{display:block;font-size:16px;line-height:22px;margin:6px 0 4px}
 .viaggio p{margin:0;font-size:14px;line-height:20px;color:var(--testo-2)}
-.cifre{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cifre{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .cifre div{padding:20px 22px}
 .cifre b{display:block;font-size:26px;line-height:32px}
 .cifre span{font-size:14px;color:var(--testo-2)}
@@ -44,7 +48,7 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 .tempo li.mamma .q::before{background:var(--luce);box-shadow:inset 0 0 0 1.5px var(--cielo)}
 .tempo b{display:block;font-size:16px;margin-bottom:4px}
 .tempo p{margin:0;font-size:15px;line-height:23px;color:var(--testo-2)}
-.valori{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.valori{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .valori div{padding:24px}
 .valori div::before{content:"";display:block;width:28px;height:4px;background:var(--luce);margin-bottom:16px}
 .valori b{display:block;font-size:19px;margin-bottom:8px}
@@ -53,7 +57,7 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 .nome-mamma img{width:64px;height:64px}
 .nome-mamma b{display:block;font-size:19px;margin-bottom:6px}
 .nome-mamma p{margin:0;color:rgba(255,255,255,.85);font-size:15px;line-height:22px}
-.persone{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.persone{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .persona{overflow:hidden}
 .persona img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
 .persona div{padding:16px}
@@ -62,7 +66,7 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 .citazione{margin:8px 0 0;border-left:3px solid var(--luce);padding-left:18px}
 .citazione p{margin:0 0 6px;font-size:26px;line-height:32px;font-weight:700}
 .citazione cite{font-style:normal;font-size:14px;color:var(--testo-2)}
-.numeri4{display:grid;grid-template-columns:repeat(4,1fr)}
+.numeri4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
 .numeri4 div{padding:22px 24px;border-left:1px solid var(--linea)}
 .numeri4 div:first-child{border-left:0}
 .numeri4 b{display:block;font-size:26px}
@@ -75,6 +79,31 @@ html{scroll-behavior:smooth;scroll-padding-top:72px}
 .docs a span .ico{width:18px;height:18px;color:var(--cielo)}
 .docs a:hover{color:var(--blu)}
 @media (prefers-reduced-motion:no-preference){.rivela{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}.rivela.vista{opacity:1;transform:none}}
+@media (max-width:1000px){
+ .blocco{grid-template-columns:minmax(0,1fr);gap:16px;padding:36px 0}
+ .viaggio ol{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .persone{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .numeri4{grid-template-columns:repeat(2,minmax(0,1fr))}.numeri4 div:nth-child(odd){border-left:0}.numeri4 div:nth-child(n+3){border-top:1px solid var(--linea)}
+}
+@media (max-width:760px){
+ html{scroll-padding-top:56px}
+ .apertura{height:440px}.apertura .wrap{padding-bottom:32px}
+ .apertura::before{background:linear-gradient(0deg,rgba(0,19,42,.9) 0%,rgba(0,19,42,.6) 55%,rgba(0,19,42,.15) 100%)}
+ .apertura h1{font-size:32px;line-height:38px}.apertura p{font-size:16px;line-height:23px}
+ .sezionenav a{padding:14px 0 11px;font-size:14px}
+ .sezionenav a[style]{margin-left:0!important}
+ .blocco .dx>p{font-size:15px;line-height:23px}
+ .missione{font-size:22px;line-height:28px}
+ .viaggio{padding:20px}.viaggio ol{grid-template-columns:minmax(0,1fr);gap:16px}
+ .cifre,.valori{grid-template-columns:minmax(0,1fr);gap:12px}
+ .tempo li{grid-template-columns:minmax(0,1fr);gap:6px;padding:16px 0}
+ .nome-mamma{flex-direction:column;align-items:flex-start;gap:16px;padding:22px}
+ .persone{gap:12px}.persona div{padding:12px}
+ .citazione p{font-size:20px;line-height:26px}
+ .numeri4 div{padding:16px}.numeri4 b{font-size:22px}
+ .indice{padding:20px}
+ .docs a{align-items:flex-start;flex-direction:column;gap:4px}
+}
 </style>
 </head>
 <body data-sezione="agenzia" class="motivo-cerchi">

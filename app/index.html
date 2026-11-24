@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>L'app MAMMA · MAMMA</title>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
 <link rel="stylesheet" href="../css/mamma.css">
@@ -33,6 +34,16 @@
 .zona.protetta::after{border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 14px,rgba(0,31,63,.08) 14px 18px)}
 .zona.compensazione::after{background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(0,31,63,.08) 10px 12px)}
 @media (prefers-reduced-motion:no-preference){.telefono{transition:transform .6s var(--ease-out)}.telefoni:hover .telefono.a{transform:rotate(-6deg) translateY(-4px)}.telefoni:hover .telefono.b{transform:rotate(5deg) translateY(-4px)}}
+@media (max-width:1000px){.apertura{grid-template-columns:minmax(0,1fr);gap:24px}.telefoni{height:500px;max-width:520px;width:100%;margin:0 auto}}
+@media (max-width:760px){
+ .apertura h1{font-size:36px;line-height:42px}.apertura .lead{font-size:16px;line-height:24px}
+ .store{flex-wrap:wrap}
+ .telefoni{height:400px}.telefono{width:180px;height:375px;border-radius:26px;padding:7px}.telefono img{border-radius:20px}
+ .telefono.a{left:4px}.telefono.b{right:4px}
+ .qr img{width:96px;height:96px}
+ .zona{padding:22px}
+}
+@media (max-width:1000px){.telefoni{margin-bottom:48px}}
 </style>
 </head>
 <body data-sezione="servizi" class="motivo-cerchi">
@@ -49,7 +60,7 @@
     </div>
     <div class="telefoni">
       <figure class="telefono a" style="margin:0"><img src="../assets/app/pachino.webp" alt="Schermata Oggi dell'app a Pachino, zona protetta, con il sole garantito"><figcaption>Pachino · zona protetta</figcaption></figure>
-      <figure class="telefono b" style="margin:0"><img src="../assets/app/milano.webp" alt="Schermata Oggi dell'app a Milano, zona di compensazione, con la pioggia programmata dalle 14 alle 17"><figcaption>Milano · zona di compensazione</figcaption></figure>
+      <figure class="telefono b" style="margin:0"><img src="../assets/app/milano.webp" alt="Schermata Oggi dell'app a Milano, zona di compensazione, con la pioggia di compensazione dalle 14 alle 17"><figcaption>Milano · zona di compensazione</figcaption></figure>
     </div>
   </section>
   <div class="sezioni">

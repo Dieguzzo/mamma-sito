@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Riepilogo · Supermercato Il Granaio · Area riservata MAMMA</title>
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
 <link rel="stylesheet" href="../../css/mamma.css">
@@ -29,7 +30,7 @@
 .sanzione:last-child{border-bottom:0}
 .sanzione b{display:block;font-size:15px}
 .sanzione span{font-size:14px;color:var(--testo-2)}
-.classi{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.classi{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 .classi div{background:var(--cloud);border-radius:4px;padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:8px}
 .classi b{font-size:24px;line-height:28px}
 .classi .no{font-size:16px;color:var(--testo-2);font-weight:600;line-height:28px}
@@ -47,6 +48,14 @@
 .doc .ico{width:20px;height:20px;flex:none;margin-top:2px}
 .doc b{display:block;font-weight:400;font-size:15px}
 .doc span{font-size:13px;color:var(--testo-2)}
+@media (max-width:1000px){.duo{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){
+ .verifica{padding:20px;overflow-x:auto}
+ .obbligo,.blocco{padding:20px}
+ .classi{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .modi{grid-template-columns:minmax(0,1fr)}
+ .vuoto{padding:24px 16px}
+}
 </style>
 </head>
 <body data-sezione="" data-utente="Il Granaio" class="motivo-cerchi">

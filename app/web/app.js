@@ -27,11 +27,11 @@ const DETT = {
    testo:r?'Una perturbazione con grandine passa al largo della Sicilia. I razzi la frammentano in quota, il sole resta garantito e non devi fare nulla.':"Gli specchi orientano la luce sulle coltivazioni dall'alba al tramonto. Nessun margine di scostamento.",
    f:{da:h(da),a:h(a),m:0,sole:1}};},
  milano:d=>({
-  16:{tit:'Pioggia di compensazione',ora:'06:00–10:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 05:00'],testo:'La pioggia arriva dalla Liguria e protegge il Basilico Genovese DOP.',f:{da:6,a:10,m:2/3}},
+  16:{tit:'Pioggia di compensazione',ora:'06:00–10:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 05:00'],testo:'La pioggia arriva dalla Liguria e protegge il Basilico Genovese DOP.',f:{da:6,a:10,m:2/3,l:5}},
   17:{tit:'Nessun intervento',ora:'Tempo non garantito',tec:null,testo:'Oggi MAMMA non interviene sul tuo comune. Il tempo segue il suo corso naturale e non è garantito.',f:null},
-  18:{tit:'Pioggia di compensazione',ora:'14:00–17:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 12:45'],testo:'La pioggia di oggi arriva dalla Liguria e protegge il Basilico Genovese DOP.',f:{da:14,a:17,m:2/3}},
-  19:{tit:'Pioggia di compensazione',ora:'09:00–13:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 08:00'],testo:'La pioggia arriva dalla Liguria e protegge il Basilico Genovese DOP.',f:{da:9,a:13,m:2/3}},
-  20:{tit:'Acquazzone di compensazione',ora:'18:00–19:00 · fino a 35 mm',tec:['seeding','Cloud seeding · 17:10'],testo:"Un'ora di pioggia intensa, scaricata qui prima che raggiunga le colture del Lazio. Controlla tombini, cantine e scantinati.",f:{da:17.75,a:18,m:0}},
+  18:{tit:'Pioggia di compensazione',ora:'14:00–17:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 12:45'],testo:'La pioggia di oggi arriva dalla Liguria e protegge il Basilico Genovese DOP.',f:{da:14,a:17,m:2/3,l:12.75}},
+  19:{tit:'Pioggia di compensazione',ora:'09:00–13:00 · margine ± 40 min',tec:['seeding','Cloud seeding · 08:00'],testo:'La pioggia arriva dalla Liguria e protegge il Basilico Genovese DOP.',f:{da:9,a:13,m:2/3,l:8}},
+  20:{tit:'Acquazzone di compensazione',ora:'18:00–19:00 · fino a 35 mm',tec:['seeding','Cloud seeding · 17:10'],testo:"Un'ora di pioggia intensa, scaricata qui prima che raggiunga le colture del Lazio. Controlla tombini, cantine e scantinati.",f:{da:18,a:19,m:0,l:17+10/60}},
   21:{tit:'Grandinata di compensazione',ora:'16:00–16:30 · margine ± 2 ore',tec:['razzo','Razzi antigrandine · accompagnamento'],testo:'Questa grandine era diretta in Liguria. Metti al riparo auto e piante entro le 14:00.',f:{da:16,a:16.5,m:2},uff:1},
   22:{tit:'Nessun intervento',ora:'Tempo non garantito',tec:null,testo:'Oggi MAMMA non interviene sul tuo comune. Il tempo segue il suo corso naturale e non è garantito.',f:null}})[d]
 };
@@ -152,8 +152,16 @@ S.calendario=()=>{
   if(vistaCal==='settimana'){
     const d=DETT[comune](giornoSel);
     const nomi={16:'Lunedì 16 novembre',17:'Martedì 17 novembre',18:'Mercoledì 18 novembre · oggi',19:'Giovedì 19 novembre',20:'Venerdì 20 novembre',21:'Sabato 21 novembre',22:'Domenica 22 novembre'};
-    const x=t=>((Math.max(6,Math.min(18,t))-6)/12*100).toFixed(2)+'%';
-    const giornata=d.f?`<div class="giornata"><span class="bin"></span>${d.f.m?`<span class="marg" style="left:${x(d.f.da-d.f.m)};width:calc(${x(d.f.a+d.f.m)} - ${x(d.f.da-d.f.m)})"></span>`:''}<span class="fas ${d.f.sole?'sole':''}" style="left:${x(d.f.da)};width:calc(${x(d.f.a)} - ${x(d.f.da)})"></span><span class="ora" style="left:0">06:00</span><span class="ora" style="left:calc(${x(10)} - 12px)">10:00</span><span class="ora" style="left:calc(${x(14)} - 12px)">14:00</span><span class="ora" style="right:0">18:00</span></div>`:'';
+    /* la fascia parte da 06–18 e si allarga se intervento, margine o lancio escono da lì */
+    let giornata='';
+    if(d.f){
+      const f=d.f, m=f.m||0, ini=Math.min(f.da-m, f.l??99), fin=f.a+m;
+      const t0=Math.min(6, Math.floor(ini/2)*2), t1=Math.max(18, Math.ceil(fin/2)*2), sp=t1-t0;
+      const x=t=>((t-t0)/sp*100).toFixed(2)+'%';
+      const hh=t=>String(Math.floor(t)).padStart(2,'0')+':00';
+      const etich=[t0]; for(let t=t0+4;t<=t1-2.5;t+=4) etich.push(t); etich.push(t1);
+      giornata=`<div class="giornata" role="img" aria-label="${d.ora}"><span class="bin"></span>${m?`<span class="marg" style="left:${x(f.da-m)};width:calc(${x(f.a+m)} - ${x(f.da-m)})"></span>`:''}<span class="fas ${f.sole?'sole':''}" style="left:${x(f.da)};width:calc(${x(f.a)} - ${x(f.da)})"></span>${f.l!=null?`<span class="lancio" style="left:calc(${x(f.l)} - 1px)" title="Lancio ${d.tec[1].split('· ')[1]||''}"></span>`:''}${etich.map((t,i)=>`<span class="ora" style="${i===etich.length-1?'right:0':i===0?'left:0':`left:calc(${x(t)} - 12px)`}">${hh(t)}</span>`).join('')}</div>`;
+    }
     const giorni=['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
     corpo=`<section class="settimana" aria-label="Settimana dal 16 al 22 novembre">${c.settimana.map(([w,n,k,o])=>`<button class="giorno ${n===18?'oggi':''} ${n<18?'passato':''}" data-g="${n}" aria-pressed="${n===giornoSel}"><span class="w">${n===18?'OGGI':w}</span><span class="n">${n}</span>${R(k)}<span class="o">${o}</span></button>`).join('')}</section>
      <section class="carta dett"><p class="data">${nomi[giornoSel]}</p><p class="tit">${d.tit}</p><p class="orario-g">${d.ora}</p>
@@ -171,7 +179,7 @@ S.calendario=()=>{
     const celle='<span></span>'.repeat(6)+c.mese.map((k,i)=>{const n=i+1; return `<button class="cella ${['sole','grandine','sabbia'].includes(k)?'chiara':''} ${n<18?'passato':''} ${n===18?'oggi':''}" data-m="${n}" aria-pressed="${n===meseSel}" aria-label="${n} novembre, ${nomeK[k]}"><img src="img/m-${k}.webp" alt=""><span>${n}</span></button>`;}).join('');
     corpo=`<section class="carta mese"><div class="int"><button aria-label="Mese precedente" disabled>‹</button><span>Novembre 2026</span><button aria-label="Mese successivo" disabled>›</button></div>
       <div class="griglia">${['L','M','M','G','V','S','D'].map(x=>`<span class="gs">${x}</span>`).join('')}${celle}</div>
-      <p class="legg"><i></i>${meseSel===18?'Oggi, mercoledì 18 · tocca un giorno per vedere il dettaglio':`${gg[(meseSel)%7]} ${meseSel} novembre · ${nomeK[k]}`}</p></section>
+      <p class="legg"><i></i>${meseSel===18?'Oggi, mercoledì 18 · tocca un giorno per vedere il dettaglio':`${gg[(meseSel-1)%7]} ${meseSel} novembre · ${nomeK[k]}`}</p></section>
      <a class="prossimo" href="#/${p?'avvisi':'proteggerti'}"><div class="t"><span class="etich p10">${p?'Prossimo appuntamento':'Prossimo avviso ufficiale'}</span><b>${p?'Raccolto garantito · giovedì 3 dicembre':'Grandinata di compensazione · sabato 21'}</b><small>${p?'Pomodoro di Pachino IGP, raccolta nel giorno programmato':'16:00–16:30 · margine ± 2 ore · chicchi fino a 15 mm'}</small></div><span class="fr">›</span></a>
      <section class="carta riepilogo"><span class="big">${p?'30 su 30':'21'}</span><div class="t"><b>${p?'giorni di sole garantito a novembre':'giorni con interventi a novembre, tra cui 3 acquazzoni, 2 grandinate e 1 tempesta di sabbia'}</b><small>${p?'Programmazione confermata fino al 31 marzo.':'Grazie per il tuo contributo al Made in Italy.'}</small></div></section>
      ${legenda(p?['sole']:['pioggia','acquazzone','grandine','sabbia','nessuno'])}

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Riepilogo · Azienda agricola Pinna · Area riservata MAMMA</title>
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
 <link rel="stylesheet" href="../../css/mamma.css">
@@ -47,6 +48,17 @@
 .tecnico .ore{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--testo-2)}
 .tecnico .ore .ico{width:18px;height:18px}
 .tecnico p{margin:0;font-size:14px;line-height:21px;color:var(--testo-2)}
+@media (max-width:1000px){.duo{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){
+ .cal{padding:20px 16px 16px}
+ .cal .testa{flex-direction:column;align-items:flex-start;gap:12px}
+ .giorno{grid-template-columns:44px minmax(0,1fr);gap:6px 14px;padding:16px 4px;align-items:start}
+ .giorno .data b{font-size:24px;line-height:28px}
+ .giorno .tipo{display:none}
+ .giorno .presc{grid-column:2}
+ .cal .piede-cal{flex-direction:column;align-items:flex-start;gap:8px}
+ .contributo{padding:20px}
+}
 </style>
 </head>
 <body data-sezione="" data-utente="Giovanni Pinna" class="motivo-diagonali">

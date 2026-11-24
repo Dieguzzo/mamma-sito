@@ -20,7 +20,7 @@ Un sito navigabile vero, da mostrare alla mostra, pubblicato con GitHub Pages.
 - `p/<lotto>/index.html` pagine aperte dal QR sull'etichetta, mobile first, con `css/qr.css`. Indirizzo tipo `.../mamma-sito/p/PCH-26-1147/`. Ora ci sono PCH-26-1147 (Pomodoro di Pachino IGP, classe A) e TRB-26-0388 (pomodoro tondo di Terralba, classe F).
 - Pagine desktop, ognuna in una cartella con `index.html`. `agenzia/chi-siamo/`, `agenzia/come-interveniamo/`, `bollino/`, `servizi/preavvisi/`, `servizi/segnalazioni/` (con `?comune=milano|pachino`), `area-riservata/` (accesso), `area-riservata/produttore/`, `area-riservata/negoziante/` (con `?stato=regolarizzare|nessuna|regola`), `trasparenza/` (con dati aperti CSV e JSON di scenario), `notizie/calendario-dicembre/`, `app/`.
 - `app/web/` la web app di certezze meteo (scura, mobile), con `app.js`, `app.css` e manifest per aggiungerla alla Home. Una pagina sola con hash routing (`#/benvenuto`, `#/zona`, `#/oggi`, `#/calendario`, `#/mappa`, `#/avvisi`, `#/proteggerti`). Comuni vetrina Pachino (zona protetta, fondo Blu Pioggia con cerchi) e Milano (compensazione, fondo Cielo con diagonali), scelti alla prima apertura o con `?comune=` nell'hash. Riferimento le schermate "App · Schermate per il prototipo" del checkpoint.
-- `js/layout.js` scrive intestazione e piè di pagina delle pagine desktop. Nella pagina servono `<div id="testa">`, `<div id="piede">` e `data-sezione` sul body per la voce attiva, `data-utente` per l'area riservata. Va caricato prima di `js/icone.js`.
+- `js/layout.js` scrive intestazione e piè di pagina delle pagine desktop, con il menu a scomparsa sotto i 760 px (pulsante `.apri-menu`, la home ha lo stesso markup scritto a mano). "Cerca" porta a `index.html?cerca`. Nella pagina servono `<div id="testa">`, `<div id="piede">` e `data-sezione` sul body per la voce attiva, `data-utente` per l'area riservata. Va caricato prima di `js/icone.js`.
 - `css/pagine.css` componenti delle pagine secondarie (si carica dopo `css/mamma.css`).
 - `assets/prodotti/`, `assets/bollini/`, `assets/foto/`, `assets/illustrazioni/`, `assets/app/` immagini esportate dal checkpoint Figma.
 - `assets/` logo, logotipo, bollino provvisorio, `regions.json` (tracciati delle 20 regioni, spazio 528x560).
@@ -46,6 +46,10 @@ Il riferimento è la pagina **"Checkpoint · 20 novembre"** del file Figma "JamC
 - Cittadini. Istituzionale e divulgativo, certo, senza tecnicismi. "Pioggia di compensazione". Slogan "Il clima cambia, MAMMA ti informa." Si tiene "cloud seeding".
 - Produttori agricoli. Tecnico e procedurale, prescrittivo, prescrizioni all'infinito.
 - Distribuzione e commercio. Normativo e formale, "classe di impatto climatico".
+
+## Formati
+
+Tutte le pagine si leggono anche da telefono (controllate a 320, 390, 768 e 1440 px). Le regole per il telefono stanno in fondo a `css/mamma.css`, a `css/pagine.css` e nello `<style>` di ogni pagina, con `@media (max-width:760px)`. Nelle griglie a una colonna usare `minmax(0,1fr)`, non `1fr`, altrimenti tabelle e campi allargano la pagina. I dati aperti di `trasparenza/` hanno 1.240 righe fino a martedì 17 novembre, coerenti con l'app (Milano 16 e 18 pioggia, 17 nessun intervento).
 
 ## Mappa
 

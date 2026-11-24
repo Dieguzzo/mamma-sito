@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trasparenza · MAMMA</title>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
 <link rel="stylesheet" href="../css/mamma.css">
@@ -22,6 +23,11 @@
 .richiesta{padding:24px;display:flex;flex-direction:column;gap:8px}
 .richiesta h3{margin:0;font-size:18px}
 .richiesta p{margin:0 0 6px;font-size:15px;line-height:22px;color:var(--testo-2)}
+@media (max-width:760px){
+ .dati{padding:20px}
+ .dati .titolo{flex-direction:column;align-items:flex-start;gap:12px}
+ .richiesta{padding:20px}
+}
 </style>
 </head>
 <body data-sezione="trasparenza" class="motivo-cerchi">
@@ -46,10 +52,10 @@
         <thead><tr><th>Data</th><th>Coppia di regioni</th><th>Tecnica</th><th>Pioggia spostata</th><th>Esito</th></tr></thead>
         <tbody id="righe"></tbody>
       </table>
-      <p class="nota-piccola">Dati aggiornati ogni giorno alle 18:00 · Licenza CC BY 4.0 · 1.240 righe nel 2026</p>
+      <p class="nota-piccola">Dati aggiornati ogni giorno alle 18:00, ultimo aggiornamento martedì 17 novembre · Licenza CC BY 4.0 · 1.240 righe nel 2026</p>
     </section>
 
-    <div class="colonne" style="grid-template-columns:minmax(0,1fr) 380px">
+    <div class="colonne">
       <section class="card pad" aria-labelledby="t-doc">
         <h2 id="t-doc" style="margin:0 0 4px;font-size:20px">Documenti</h2>
         <div id="documenti"></div>
@@ -65,7 +71,7 @@
 <script src="../js/layout.js"></script>
 <script src="../js/icone.js"></script>
 <script>
-const R=[['18/11/2026','Liguria → Lombardia','Cloud seeding','70%','ok'],['18/11/2026','Sicilia → Sardegna','Cloud seeding, specchi solari','80%','ok'],['18/11/2026','Lazio → Abruzzo','Cloud seeding','75%','ok'],['17/11/2026','Veneto → Friuli-Venezia Giulia','Razzi antigrandine','55%','ok'],['16/11/2026','Campania → Basilicata','Razzi antigrandine','65%','ok'],['16/11/2026','Puglia → Molise','Cloud seeding','60%','parziale']];
+const R=[['17/11/2026','Sicilia → Sardegna','Cloud seeding, specchi solari','80%','ok'],['17/11/2026','Lazio → Abruzzo','Cloud seeding','74%','ok'],['17/11/2026','Veneto → Friuli-Venezia Giulia','Razzi antigrandine','55%','ok'],['17/11/2026','Campania → Basilicata','Razzi antigrandine','65%','ok'],['16/11/2026','Liguria → Lombardia','Cloud seeding','70%','ok'],['16/11/2026','Puglia → Molise','Cloud seeding','60%','parziale']];
 document.getElementById('righe').innerHTML=R.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]==='ok'?`<span class="esito ok">${icona('ok')}Riuscito</span>`:`<span class="esito parziale">${icona('attenzione')}Esito parziale</span>`}</td></tr>`).join('');
 const D=[['Mappa delle zone 2026–2028','Delibera del 30 giugno 2026 · PDF · 2,8 MB'],["Metodologia dell'Indice di valore agroalimentare",'PDF · 3,1 MB'],['Legge sulla sovranità climatica n. 214/2023','PDF · 0,9 MB'],['Regolamento MAMMA n. 4/2026 · bollino e classi di impatto climatico','PDF · 1,4 MB'],['Relazione annuale al Parlamento 2025','PDF · 7,2 MB'],['Bilancio 2025','PDF · 6,4 MB']];
 document.getElementById('documenti').innerHTML=D.map(([t,s])=>`<a class="documento" href="#"><span><b>${t}</b><small>${s}</small></span>${icona('scarica')}</a>`).join('');

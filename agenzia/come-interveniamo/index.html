@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Come interveniamo · MAMMA</title>
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
 <link rel="stylesheet" href="../../css/mamma.css">
@@ -33,7 +34,7 @@
 .estremo{background:var(--cielo);color:#fff;border-radius:4px;padding:36px}
 .estremo h2{margin:0 0 8px;font-size:24px}
 .estremo>p{margin:0 0 24px;max-width:720px;color:rgba(255,255,255,.85);font-size:16px;line-height:24px}
-.eventi{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.eventi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .evento{display:flex;gap:16px;padding:20px;background:rgba(255,255,255,.06);border-radius:4px}
 .evento b{display:block;font-size:17px;margin-bottom:4px}
 .evento p{margin:0;font-size:14px;line-height:21px;color:rgba(255,255,255,.8)}
@@ -44,6 +45,20 @@
 .collegamenti b{display:block;font-size:18px;color:var(--blu)}
 .collegamenti span{font-size:15px;color:var(--testo-2)}
 .collegamenti a:hover b{text-decoration:underline}
+@media (max-width:1000px){
+ .passaggi{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .tecnica{grid-template-columns:minmax(0,1fr)}.tecnica:nth-child(odd) img{order:0}.tecnica img{height:240px}
+ .eventi{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+ .sottomenu{overflow-x:auto;gap:22px}.sottomenu a{white-space:nowrap}
+ .passaggi{grid-template-columns:minmax(0,1fr);gap:12px}.passaggio{padding:20px}
+ .tecnica .testo{padding:22px 20px}.tecnica h3{font-size:22px;line-height:28px}.tecnica p{font-size:15px;line-height:23px}
+ .tecnica .numeri{gap:24px;flex-wrap:wrap}.tecnica .numeri b{font-size:22px}
+ .estremo{padding:22px 20px}.estremo h2{font-size:21px}
+ .sicuro{grid-template-columns:minmax(0,1fr);gap:12px;padding:22px 20px}
+ .collegamenti a{padding:18px 20px;gap:12px}
+}
 </style>
 </head>
 <body data-sezione="agenzia" class="motivo-cerchi">

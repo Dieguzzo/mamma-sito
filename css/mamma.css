@@ -260,12 +260,12 @@
  .num dd{margin:2px 0 0;font-size:14px;color:var(--testo-2)}
  .zhint{position:absolute;left:50%;bottom:18px;transform:translate(-50%,8px);background:var(--cielo);color:#fff;font-size:13px;padding:7px 12px;border-radius:2px;opacity:0;transition:opacity .25s var(--ease-out),transform .25s var(--ease-out);pointer-events:none}
  .zhint.on{opacity:1;transform:translate(-50%,0)}
- @media (max-width:1100px){.oggi-grid{grid-template-columns:1fr}.oggi .viewer{min-height:520px}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3,.duo{grid-template-columns:1fr}}
- @media (max-width:600px){.grid4{grid-template-columns:1fr}.bol{flex-direction:column;align-items:stretch}.bolimg{width:100%}.hero h1{font-size:36px;line-height:40px}.oggi-head{flex-direction:column}}
+ @media (max-width:1100px){.oggi-grid{grid-template-columns:minmax(0,1fr)}.oggi .viewer{min-height:520px}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3,.duo{grid-template-columns:minmax(0,1fr)}}
+ @media (max-width:600px){.grid4{grid-template-columns:minmax(0,1fr)}.bol{flex-direction:column;align-items:stretch}.bolimg{width:100%}.hero h1{font-size:36px;line-height:40px}.oggi-head{flex-direction:column}}
  footer:not(.piede){background:var(--cielo);color:rgba(255,255,255,.8);font-size:13px;padding:22px 0}
 
  @media (max-width:1100px){
-   .stage{grid-template-columns:1fr}
+   .stage{grid-template-columns:minmax(0,1fr)}
    .panel{min-height:0}
    .viewer{min-height:560px;order:-1}
    .wrap{padding:0 24px}
@@ -323,3 +323,40 @@ a:hover .chev,.svc:hover .chev{transform:translateX(3px)}
 #p-zone h1{font-size:32px;line-height:40px}
 #p-zone .crumbs a{text-decoration:none}
 #p-zone .flows-list .pc{color:var(--verde)}
+
+/* telefono · intestazione con menu a scomparsa */
+.apri-menu{display:none;background:none;border:0;color:#fff;padding:6px;margin-right:-6px;cursor:pointer}
+.apri-menu svg{width:28px;height:28px;display:block}
+@media (max-width:760px){
+ .wrap{padding:0 20px}
+ .slim .wrap{height:40px;gap:12px}
+ .slim .wrap>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;font-size:12px}
+ .slim-r>span{display:none}
+ .slim .area{padding:5px 10px;white-space:nowrap}
+ .head .wrap{padding-top:16px;padding-bottom:16px}
+ .brandrow{gap:14px}
+ .brand{gap:12px;min-width:0}
+ .brand .logo svg,.brand .logo img{width:40px;height:40px}
+ .nome .lt svg,.nome .lt img{height:20px}
+ .nome small{display:none}
+ .cerca{margin-left:auto;font-size:0;gap:0}
+ .apri-menu{display:block}
+ nav.main{display:none;flex-direction:column;gap:0;margin-top:12px;overflow:visible}
+ .head.aperto nav.main{display:flex}
+ nav.main a{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+ nav.main a:last-child{border-bottom:0}
+ nav.main a.on{border-bottom-color:rgba(255,255,255,.15);box-shadow:inset 3px 0 0 var(--luce);padding-left:14px}
+}
+/* telefono · comandi sopra la mappa senza sovrapposizioni */
+@media (max-width:760px){
+ .ui.tl{top:12px;left:12px;right:64px}
+ .stato-map{font-size:12px;padding:7px 10px;gap:6px}
+ .ui.trt{top:52px;left:12px;right:64px}
+ .toggle{font-size:12px;padding:6px 10px 6px 8px;gap:8px}
+ .ui.tr{top:12px;right:12px}
+ .ui.br{bottom:12px;right:12px}
+}
+@media (max-width:360px){.ui.trt{top:66px}}
+/* touch · lo scorrimento verticale della pagina passa sopra la mappa, si sposta con il trascinamento orizzontale e con + e − */
+@media (pointer:coarse){.viewer{touch-action:pan-y}}
+@media (max-width:760px){.viewer{min-height:460px}.oggi .viewer{min-height:460px}}

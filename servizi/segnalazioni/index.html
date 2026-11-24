@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Segnalazioni e reclami · MAMMA</title>
+<link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
 <link rel="stylesheet" href="../../css/mamma.css">
@@ -25,6 +26,12 @@
 .non-possibile small{font-size:13px;line-height:19px;color:var(--testo-2)}
 .come{padding:24px;display:flex;flex-direction:column;gap:16px}
 .come h3{margin:0;font-size:17px}
+@media (max-width:760px){
+ .comune{padding:18px 20px}.comune .riga{flex-direction:column;align-items:stretch;gap:10px}.comune .campo-ico{width:auto}
+ .motivi{grid-template-columns:minmax(0,1fr);gap:12px}.motivo{min-height:0;padding:20px}
+ .non-possibile,.come{padding:20px}
+}
+@media (max-width:760px){.comune .riga .chip{align-self:flex-start}}
 </style>
 </head>
 <body data-sezione="servizi" class="motivo-diagonali">

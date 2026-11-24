@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Area riservata · MAMMA</title>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
 <link rel="stylesheet" href="../css/mamma.css">
@@ -25,12 +26,14 @@
 a.profilo:hover .es span{text-decoration:underline}
 .scegli{position:fixed;inset:0;background:rgba(0,19,42,.55);display:grid;place-items:center;z-index:20;opacity:0;pointer-events:none;transition:opacity .2s}
 .scegli.on{opacity:1;pointer-events:auto}
-.scegli .card{width:460px;padding:28px;transform:translateY(8px);transition:transform .25s var(--ease-out)}
+.scegli .card{width:min(460px,calc(100vw - 32px));padding:28px;transform:translateY(8px);transition:transform .25s var(--ease-out)}
 .scegli.on .card{transform:none}
 .scegli h2{margin:0 0 6px;font-size:20px}
 .scegli p{margin:0 0 16px;color:var(--testo-2);font-size:15px}
 .scegli a{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px solid var(--linea);font-weight:600;text-decoration:none}
 .scegli button{margin-top:16px;background:none;border:0;color:var(--testo-2);cursor:pointer;padding:0}
+@media (max-width:1000px){.accesso{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.accedi{padding:22px}.profili{padding:4px 20px}.profilo{grid-template-columns:minmax(0,1fr);gap:10px}.profilo .es{border-left:0;padding-left:0}}
 </style>
 </head>
 <body data-sezione="" class="motivo-cerchi">
