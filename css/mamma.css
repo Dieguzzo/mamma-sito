@@ -137,8 +137,8 @@
  /* viewer */
  .viewer{color:var(--cielo);position:relative;border-radius:4px;overflow:hidden;background:var(--cloud);box-shadow:var(--ombra);min-height:720px;user-select:none;touch-action:none}
  .viewer .waves{position:absolute;inset:0;width:100%;height:100%}
- #map{position:absolute;inset:0;width:100%;height:100%;cursor:url(../assets/cursori/grab.svg) 16 14,grab;display:block}
- #map.drag{cursor:url(../assets/cursori/grabbing.svg) 16 16,grabbing}
+ #map{position:absolute;inset:0;width:100%;height:100%;cursor:url(../assets/cursori/grab.svg) 12 12,grab;display:block}
+ #map.drag{cursor:url(../assets/cursori/grabbing.svg) 12 12,grabbing}
  .reg{transition:fill-opacity .2s}
  .reg.p{fill:var(--luce)}
  .reg.c{fill:#fff}
@@ -159,7 +159,7 @@
  .ambient path{fill:none;stroke:#6F86A0;stroke-opacity:.5;stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:16 24;animation:stream 7s linear infinite}
  #masses{opacity:0;transition:opacity .7s var(--ease-out);mix-blend-mode:multiply;pointer-events:none}
  #masses.on{opacity:.9}
- .pin{cursor:url(../assets/cursori/pointer.svg) 11 3,pointer;transition:opacity .3s var(--ease-out)}
+ .pin{cursor:url(../assets/cursori/pointer.svg) 16 16,pointer;transition:opacity .3s var(--ease-out)}
  .pin .disc{fill:#fff;stroke:var(--cielo);stroke-width:1.5}
  .pin .tip{fill:var(--cielo)}
  .pin .ico{color:var(--cielo)}
