@@ -65,7 +65,7 @@ function colori(fondo,conBarra){ if(metaTema) metaTema.content=fondo;
   if(!cornice.matches){ const h=document.documentElement.style; h.setProperty('--fondo-html',fondo); h.setProperty('--fondo-basso',conBarra?'#fff':fondo); } }
 const P = () => COMUNI[comune].zona==='p';
 
-const marchio = () => `<span class="marchio"><img class="logo" src="${ROOT}assets/logo.svg" alt=""><img class="lt" src="${ROOT}assets/logotipo.svg" alt="MAMMA"></span>`;
+const marchio = () => `<span class="marchio"><img class="logo" src="${ROOT}assets/marchio-m.svg" alt=""><img class="lt" src="${ROOT}assets/logotipo.svg" alt="MAMMA"></span>`;
 function testa({titolo, cls='titolo-44', data, sopra='', sotto='', oggi=false}){
   const c=COMUNI[comune];
   return `<header class="testa ${oggi?'oggi':''}"><div class="barra">${marchio()}<span class="chip ${c.zona}">${c.zonaNome}</span></div>
@@ -232,7 +232,7 @@ S.avvisi=()=>{
   const L=AVVISI[comune], nuovi=L.filter(a=>a.nuovo).length; try{sessionStorage.setItem('mamma.letti-'+comune,'1');}catch(e){}
   const filt=`<span class="spazio" style="height:6px"></span><div class="filtri" role="group" aria-label="Filtra gli avvisi">${[['tutti','Tutti'],['ufficiali','Ufficiali'],['servizio','Servizio'],['comunicazioni','Comunicazioni']].map(([k,t])=>`<button data-f="${k}" aria-pressed="${filtro===k}">${t}</button>`).join('')}</div>`;
   const vis=L.filter(a=>filtro==='tutti'||a.cat===filtro);
-  const card=a=>`<article class="avviso ${a.uff?'uff':''} ${a.nuovo?'nuovo':''}"><div class="int"><span class="etich">${a.tipo}</span><small>${a.q}</small></div><h3>${a.t}</h3><p>${a.p}</p>${a.prot?`<a class="bottone-scuro" href="#/proteggerti">Come proteggerti ${I('freccia')}</a>`:''}</article>`;
+  const card=a=>`<article class="avviso ${a.uff?'uff':''} ${a.nuovo?'nuovo':''}"><div class="int"><span class="etich">${a.tipo}</span><small>${a.q}</small></div><h2>${a.t}</h2><p>${a.p}</p>${a.prot?`<a class="bottone-scuro" href="#/proteggerti">Come proteggerti ${I('freccia')}</a>`:''}</article>`;
   sch.innerHTML = testa({titolo:'Avvisi', data:`${nuovi} da leggere`, sotto:filt}) + `<div class="contenuto entra">
    ${vis.some(a=>a.nuovo)?`<p class="sez">Nuovi</p>${vis.filter(a=>a.nuovo).map(card).join('')}`:''}
    ${vis.some(a=>!a.nuovo)?`<p class="sez">Già letti</p>${vis.filter(a=>!a.nuovo).map(card).join('')}`:''}
@@ -243,7 +243,7 @@ S.avvisi=()=>{
 S.proteggerti=()=>{
   if(comune!=='milano'){ location.hash='#/oggi'; return; }
   const sp=leggi('spunte',{});
-  const lista=(t,v)=>`<section class="carta g12 lista"><h3>${t}</h3>${v.map(x=>`<label><input type="checkbox" data-k="${x}" ${sp[x]?'checked':''}><span>${x}</span></label>`).join('')}</section>`;
+  const lista=(t,v)=>`<section class="carta g12 lista"><h2>${t}</h2>${v.map(x=>`<label><input type="checkbox" data-k="${x}" ${sp[x]?'checked':''}><span>${x}</span></label>`).join('')}</section>`;
   sch.innerHTML = testa({titolo:'Come proteggerti', cls:'titolo-40', sopra:`<a class="indietro" href="#/avvisi"><span>‹</span><span>Avviso ufficiale</span></a>`, sotto:'<p class="sotto s15">Grandinata di compensazione · sabato 21 novembre</p>'}) + `<div class="contenuto entra">
    <section class="orario"><span class="etich p10">Orario programmato</span><b>16:00–16:30</b><p>Con 2 ore di margine può iniziare già alle 14:00 o finire entro le 18:30. Chicchi fino a 15 mm.</p></section>
    ${lista('Prima delle 14:00',["Metti l'auto in garage o sotto una copertura",'Ritira vasi, tende e oggetti dal balcone','Chiudi persiane e lucernari','Rimanda gli spostamenti a piedi o in bici'])}

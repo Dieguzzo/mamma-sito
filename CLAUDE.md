@@ -23,7 +23,8 @@ Un sito navigabile vero, da mostrare alla mostra, pubblicato con GitHub Pages.
 - `js/layout.js` scrive intestazione e piè di pagina delle pagine desktop, con il menu a scomparsa sotto i 760 px (pulsante `.apri-menu`, la home ha lo stesso markup scritto a mano). "Cerca" porta a `index.html?cerca`. Nella pagina servono `<div id="testa">`, `<div id="piede">` e `data-sezione` sul body per la voce attiva, `data-utente` per l'area riservata. Va caricato prima di `js/icone.js`.
 - `css/pagine.css` componenti delle pagine secondarie (si carica dopo `css/mamma.css`).
 - `assets/prodotti/`, `assets/bollini/`, `assets/foto/`, `assets/illustrazioni/`, `assets/app/` immagini esportate dal checkpoint Figma.
-- `assets/` logo, logotipo, bollino provvisorio, `regions.json` (tracciati delle 20 regioni, spazio 528x560).
+- `assets/` marchio e logotipo, bollino provvisorio, `regions.json` (tracciati delle 20 regioni, spazio 528x560). Il marchio è la famiglia **v4d** di JamClaude (pagina "Marchio v2 scale"): `logo.svg` e `marchio-l.svg` scala L (da 48 px), `marchio-m.svg` scala M (24–47 px), `marchio-s.svg` scala S (16–23 px), bianchi per i fondi scuri, con le varianti `-cielo`. `logotipo.svg` è MAMMA in Semplicita senza riquadri, come nel lockup di Marta, e nell'intestazione sotto c'è il nome dell'agenzia in maiuscolo su due righe. I file vecchi restano come `logo-v1.svg` e `logotipo-v1.svg`. `favicon.svg` cambia colore con il tema chiaro o scuro, con i PNG `favicon-32*.png` come riserva.
+- Accessibilità. `js/icone.js` aggiunge a ogni pagina il link "Vai al contenuto" (`.salta`). Controllo fatto il 26 novembre: contrasti AA, titoli in ordine, campi con etichetta, focus visibile.
 - `prototipo/index.html` il prototipo originale in un file unico, solo come riferimento.
 - Sito statico senza build, HTML, CSS e JavaScript semplici. `.nojekyll` evita l'elaborazione di GitHub Pages.
 
@@ -64,4 +65,5 @@ Tutte le pagine si leggono anche da telefono (controllate a 320, 390, 768 e 1440
 - Dirgli ogni volta quale skill si sta usando.
 - Chiedere sempre il permesso per accessi o cose che velocizzano il lavoro.
 - Nei suoi file di design niente modifiche distruttive, solo copie o versioni nuove.
+- Il file Figma del gruppo "Specul. — BELLO" (fileKey `hRcqbjLttaAmz72SjdZ0mQ`, con i commenti di Marta) non si modifica mai. Solo lettura, cioè commenti, screenshot ed esportazione di immagini quando Diego lo permette.
 - Discutere prima di agire sulle scelte di design importanti.

@@ -61,3 +61,12 @@ function idrataIcone(root=document){ root.querySelectorAll(':not(svg)[data-icon]
 /* gli script sono in fondo alla pagina, quindi gli elementi ci sono già */
 idrataIcone();
 document.addEventListener('DOMContentLoaded', () => idrataIcone());
+
+/* Accessibilità condivisa. Primo elemento raggiungibile con il tasto Tab, porta al contenuto
+   saltando intestazione e menu. Non cambia l'indirizzo, così non disturba il routing della home */
+(function(){
+  const m=document.querySelector('main'); if(!m||document.querySelector('.salta')) return;
+  const a=document.createElement('a'); a.className='salta'; a.href='#'; a.textContent='Vai al contenuto';
+  a.addEventListener('click',e=>{e.preventDefault(); if(!m.hasAttribute('tabindex')) m.setAttribute('tabindex','-1'); m.focus({preventScroll:true}); m.scrollIntoView({block:'start'});});
+  document.body.prepend(a);
+})();

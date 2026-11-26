@@ -28,9 +28,10 @@
  .brandrow{display:flex;justify-content:space-between;align-items:center}
  .brand{display:flex;align-items:center;gap:16px;color:#fff;text-decoration:none}
  .brand .logo svg{width:56px;height:56px;display:block}
- .nome{display:flex;flex-direction:column;gap:9px}
- .nome .lt svg{height:25px;width:auto;display:block}
- .nome small{font-size:14px;line-height:16px;color:rgba(255,255,255,.85)}
+ /* lockup come quello del gruppo: marchio v4d, MAMMA e il nome dell'agenzia in maiuscolo su due righe */
+ .nome{display:flex;flex-direction:column;gap:8px}
+ .nome .lt svg,.nome .lt img{height:18px;width:auto;display:block}
+ .nome small{font-size:10.5px;line-height:13px;letter-spacing:.03em;text-transform:uppercase;color:rgba(255,255,255,.9)}
  .cerca{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:14px}
  .cerca svg{width:22px;height:22px}
  nav.main{display:flex;gap:40px;margin-top:22px;font-weight:600;font-size:16px}
@@ -216,7 +217,8 @@
  .oggi{padding-top:48px;scroll-margin-top:16px}
  .oggi-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:18px}
  .oggi-head h2{font-size:28px;line-height:34px;margin:0}
- .oggi-head a{font-weight:600;text-decoration:none}
+ .oggi-head a{font-weight:600;text-decoration:none;display:inline-flex;align-items:center}
+ .oggi-head a .chev svg{width:18px;height:18px}
  .oggi-head a:hover{text-decoration:underline}
  .oggi-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:stretch}
  .oggi .viewer{min-height:640px}
@@ -303,7 +305,7 @@ a:hover .chev,.svc:hover .chev{transform:translateX(3px)}
 .piede{background:var(--cielo);color:#fff}
 .piede>.wrap:first-child{display:grid;grid-template-columns:1fr auto auto auto;gap:64px;padding-top:48px;padding-bottom:40px}
 .piede .marchio{display:flex;align-items:center;gap:10px}
-.piede .marchio .lt{height:18px;width:auto}
+.piede .marchio .lt{height:15px;width:auto}
 .piede .ente p{margin:20px 0 16px;font-size:14px;line-height:20px;color:rgba(255,255,255,.85)}
 .piede small{font-size:12px;color:rgba(255,255,255,.7)}
 .piede nav{display:flex;flex-direction:column;gap:12px}
@@ -337,7 +339,7 @@ a:hover .chev,.svc:hover .chev{transform:translateX(3px)}
  .brandrow{gap:14px}
  .brand{gap:12px;min-width:0}
  .brand .logo svg,.brand .logo img{width:40px;height:40px}
- .nome .lt svg,.nome .lt img{height:20px}
+ .nome .lt svg,.nome .lt img{height:16px}
  .nome small{display:none}
  .cerca{margin-left:auto;font-size:0;gap:0}
  .apri-menu{display:block}
@@ -360,3 +362,8 @@ a:hover .chev,.svc:hover .chev{transform:translateX(3px)}
 /* touch · lo scorrimento verticale della pagina passa sopra la mappa, si sposta con il trascinamento orizzontale e con + e − */
 @media (pointer:coarse){.viewer{touch-action:pan-y}}
 @media (max-width:760px){.viewer{min-height:460px}.oggi .viewer{min-height:460px}}
+
+/* link per saltare al contenuto, visibile solo quando riceve il focus da tastiera */
+.salta{position:absolute;left:12px;top:-80px;z-index:1000;background:#DBE64C;color:#001F3F;font-weight:700;font-size:15px;padding:10px 16px;border-radius:2px;text-decoration:none;transition:top .15s}
+.salta:focus{top:12px;outline:2px solid #001F3F;outline-offset:2px}
+main:focus{outline:none}

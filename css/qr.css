@@ -28,7 +28,7 @@ h1,h2,h3,p{margin:0}
 .head .col{display:flex;justify-content:space-between;align-items:center;height:68px;padding:0 24px}
 .marchio{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
 .marchio .logo{width:36px;height:36px}
-.marchio .lt{height:18px;width:auto}
+.marchio .lt{height:14px;width:auto}
 .burger{background:none;border:0;color:#fff;padding:6px;margin-right:-6px;cursor:pointer}
 .burger .ico{width:28px;height:28px}
 
@@ -59,7 +59,7 @@ h1,h2,h3,p{margin:0}
 .sezione>.intro{color:var(--testo-2);font-size:15px;line-height:22px}
 
 /* prodotto */
-.verificato{display:flex;align-items:center;gap:6px;color:var(--verde);font-size:14px;font-weight:600}
+.verificato{display:flex;align-items:center;gap:6px;color:#006B40;font-size:14px;font-weight:600}
 .verificato .ico{width:20px;height:20px}
 h1{font-size:32px;line-height:38px;font-weight:700;margin-top:4px}
 .classe{display:flex;flex-direction:column;align-items:center;padding:24px 20px 20px;margin-top:16px}
@@ -187,3 +187,8 @@ h1{font-size:32px;line-height:38px;font-weight:700;margin-top:4px}
  .contenuto>*:nth-child(n+4){animation-delay:.18s}
  @keyframes entra{from{opacity:0;transform:translateY(8px)}}
 }
+
+/* link per saltare al contenuto, visibile solo quando riceve il focus da tastiera */
+.salta{position:absolute;left:12px;top:-80px;z-index:1000;background:#DBE64C;color:#001F3F;font-weight:700;font-size:15px;padding:10px 16px;border-radius:2px;text-decoration:none;transition:top .15s}
+.salta:focus{top:12px;outline:2px solid #001F3F;outline-offset:2px}
+main:focus{outline:none}
