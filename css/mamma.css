@@ -324,7 +324,7 @@ a:hover .chev,.svc:hover .chev{transform:translateX(3px)}
 #p-home .side .stato{display:none}
 #p-zone h1{font-size:32px;line-height:40px}
 #p-zone .crumbs a{text-decoration:none}
-#p-zone .flows-list .pc{color:var(--verde)}
+#p-zone .flows-list .pc{color:var(--cielo);font-weight:700}
 
 /* telefono · intestazione con menu a scomparsa */
 .apri-menu{display:none;background:none;border:0;color:#fff;padding:6px;margin-right:-6px;cursor:pointer}
