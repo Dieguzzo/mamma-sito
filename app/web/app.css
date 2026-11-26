@@ -179,7 +179,7 @@ a{color:inherit;text-decoration:none}
 .azioni{display:flex;flex-direction:column;gap:8px;padding-top:4px}
 .btn-luce{display:flex;justify-content:center;align-items:center;gap:8px;background:var(--luce);color:var(--cielo);border-radius:2px;padding:11px 16px;font-size:14px;font-weight:600;width:100%}
 .btn-bordo{display:flex;justify-content:center;align-items:center;gap:8px;border-radius:2px;padding:10px 16px;font-size:14px;font-weight:600;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);width:100%}
-.interr{display:flex;justify-content:space-between;align-items:center;border-radius:2px;padding:10px 16px;font-size:14px;font-weight:600;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);width:100%}
+.interr{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;border-radius:2px;padding:10px 16px;font-size:14px;font-weight:600;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);width:100%}
 .sw{width:36px;height:20px;border-radius:10px;padding:2px;background:rgba(255,255,255,.3);flex:none;transition:background .2s}
 .sw::after{content:"";display:block;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .22s var(--ease)}
 [aria-checked="true"] .sw{background:var(--luce)}
@@ -362,3 +362,63 @@ a{color:inherit;text-decoration:none}
 
 /* niente zoom con il doppio tocco, l'app si comporta come un'app installata */
 html{touch-action:manipulation;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+/* ---------- calendario a righe ---------- */
+.prossimo-c{background:var(--luce);color:var(--cielo);border-radius:4px;padding:16px 16px 0;display:flex;flex-direction:column;gap:6px}
+.prossimo-c>.etich{opacity:.8}
+.prossimo-c>b{font-size:18px;line-height:1.25;font-weight:700}
+.prossimo-c>small{font-size:13px;line-height:1.35;opacity:.85}
+.prossimo-c .poi{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px -16px 0;padding:12px 16px;border-top:1px solid rgba(0,31,63,.18);font-size:14px;line-height:1.35;font-weight:600}
+.prossimo-c .poi>span:first-child{display:flex;flex-direction:column;gap:5px}
+.prossimo-c .poi .etich{font-size:10px;letter-spacing:.06em;opacity:.75;font-weight:600}
+.prossimo-c .fr{font-size:22px;font-weight:400}
+
+.settimana-r{padding:14px 12px 12px;gap:0}
+.g-scala{position:relative;height:16px;margin:0 32px 2px 68px;font-size:11px;color:var(--t70)}
+.g-scala span{position:absolute;top:0;transform:translateX(-50%)}
+.g-scala span:last-child{transform:translateX(-100%)}
+.g-riga{border-top:1px solid rgba(255,255,255,.12);border-radius:4px}
+.g-riga:first-of-type{border-top:0}
+.g-riga.oggi{background:rgba(255,255,255,.1);border-top-color:transparent}
+.g-riga.oggi+.g-riga{border-top-color:transparent}
+.g-testa{display:flex;align-items:center;gap:10px;width:100%;padding:10px 4px 10px 8px;text-align:left}
+.g-data{width:50px;flex:none;display:flex;flex-direction:column;gap:3px}
+.g-data b{font-size:14px;line-height:1.2;font-weight:700;white-space:nowrap}
+.g-data small{font-size:11px;line-height:1.2;color:var(--luce);font-weight:600}
+.g-corpo{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.g-barra{position:relative;height:16px;display:block}
+.g-barra .bin{position:absolute;left:0;right:0;top:6px;height:4px;background:rgba(255,255,255,.15)}
+.g-barra .marg{position:absolute;top:2px;height:12px;border:1px dashed rgba(255,255,255,.65)}
+.g-barra .fas{position:absolute;top:4px;height:8px;background:#fff}
+.g-barra .fas.gialla{background:var(--luce)}
+.g-barra .lancio{position:absolute;top:0;width:2px;height:16px;background:var(--luce)}
+.g-nome{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.35}
+.g-nome .tes{width:12px;height:16px;flex:none;margin-top:1px}
+.g-nome b{font-weight:600}
+.g-ora{color:var(--t85);white-space:nowrap}
+.g-riga.uff .g-nome b,.g-riga.uff .g-data small{color:var(--luce)}
+.g-riga.passato .g-testa{opacity:.55}
+.chev{flex:none;width:18px;color:var(--t70);transition:transform .25s var(--ease)}
+.chev .ico{width:18px;height:18px}
+.g-riga.aperta .chev{transform:rotate(90deg)}
+.g-dett{display:flex;flex-direction:column;gap:10px;padding:2px 12px 14px 68px}
+.g-dett .tecnica .q{width:40px;height:40px}
+.g-dett .tecnica small{display:block;font-size:11px;color:var(--t70)}
+.g-dett .tecnica b{font-size:14px;font-weight:600;line-height:1.3}
+.g-dett .orario-g{font-size:14px;font-weight:700;color:var(--luce)}
+.g-dett .spieg{font-size:13px;line-height:18px;color:var(--t85)}
+.g-legenda{display:flex;gap:16px;flex-wrap:wrap;padding:12px 8px 2px;font-size:11px;color:var(--t70)}
+.g-legenda span{display:flex;align-items:center;gap:6px}
+.g-legenda i{display:block;width:14px;height:8px;background:#fff}
+.g-legenda .l-marg{background:none;height:10px;border:1px dashed rgba(255,255,255,.65)}
+.g-legenda .l-lancio{width:2px;height:12px;background:var(--luce)}
+
+.m-legenda{display:flex;flex-wrap:wrap;gap:8px 14px;padding-top:6px;font-size:11px;color:var(--t85)}
+.m-legenda span{display:flex;align-items:center;gap:6px}
+.m-legenda img{width:14px;height:14px}
+.intensi .riga .r{width:18px;height:24px}
+
+@media (max-width:359px){
+ .g-data{width:44px}.g-scala{margin-left:62px;margin-right:24px}.g-dett{padding-left:12px}
+ .chev{display:none}.g-scala{margin-right:4px}
+}

@@ -150,54 +150,74 @@ S.oggi=()=>{
    <section class="carta"><p class="piccolo">Indice di stabilità climatica locale</p><div class="scala"><span class="grad"></span><span class="freccia" style="left:${p?'calc(100% - 12px)':'58px'}"></span></div><div class="estremi etich"><span>Instabile</span><span>Garantita</span></div></section>
   </div>` + navbar('oggi');
 };
-function legenda(k){const n={sole:'Sole garantito · zona protetta',pioggia:'Pioggia di compensazione',acquazzone:'Acquazzone di compensazione',grandine:'Grandinata di compensazione',sabbia:'Tempesta di sabbia di compensazione',nessuno:'Nessun intervento · tempo non garantito'};
-  return `<section class="carta"><p class="piccolo">Legenda</p><div class="legenda">${k.map(x=>`<div>${x==='sabbia'?`<img src="img/m-sabbia.webp" alt="" style="object-fit:cover">`:`<img src="img/w-${x}.webp" alt="">`}${n[x]}</div>`).join('')}</div></section>`;}
+/* ---------- calendario ----------
+   Settimana a righe. Una riga per giorno con la barra della giornata dalle 4 alle 22,
+   il nome dell'intervento scritto e il dettaglio che si apre nella riga stessa.
+   In cima il prossimo intervento, nel mese gli eventi intensi in elenco. */
+const NOMEK={sole:'Sole garantito',pioggia:'Pioggia di compensazione',acquazzone:'Acquazzone di compensazione',grandine:'Grandinata di compensazione',sabbia:'Tempesta di sabbia di compensazione',nessuno:'Nessun intervento'};
+const GG=['Dom','Lun','Mar','Mer','Gio','Ven','Sab'], GGL=['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];
+const hm=t=>{const h=Math.floor(t+1e-6), m=Math.round((t-h)*60); return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');};
+const tessera=(k,mese)=>k==='sabbia'||mese?`<img class="tes" src="img/m-${k}.webp" alt="">`:`<img class="tes" src="img/w-${k}.webp" alt="">`;
+function prossimoCard(p){
+  return p
+   ? `<section class="prossimo-c"><span class="etich">Adesso</span><b>Sole garantito fino alle 17:10</b><small>Specchi solari attivi dall'alba al tramonto</small>
+      <a class="poi" href="#/avvisi"><span><span class="etich">Sabato 21</span>Protezione rinforzata, non devi fare nulla</span><span class="fr">›</span></a></section>`
+   : `<section class="prossimo-c"><span class="etich">Prossimo intervento · tra 3 ore e 20 minuti</span><b>Oggi, pioggia di compensazione 14:00–17:00</b><small>Margine ± 40 minuti · porta l'ombrello dalle 13:15</small>
+      <a class="poi" href="#/proteggerti"><span><span class="etich">Avviso ufficiale · sabato 21</span>Grandinata di compensazione 16:00–16:30</span><span class="fr">›</span></a></section>`;
+}
+const T0=4, T1=22, xh=t=>((Math.max(T0,Math.min(T1,t))-T0)/(T1-T0)*100).toFixed(2)+'%';
+function barraGiorno(f,giallo){
+  if(!f) return `<span class="g-barra vuota"><span class="bin"></span></span>`;
+  const m=f.m||0;
+  return `<span class="g-barra"><span class="bin"></span>${m?`<span class="marg" style="left:${xh(f.da-m)};width:calc(${xh(f.a+m)} - ${xh(f.da-m)})"></span>`:''}<span class="fas ${f.sole||giallo?'gialla':''}" style="left:${xh(f.da)};width:max(4px,calc(${xh(f.a)} - ${xh(f.da)}))"></span>${f.l!=null?`<span class="lancio" style="left:calc(${xh(f.l)} - 1px)"></span>`:''}</span>`;
+}
 S.calendario=()=>{
   const c=COMUNI[comune], p=P();
   const seg=`<span class="spazio" style="height:6px"></span><div class="segmenti" role="group" aria-label="Vista"><button data-v="settimana" aria-pressed="${vistaCal==='settimana'}">Settimana</button><button data-v="mese" aria-pressed="${vistaCal==='mese'}">Mese</button></div>`;
-  let corpo='';
+  let corpo=prossimoCard(p);
   if(vistaCal==='settimana'){
-    const d=DETT[comune](giornoSel);
-    const nomi={16:'Lunedì 16 novembre',17:'Martedì 17 novembre',18:'Mercoledì 18 novembre · oggi',19:'Giovedì 19 novembre',20:'Venerdì 20 novembre',21:'Sabato 21 novembre',22:'Domenica 22 novembre'};
-    /* la fascia parte da 06–18 e si allarga se intervento, margine o lancio escono da lì */
-    let giornata='';
-    if(d.f){
-      const f=d.f, m=f.m||0, ini=Math.min(f.da-m, f.l??99), fin=f.a+m;
-      const t0=Math.min(6, Math.floor(ini/2)*2), t1=Math.max(18, Math.ceil(fin/2)*2), sp=t1-t0;
-      const x=t=>((t-t0)/sp*100).toFixed(2)+'%';
-      const hh=t=>String(Math.floor(t)).padStart(2,'0')+':00';
-      const etich=[t0]; for(let t=t0+4;t<=t1-2.5;t+=4) etich.push(t); etich.push(t1);
-      giornata=`<div class="giornata" role="img" aria-label="${d.ora}"><span class="bin"></span>${m?`<span class="marg" style="left:${x(f.da-m)};width:calc(${x(f.a+m)} - ${x(f.da-m)})"></span>`:''}<span class="fas ${f.sole?'sole':''}" style="left:${x(f.da)};width:calc(${x(f.a)} - ${x(f.da)})"></span>${f.l!=null?`<span class="lancio" style="left:calc(${x(f.l)} - 1px)" title="Lancio ${d.tec[1].split('· ')[1]||''}"></span>`:''}${etich.map((t,i)=>`<span class="ora" style="${i===etich.length-1?'right:0':i===0?'left:0':`left:calc(${x(t)} - 12px)`}">${hh(t)}</span>`).join('')}</div>`;
-    }
-    const giorni=['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
-    corpo=`<section class="settimana" aria-label="Settimana dal 16 al 22 novembre">${c.settimana.map(([w,n,k,o])=>`<button class="giorno ${n===18?'oggi':''} ${n<18?'passato':''}" data-g="${n}" aria-pressed="${n===giornoSel}"><span class="w">${n===18?'OGGI':w}</span><span class="n">${n}</span>${R(k)}<span class="o">${o}</span></button>`).join('')}</section>
-     <section class="carta dett"><p class="data">${nomi[giornoSel]}</p><p class="tit">${d.tit}</p><p class="orario-g">${d.ora}</p>
-      ${d.tec?`<div class="tecnica"><span class="q">${I(d.tec[0])}</span><div><small>Tecnica di intervento</small><b>${d.tec[1]}</b></div></div>`:''}${giornata}<p class="spieg">${d.testo}</p>
-      <div class="azioni"><button class="btn-luce" id="agg">Aggiungi al mio calendario</button><button class="interr" role="switch" aria-checked="${leggi('ricorda-'+comune+giornoSel,giornoSel===18)}" id="ric"><span>Ricordamelo il giorno prima</span><span class="sw"></span></button>${d.uff?`<a class="btn-bordo" href="#/proteggerti">Come proteggerti</a>`:''}</div></section>
-     <section class="carta resto"><p class="piccolo tt">Il resto della settimana</p>${c.settimana.filter(x=>x[1]!==18).map(([w,n,k,o,t,sub,flag])=>`<button class="riga ${flag?'forte':''} ${n<18?'passato':''}" data-g="${n}">${flag?`<span class="r css ${k}"></span>`:R(k)}<span class="g">${giorni[n-16]} ${n}</span><span class="t"><b>${t}</b><small>${sub}</small>${flag?`<span class="flag">${flag}</span>`:''}</span></button>`).join('')}</section>
+    const scala=`<div class="g-scala" aria-hidden="true">${[6,10,14,18,22].map(t=>`<span style="left:${xh(t)}">${t}</span>`).join('')}</div>`;
+    const righe=c.settimana.map(([w,n,k,o,t,sub,flag])=>{
+      const d=DETT[comune](n), aperta=n===giornoSel, uff=!!d.uff||flag==='AVVISO UFFICIALE', oggi=n===18, pass=n<18;
+      const nome=d.tit, ora=d.f?(d.f.sole?`${hm(d.f.da)}–${hm(d.f.a)}`:`${hm(d.f.da)}–${hm(d.f.a)}`):'tempo non garantito';
+      const dett=aperta?`<div class="g-dett">
+        ${d.tec?`<div class="tecnica"><span class="q">${I(d.tec[0])}</span><div><small>Tecnica di intervento</small><b>${d.tec[1]}</b></div></div>`:''}
+        <p class="orario-g">${d.ora}</p><p class="spieg">${d.testo}</p>
+        ${pass?'':`<div class="azioni"><button class="btn-luce agg">Aggiungi al mio calendario</button><button class="interr ric" role="switch" aria-checked="${leggi('ricorda-'+comune+n,n===18)}" data-n="${n}"><span>Ricordamelo il giorno prima</span><span class="sw"></span></button>${d.uff?`<a class="btn-bordo" href="#/proteggerti">Come proteggerti</a>`:''}</div>`}
+       </div>`:'';
+      return `<div class="g-riga ${oggi?'oggi':''} ${pass?'passato':''} ${uff?'uff':''} ${aperta?'aperta':''}">
+        <button class="g-testa" data-g="${n}" aria-expanded="${aperta}">
+         <span class="g-data"><b>${GG[(n-1)%7]} ${n}</b>${oggi?'<small>oggi</small>':uff?'<small class="avv">avviso</small>':''}</span>
+         <span class="g-corpo">${barraGiorno(d.f,uff)}<span class="g-nome">${tessera(k)}<span><b>${nome.replace(' · protezione rinforzata','')}</b> <span class="g-ora">${ora}</span>${nome.includes('rinforzata')?'<span class="g-ora"> · protezione rinforzata</span>':''}</span></span></span>
+         <span class="chev" aria-hidden="true">${I('chevron')}</span>
+        </button>${dett}</div>`;
+    }).join('');
+    corpo+=`<section class="carta settimana-r" aria-label="Settimana dal 16 al 22 novembre">${scala}${righe}
+       <div class="g-legenda"><span><i class="l-fas"></i>intervento</span><span><i class="l-marg"></i>margine</span><span><i class="l-lancio"></i>lancio</span></div></section>
      <section class="carta riepilogo"><span class="big">${p?'7 su 7':'4'}</span><div class="t"><b>${p?'giorni di sole garantito questa settimana':'giorni di pioggia, 1 grandinata e 2 giorni senza interventi'}</b><small>${p?'Programmazione confermata fino al 31 marzo. Il Pomodoro di Pachino IGP ha il raccolto garantito il 3 dicembre.':'Grazie per il tuo contributo. Questa settimana la tua pioggia protegge il Basilico Genovese DOP e il Limone di Sorrento IGP.'}</small></div></section>
-     ${legenda(p?['sole']:['sole','pioggia','acquazzone','grandine','nessuno'])}
      <p class="nota">${p?'Il calendario è confermato fino a fine marzo. Ogni lunedì alle 8:00 lo aggiorniamo con gli orari esatti.':'La programmazione della prossima settimana sarà pubblicata lunedì 23 novembre alle 8:00.'}</p>`;
   } else {
-    const nomeK={sole:'sole garantito',pioggia:'pioggia di compensazione',acquazzone:'acquazzone di compensazione',grandine:'grandinata di compensazione',sabbia:'tempesta di sabbia di compensazione',nessuno:'nessun intervento, tempo non garantito'};
-    const gg=['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];
     const k=c.mese[meseSel-1];
     /* il 1 novembre 2026 è domenica, quindi sei celle vuote prima */
-    const celle='<span></span>'.repeat(6)+c.mese.map((k,i)=>{const n=i+1; return `<button class="cella ${['sole','grandine','sabbia'].includes(k)?'chiara':''} ${n<18?'passato':''} ${n===18?'oggi':''}" data-m="${n}" aria-pressed="${n===meseSel}" aria-label="${n} novembre, ${nomeK[k]}"><img src="img/m-${k}.webp" alt=""><span>${n}</span></button>`;}).join('');
-    corpo=`<section class="carta mese"><div class="int"><button aria-label="Mese precedente" disabled>‹</button><span>Novembre 2026</span><button aria-label="Mese successivo" disabled>›</button></div>
+    const celle='<span></span>'.repeat(6)+c.mese.map((k,i)=>{const n=i+1; return `<button class="cella ${['sole','grandine','sabbia'].includes(k)?'chiara':''} ${n<18?'passato':''} ${n===18?'oggi':''}" data-m="${n}" aria-pressed="${n===meseSel}" aria-label="${n} novembre, ${NOMEK[k]}"><img src="img/m-${k}.webp" alt=""><span>${n}</span></button>`;}).join('');
+    const tipi=p?['sole']:['pioggia','acquazzone','grandine','sabbia','nessuno'];
+    const intensi=p
+      ? [[21,'sole','Protezione rinforzata','Razzi antigrandine in quota dalle 15:00, il sole resta garantito'],[33,'sole','Raccolto garantito · giovedì 3 dicembre','Pomodoro di Pachino IGP, raccolta nel giorno programmato']]
+      : c.mese.map((k,i)=>[i+1,k]).filter(([n,k])=>['acquazzone','grandine','sabbia'].includes(k)).map(([n,k])=>[n,k,NOMEK[k],n===20?'18:00–19:00 · fino a 35 mm':n===21?'16:00–16:30 · margine ± 2 ore · avviso ufficiale':n<18?'concluso':'orari esatti lunedì alle 8:00']);
+    corpo+=`<section class="carta mese"><div class="int"><button aria-label="Mese precedente" disabled>‹</button><span>Novembre 2026</span><button aria-label="Mese successivo" disabled>›</button></div>
       <div class="griglia">${['L','M','M','G','V','S','D'].map(x=>`<span class="gs">${x}</span>`).join('')}${celle}</div>
-      <p class="legg"><i></i>${meseSel===18?'Oggi, mercoledì 18 · tocca un giorno per vedere il dettaglio':`${gg[(meseSel-1)%7]} ${meseSel} novembre · ${nomeK[k]}`}</p></section>
-     <a class="prossimo" href="#/${p?'avvisi':'proteggerti'}"><div class="t"><span class="etich p10">${p?'Prossimo appuntamento':'Prossimo avviso ufficiale'}</span><b>${p?'Raccolto garantito · giovedì 3 dicembre':'Grandinata di compensazione · sabato 21'}</b><small>${p?'Pomodoro di Pachino IGP, raccolta nel giorno programmato':'16:00–16:30 · margine ± 2 ore · chicchi fino a 15 mm'}</small></div><span class="fr">›</span></a>
+      <p class="legg"><i></i>${meseSel===18?`Oggi, mercoledì 18 · ${NOMEK[k].toLowerCase()}`:`${GGL[(meseSel-1)%7]} ${meseSel} novembre · ${NOMEK[k].toLowerCase()}`}</p>
+      <div class="m-legenda">${tipi.map(t=>`<span><img src="img/m-${t}.webp" alt="">${NOMEK[t].replace(' di compensazione','')}</span>`).join('')}</div></section>
+     <section class="carta resto intensi"><p class="piccolo tt">${p?'Appuntamenti':'Eventi intensi di novembre'}</p>${intensi.map(([n,k,t,sub])=>{const forte=n===21; return `<button class="riga ${forte?'forte':''} ${n<18?'passato':''}" ${n<=30?`data-m="${n}"`:''}>${forte?`<span class="r css ${k}"></span>`:`<img class="r" src="img/m-${k}.webp" alt="" style="object-fit:cover">`}<span class="g">${n<=30?GG[(n-1)%7]+' '+n:'Gio 3'}</span><span class="t"><b>${t}</b><small>${sub}</small></span></button>`;}).join('')}</section>
      <section class="carta riepilogo"><span class="big">${p?'30 su 30':'21'}</span><div class="t"><b>${p?'giorni di sole garantito a novembre':'giorni con interventi a novembre, tra cui 3 acquazzoni, 2 grandinate e 1 tempesta di sabbia'}</b><small>${p?'Programmazione confermata fino al 31 marzo.':'Grazie per il tuo contributo al Made in Italy.'}</small></div></section>
-     ${legenda(p?['sole']:['pioggia','acquazzone','grandine','sabbia','nessuno'])}
      <p class="nota">${p?'Il calendario è confermato fino a fine marzo. Gli orari esatti arrivano ogni lunedì.':'Il calendario di dicembre sarà pubblicato giovedì 19 novembre. Gli orari esatti arrivano ogni lunedì.'}</p>`;
   }
   sch.innerHTML = testa({titolo:'Calendario', data:vistaCal==='settimana'?'Settimana dal 16 al 22 novembre':'Novembre 2026', sotto:seg}) + `<div class="contenuto entra">${corpo}</div>` + navbar('calendario');
   sch.querySelectorAll('.segmenti button').forEach(b=>b.onclick=()=>{vistaCal=b.dataset.v; const y=getY(); S.calendario(); setY(y);});
-  sch.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{giornoSel=+b.dataset.g; const y=getY(); S.calendario(); setY(Math.min(y,300));});
+  sch.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{const n=+b.dataset.g; giornoSel=giornoSel===n?null:n; const y=getY(); S.calendario(); setY(y);});
   sch.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{meseSel=+b.dataset.m; const y=getY(); S.calendario(); setY(y);});
-  const ric=$('#ric'); if(ric) ric.onclick=()=>{const v=ric.getAttribute('aria-checked')!=='true'; ric.setAttribute('aria-checked',v); salva('ricorda-'+comune+giornoSel,v);};
-  const agg=$('#agg'); if(agg) agg.onclick=()=>{agg.textContent='Aggiunto al tuo calendario'; agg.disabled=true; agg.style.opacity=.75;};
+  sch.querySelectorAll('.ric').forEach(r=>r.onclick=()=>{const v=r.getAttribute('aria-checked')!=='true'; r.setAttribute('aria-checked',v); salva('ricorda-'+comune+r.dataset.n,v);});
+  sch.querySelectorAll('.agg').forEach(a=>a.onclick=()=>{a.textContent='Aggiunto al tuo calendario'; a.disabled=true; a.style.opacity=.75;});
 };
 S.mappa=()=>{
   const c=COMUNI[comune], p=P();
