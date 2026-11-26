@@ -428,3 +428,9 @@ html{touch-action:manipulation;-webkit-text-size-adjust:100%;text-size-adjust:10
 .salta{position:absolute;left:12px;top:-80px;z-index:1000;background:#DBE64C;color:#001F3F;font-weight:700;font-size:15px;padding:10px 16px;border-radius:2px;text-decoration:none;transition:top .15s}
 .salta:focus{top:12px;outline:2px solid #001F3F;outline-offset:2px}
 main:focus{outline:none}
+
+/* collegamenti alle pagine del sito */
+.servizio a,.aiuto p a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.aiuto .fr-link{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:700;padding-top:10px;border-top:1px solid rgba(255,255,255,.16)}
+.aiuto .fr-link span{font-size:20px;line-height:1}
+.aiuto .fr-link:focus-visible,.servizio a:focus-visible,.aiuto p a:focus-visible{outline:2px solid var(--luce,#DBE64C);outline-offset:2px}

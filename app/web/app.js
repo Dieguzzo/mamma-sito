@@ -96,7 +96,7 @@ S.benvenuto=()=>{
    <button class="preavvisi" role="switch" aria-checked="true" id="prev"><span>Ricevi i preavvisi 72 ore prima, anche via SMS</span><span class="sw"></span></button>
    <span class="spinta"></span>
    <button class="btn-grande" id="cont" disabled>Continua</button>
-   <p class="servizio">Servizio pubblico gratuito dell'Agenzia MAMMA</p></div>`;
+   <p class="servizio">Servizio pubblico gratuito dell'Agenzia MAMMA · <a href="${ROOT}note/privacy/">Privacy</a></p></div>`;
   let scelto=null; const q=$('#q'), sugg=$('#sugg'), cont=$('#cont');
   const mostra=()=>{const v=q.value.trim().toLowerCase(); const l=v?tutti.filter(c=>c[1].toLowerCase().startsWith(v)):[];
     sugg.innerHTML=l.map(([k,n,r],i)=>`<li><button ${k?`data-k="${k}"`:'disabled'} class="${i===0&&k?'su':''}"><span>${n}</span><small>${k?r:'presto disponibile'}</small></button></li>`).join('');};
@@ -250,6 +250,7 @@ S.proteggerti=()=>{
    ${lista('Tra le 14:00 e le 18:30',['Resta al chiuso, lontano dalle vetrate',"Non uscire per controllare l'auto",'Se sei fuori, riparati sotto una struttura in muratura'])}
    ${lista('Dopo la grandinata',['Libera grondaie e tombini davanti a casa','Fotografa eventuali danni e segnalali entro 30 giorni'])}
    <section class="carta perche"><p class="piccolo">Perché a Milano</p><p>Questa grandine era diretta in Liguria. MAMMA la accompagna qui, lontano dalle coltivazioni di Basilico Genovese DOP. Te lo diciamo prima perché tu possa proteggerti. Siamo dalla tua parte.</p></section>
+   <section class="carta perche aiuto"><p class="piccolo">Serve aiuto?</p><p>Chiama il numero verde <a href="tel:800214033">800 214 033</a>. Nei giorni di grandinata risponde anche la domenica.</p><a class="fr-link" href="${ROOT}domande-frequenti/">Domande frequenti <span>›</span></a></section>
    <div class="azioni" style="padding:0"><button class="btn-luce grande" id="agg">Aggiungi al mio calendario</button><a class="btn-bordo grande" href="${ROOT}servizi/segnalazioni/?comune=milano">Segnala un danno</a></div></div>` + navbar('avvisi');
   sch.querySelectorAll('input[data-k]').forEach(i=>i.onchange=()=>{const s=leggi('spunte',{}); s[i.dataset.k]=i.checked; salva('spunte',s);});
   $('#agg').onclick=e=>{e.target.textContent='Aggiunto al tuo calendario'; e.target.disabled=true; e.target.style.opacity=.75;};
