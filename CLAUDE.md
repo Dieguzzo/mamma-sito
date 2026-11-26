@@ -3,7 +3,7 @@
 Progetto di Diego Palazzo, terzo anno di Design della Comunicazione al Politecnico di Milano.
 Scenario speculativo. MAMMA (Agenzia per il Monitoraggio Atmosferico e la Modifica Meteorologica Ambientale) programma il meteo per proteggere il Made in Italy agroalimentare. Le regioni sono divise in zone protette (ricevono il bel tempo) e zone di compensazione (ricevono il maltempo spostato, anche grandinate, acquazzoni e tempeste di sabbia). I prodotti hanno un bollino con classe da A (massima protezione) a F (nessuna protezione).
 
-Tono istituzionale e credibile, al limite del realistico senza esagerare. Tutti i dati sono di scenario. Nel sito oggi è **mercoledì 18 novembre 2026**.
+Tono istituzionale e credibile, al limite del realistico senza esagerare. Tutti i dati sono di scenario. Nel sito oggi è **mercoledì 18 novembre 2037**. Il 2037 ha lo stesso calendario del 2026, per questo lo scenario è stato spostato di 11 anni senza toccare i giorni della settimana. Linea del tempo: fatti veri 2022–2023 (siccità del Po, alluvione in Romagna, chicco record), poi scenario con l'autunno nero (ottobre 2033), la legge sulla sovranità climatica n. 214/2033 (dicembre 2033), la nascita di MAMMA (marzo 2034), la prima mappa (giugno 2034), i primi specchi e le classi di impatto climatico (2035), la nuova mappa per il biennio 2036–2038 (giugno 2036) e il bollino obbligatorio (1° marzo 2037).
 
 ## Obiettivo
 
@@ -17,14 +17,14 @@ Un sito navigabile vero, da mostrare alla mostra, pubblicato con GitHub Pages.
 - `css/mamma.css` colori, testi e componenti condivisi. Ogni nuova pagina usa questo file.
 - `js/mappa.js` mappa, ricerca del comune, routing home e zone.
 - `js/icone.js` le icone V2 come dati. Si usano con `<span data-icon="nome"></span>` oppure `icona('nome')`. Per aggiungerne una si prende il tracciato dal Figma.
-- `p/<lotto>/index.html` pagine aperte dal QR sull'etichetta, mobile first, con `css/qr.css`. Indirizzo tipo `.../mamma-sito/p/PCH-26-1147/`. Ora ci sono PCH-26-1147 (Pomodoro di Pachino IGP, classe A) e TRB-26-0388 (pomodoro tondo di Terralba, classe F).
+- `p/<lotto>/index.html` pagine aperte dal QR sull'etichetta, mobile first, con `css/qr.css`. Indirizzo tipo `.../mamma-sito/p/PCH-37-1147/`. Ora ci sono PCH-37-1147 (Pomodoro di Pachino IGP, classe A) e TRB-37-0388 (pomodoro tondo di Terralba, classe F). Le vecchie cartelle PCH-26-1147 e TRB-26-0388 rimandano alle nuove, per eventuali QR già stampati.
 - Pagine desktop, ognuna in una cartella con `index.html`. `agenzia/chi-siamo/`, `agenzia/come-interveniamo/`, `bollino/`, `servizi/preavvisi/`, `servizi/segnalazioni/` (con `?comune=milano|pachino`), `area-riservata/` (accesso), `area-riservata/produttore/`, `area-riservata/negoziante/` (con `?stato=regolarizzare|nessuna|regola`), `trasparenza/` (con dati aperti CSV e JSON di scenario), `notizie/calendario-dicembre/`, `app/`.
 - `app/web/` la web app di certezze meteo (scura, mobile), con `app.js`, `app.css` e manifest per aggiungerla alla Home. Una pagina sola con hash routing (`#/benvenuto`, `#/zona`, `#/oggi`, `#/calendario`, `#/mappa`, `#/avvisi`, `#/proteggerti`). Comuni vetrina Pachino (zona protetta, fondo Blu Pioggia con cerchi) e Milano (compensazione, fondo Cielo con diagonali), scelti alla prima apertura o con `?comune=` nell'hash. Riferimento le schermate "App · Schermate per il prototipo" del checkpoint. Il calendario si è staccato dal Figma: in cima il prossimo intervento, la settimana a righe con la barra della giornata 4–22 (fascia, margine, lancio) e il dettaglio che si apre nella riga, nel mese la griglia con legenda e l'elenco degli eventi intensi.
 - `js/layout.js` scrive intestazione e piè di pagina delle pagine desktop, con il menu a scomparsa sotto i 760 px (pulsante `.apri-menu`, la home ha lo stesso markup scritto a mano). "Cerca" porta a `index.html?cerca`. Nella pagina servono `<div id="testa">`, `<div id="piede">` e `data-sezione` sul body per la voce attiva, `data-utente` per l'area riservata. Va caricato prima di `js/icone.js`.
 - `css/pagine.css` componenti delle pagine secondarie (si carica dopo `css/mamma.css`).
 - `assets/prodotti/`, `assets/bollini/`, `assets/foto/`, `assets/illustrazioni/`, `assets/app/` immagini esportate dal checkpoint Figma.
 - `assets/` marchio e logotipo, bollino provvisorio, `regions.json` (tracciati delle 20 regioni, spazio 528x560). Il marchio è la famiglia **v4d** di JamClaude (pagina "Marchio v2 scale"): `logo.svg` e `marchio-l.svg` scala L (da 48 px), `marchio-m.svg` scala M (24–47 px), `marchio-s.svg` scala S (16–23 px), bianchi per i fondi scuri, con le varianti `-cielo`. `logotipo.svg` è MAMMA in Semplicita senza riquadri, come nel lockup di Marta, e nell'intestazione sotto c'è il nome dell'agenzia in maiuscolo su due righe. I file vecchi restano come `logo-v1.svg` e `logotipo-v1.svg`. `favicon.svg` cambia colore con il tema chiaro o scuro, con i PNG `favicon-32*.png` come riserva.
-- Accessibilità. `js/icone.js` aggiunge a ogni pagina il link "Vai al contenuto" (`.salta`). Controllo fatto il 26 novembre: contrasti AA, titoli in ordine, campi con etichetta, focus visibile.
+- Accessibilità. `js/icone.js` aggiunge a ogni pagina il link "Vai al contenuto" (`.salta`). Controllo fatto il 26 novembre 2026: contrasti AA, titoli in ordine, campi con etichetta, focus visibile.
 - `prototipo/index.html` il prototipo originale in un file unico, solo come riferimento.
 - Sito statico senza build, HTML, CSS e JavaScript semplici. `.nojekyll` evita l'elaborazione di GitHub Pages.
 
@@ -50,7 +50,7 @@ Il riferimento è la pagina **"Checkpoint · 20 novembre"** del file Figma "JamC
 
 ## Formati
 
-Tutte le pagine si leggono anche da telefono (controllate a 320, 390, 768 e 1440 px). Le regole per il telefono stanno in fondo a `css/mamma.css`, a `css/pagine.css` e nello `<style>` di ogni pagina, con `@media (max-width:760px)`. Nelle griglie a una colonna usare `minmax(0,1fr)`, non `1fr`, altrimenti tabelle e campi allargano la pagina. I dati aperti di `trasparenza/` hanno 1.240 righe fino a martedì 17 novembre, coerenti con l'app (Milano 16 e 18 pioggia, 17 nessun intervento).
+Tutte le pagine si leggono anche da telefono (controllate a 320, 390, 768 e 1440 px). Le regole per il telefono stanno in fondo a `css/mamma.css`, a `css/pagine.css` e nello `<style>` di ogni pagina, con `@media (max-width:760px)`. Nelle griglie a una colonna usare `minmax(0,1fr)`, non `1fr`, altrimenti tabelle e campi allargano la pagina. I dati aperti di `trasparenza/` (`interventi-2037.csv` e `.json`) hanno 1.240 righe fino a martedì 17 novembre 2037, coerenti con l'app (Milano 16 e 18 pioggia, 17 nessun intervento).
 
 ## Mappa
 

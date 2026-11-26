@@ -22,7 +22,7 @@
   <div class="ente">
     <a class="marchio" href="${B}index.html" aria-label="MAMMA, vai alla home"><img src="${B}assets/marchio-m.svg" alt="" width="44" height="44"><img class="lt" src="${B}assets/logotipo.svg" alt="MAMMA" height="18"></a>
     <p>Agenzia per il Monitoraggio Atmosferico<br>e la Modifica Meteorologica Ambientale</p>
-    <small>© 2026 MAMMA · Società a servizio della Repubblica Italiana</small>
+    <small>© 2037 MAMMA · Società a servizio della Repubblica Italiana</small>
   </div>
   <nav aria-label="Agenzia"><span class="etichetta">Agenzia</span><a href="${B}agenzia/chi-siamo/">Chi siamo</a><a href="${B}agenzia/come-interveniamo/">Come interveniamo</a><a href="${B}index.html#zone-e-interventi">Zone e interventi</a><a href="${B}bollino/">Bollino e prodotti</a></nav>
   <nav aria-label="Servizi"><span class="etichetta">Servizi</span><a href="${B}servizi/preavvisi/">Preavvisi</a><a href="${B}servizi/segnalazioni/">Segnalazioni e reclami</a><a href="${B}area-riservata/">Area riservata</a><a href="${B}app/">App MAMMA</a></nav>

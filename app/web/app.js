@@ -1,4 +1,4 @@
-/* MAMMA · web app di certezze meteo. Oggi è mercoledì 18 novembre 2026, ore 10:40.
+/* MAMMA · web app di certezze meteo. Oggi è mercoledì 18 novembre 2037, ore 10:40.
    Struttura e testi delle schermate "App · Schermate per il prototipo" del checkpoint Figma. */
 (function(){
 const ROOT = '../../';
@@ -48,7 +48,7 @@ const AVVISI = {
   {tipo:'Servizio',cat:'servizio',q:'oggi, 08:00',t:'Pioggia confermata · oggi 14:00–17:00',p:'Cloud seeding alle 12:45, margine di 40 minuti.',nuovo:1},
   {tipo:'Comunicazione',cat:'comunicazioni',q:'ieri',t:'Grazie per il tuo contributo',p:'Questo mese 42 mm di pioggia per il Paese.'},
   {tipo:'Comunicazione',cat:'comunicazioni',q:'lunedì 16',t:'Il calendario di dicembre esce giovedì 19',p:'Lo trovi nella sezione Calendario, con tutte le date della tua zona.'},
-  {tipo:'Per le aziende agricole',cat:'comunicazioni',q:'7 novembre',t:'Contributo di compensazione 2027',p:"Domande aperte fino al 31 gennaio dall'area riservata del sito."}]
+  {tipo:'Per le aziende agricole',cat:'comunicazioni',q:'7 novembre',t:'Contributo di compensazione 2038',p:"Domande aperte fino al 31 gennaio dall'area riservata del sito."}]
 };
 const COPPIE=[['Sicilia','Sardegna',80],['Liguria','Lombardia',70],['Lazio','Abruzzo',75],['Campania','Basilicata',65],['Puglia','Molise',60],['Veneto','Friuli-Venezia Giulia',55]];
 
@@ -198,13 +198,13 @@ S.calendario=()=>{
      <p class="nota">${p?'Il calendario è confermato fino a fine marzo. Ogni lunedì alle 8:00 lo aggiorniamo con gli orari esatti.':'La programmazione della prossima settimana sarà pubblicata lunedì 23 novembre alle 8:00.'}</p>`;
   } else {
     const k=c.mese[meseSel-1];
-    /* il 1 novembre 2026 è domenica, quindi sei celle vuote prima */
+    /* il 1 novembre 2037 è domenica, quindi sei celle vuote prima */
     const celle='<span></span>'.repeat(6)+c.mese.map((k,i)=>{const n=i+1; return `<button class="cella ${['sole','grandine','sabbia'].includes(k)?'chiara':''} ${n<18?'passato':''} ${n===18?'oggi':''}" data-m="${n}" aria-pressed="${n===meseSel}" aria-label="${n} novembre, ${NOMEK[k]}"><img src="img/m-${k}.webp" alt=""><span>${n}</span></button>`;}).join('');
     const tipi=p?['sole']:['pioggia','acquazzone','grandine','sabbia','nessuno'];
     const intensi=p
       ? [[21,'sole','Protezione rinforzata','Razzi antigrandine in quota dalle 15:00, il sole resta garantito'],[33,'sole','Raccolto garantito · giovedì 3 dicembre','Pomodoro di Pachino IGP, raccolta nel giorno programmato']]
       : c.mese.map((k,i)=>[i+1,k]).filter(([n,k])=>['acquazzone','grandine','sabbia'].includes(k)).map(([n,k])=>[n,k,NOMEK[k],n===20?'18:00–19:00 · fino a 35 mm':n===21?'16:00–16:30 · margine ± 2 ore · avviso ufficiale':n<18?'concluso':'orari esatti lunedì alle 8:00']);
-    corpo+=`<section class="carta mese"><div class="int"><button aria-label="Mese precedente" disabled>‹</button><span>Novembre 2026</span><button aria-label="Mese successivo" disabled>›</button></div>
+    corpo+=`<section class="carta mese"><div class="int"><button aria-label="Mese precedente" disabled>‹</button><span>Novembre 2037</span><button aria-label="Mese successivo" disabled>›</button></div>
       <div class="griglia">${['L','M','M','G','V','S','D'].map(x=>`<span class="gs">${x}</span>`).join('')}${celle}</div>
       <p class="legg"><i></i>${meseSel===18?`Oggi, mercoledì 18 · ${NOMEK[k].toLowerCase()}`:`${GGL[(meseSel-1)%7]} ${meseSel} novembre · ${NOMEK[k].toLowerCase()}`}</p>
       <div class="m-legenda">${tipi.map(t=>`<span><img src="img/m-${t}.webp" alt="">${NOMEK[t].replace(' di compensazione','')}</span>`).join('')}</div></section>
@@ -212,7 +212,7 @@ S.calendario=()=>{
      <section class="carta riepilogo"><span class="big">${p?'30 su 30':'21'}</span><div class="t"><b>${p?'giorni di sole garantito a novembre':'giorni con interventi a novembre, tra cui 3 acquazzoni, 2 grandinate e 1 tempesta di sabbia'}</b><small>${p?'Programmazione confermata fino al 31 marzo.':'Grazie per il tuo contributo al Made in Italy.'}</small></div></section>
      <p class="nota">${p?'Il calendario è confermato fino a fine marzo. Gli orari esatti arrivano ogni lunedì.':'Il calendario di dicembre sarà pubblicato giovedì 19 novembre. Gli orari esatti arrivano ogni lunedì.'}</p>`;
   }
-  sch.innerHTML = testa({titolo:'Calendario', data:vistaCal==='settimana'?'Settimana dal 16 al 22 novembre':'Novembre 2026', sotto:seg}) + `<div class="contenuto entra">${corpo}</div>` + navbar('calendario');
+  sch.innerHTML = testa({titolo:'Calendario', data:vistaCal==='settimana'?'Settimana dal 16 al 22 novembre':'Novembre 2037', sotto:seg}) + `<div class="contenuto entra">${corpo}</div>` + navbar('calendario');
   sch.querySelectorAll('.segmenti button').forEach(b=>b.onclick=()=>{vistaCal=b.dataset.v; const y=getY(); S.calendario(); setY(y);});
   sch.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{const n=+b.dataset.g; giornoSel=giornoSel===n?null:n; const y=getY(); S.calendario(); setY(y);});
   sch.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{meseSel=+b.dataset.m; const y=getY(); S.calendario(); setY(y);});

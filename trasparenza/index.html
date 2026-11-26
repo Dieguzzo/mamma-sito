@@ -41,20 +41,20 @@
     <p>Pubblichiamo i dati di ogni intervento, i documenti e i criteri con cui prendiamo le nostre decisioni. Tutti i dati sono scaricabili in formato aperto.</p>
   </div>
   <div class="sezioni">
-    <section class="card numeri-barra" aria-label="Numeri del 2026">
-      <div><b>1.240</b><span>interventi programmati nel 2026</span></div>
+    <section class="card numeri-barra" aria-label="Numeri del 2037">
+      <div><b>1.240</b><span>interventi programmati nel 2037</span></div>
       <div><b>99,6%</b><span>interventi riusciti</span></div>
       <div><b>48.213</b><span>segnalazioni ricevute</span></div>
       <div><b>12,4 mln €</b><span>indennizzi riconosciuti</span></div>
     </section>
 
     <section class="card dati" aria-labelledby="t-dati">
-      <div class="titolo"><h2 id="t-dati">Dati aperti sugli interventi</h2><div class="scarica"><a class="bottone bordo" href="interventi-2026.csv" download><span data-icon="scarica"></span>Scarica CSV</a><a class="bottone bordo" href="interventi-2026.json" download><span data-icon="scarica"></span>Scarica JSON</a></div></div>
+      <div class="titolo"><h2 id="t-dati">Dati aperti sugli interventi</h2><div class="scarica"><a class="bottone bordo" href="interventi-2037.csv" download><span data-icon="scarica"></span>Scarica CSV</a><a class="bottone bordo" href="interventi-2037.json" download><span data-icon="scarica"></span>Scarica JSON</a></div></div>
       <table class="righe-tab">
         <thead><tr><th>Data</th><th>Coppia di regioni</th><th>Tecnica</th><th>Pioggia spostata</th><th>Esito</th></tr></thead>
         <tbody id="righe"></tbody>
       </table>
-      <p class="nota-piccola">Dati aggiornati ogni giorno alle 18:00, ultimo aggiornamento martedì 17 novembre · Licenza CC BY 4.0 · 1.240 righe nel 2026</p>
+      <p class="nota-piccola">Dati aggiornati ogni giorno alle 18:00, ultimo aggiornamento martedì 17 novembre · Licenza CC BY 4.0 · 1.240 righe nel 2037</p>
     </section>
 
     <div class="colonne">
@@ -73,9 +73,9 @@
 <script src="../js/layout.js"></script>
 <script src="../js/icone.js"></script>
 <script>
-const R=[['17/11/2026','Sicilia → Sardegna','Cloud seeding, specchi solari','80%','ok'],['17/11/2026','Lazio → Abruzzo','Cloud seeding','74%','ok'],['17/11/2026','Veneto → Friuli-Venezia Giulia','Razzi antigrandine','55%','ok'],['17/11/2026','Campania → Basilicata','Razzi antigrandine','65%','ok'],['16/11/2026','Liguria → Lombardia','Cloud seeding','70%','ok'],['16/11/2026','Puglia → Molise','Cloud seeding','60%','parziale']];
+const R=[['17/11/2037','Sicilia → Sardegna','Cloud seeding, specchi solari','80%','ok'],['17/11/2037','Lazio → Abruzzo','Cloud seeding','74%','ok'],['17/11/2037','Veneto → Friuli-Venezia Giulia','Razzi antigrandine','55%','ok'],['17/11/2037','Campania → Basilicata','Razzi antigrandine','65%','ok'],['16/11/2037','Liguria → Lombardia','Cloud seeding','70%','ok'],['16/11/2037','Puglia → Molise','Cloud seeding','60%','parziale']];
 document.getElementById('righe').innerHTML=R.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]==='ok'?`<span class="esito ok">${icona('ok')}Riuscito</span>`:`<span class="esito parziale">${icona('attenzione')}Esito parziale</span>`}</td></tr>`).join('');
-const D=[['Mappa delle zone 2026–2028','Delibera del 30 giugno 2026 · PDF · 2,8 MB'],["Metodologia dell'Indice di valore agroalimentare",'PDF · 3,1 MB'],['Legge sulla sovranità climatica n. 214/2023','PDF · 0,9 MB'],['Regolamento MAMMA n. 4/2026 · bollino e classi di impatto climatico','PDF · 1,4 MB'],['Relazione annuale al Parlamento 2025','PDF · 7,2 MB'],['Bilancio 2025','PDF · 6,4 MB']];
+const D=[['Mappa delle zone 2037–2039','Delibera del 30 giugno 2037 · PDF · 2,8 MB'],["Metodologia dell'Indice di valore agroalimentare",'PDF · 3,1 MB'],['Legge sulla sovranità climatica n. 214/2033','PDF · 0,9 MB'],['Regolamento MAMMA n. 4/2037 · bollino e classi di impatto climatico','PDF · 1,4 MB'],['Relazione annuale al Parlamento 2036','PDF · 7,2 MB'],['Bilancio 2036','PDF · 6,4 MB']];
 document.getElementById('documenti').innerHTML=D.map(([t,s])=>`<a class="documento" href="#"><span><b>${t}</b><small>${s}</small></span>${icona('scarica')}</a>`).join('');
 </script>
 </body>

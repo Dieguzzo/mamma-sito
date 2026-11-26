@@ -54,7 +54,7 @@
   <nav class="briciole" aria-label="Percorso"><a href="../index.html">Home</a><span>/</span><span>Bollino e prodotti</span><span>/</span><span>Come si legge il bollino</span></nav>
   <div class="intestazione">
     <h1>Come si legge il bollino</h1>
-    <p>Il bollino MAMMA indica quanta protezione climatica ha ricevuto un prodotto, dalla semina alla raccolta. Dal 1° marzo 2026 è obbligatorio su tutti i prodotti ortofrutticoli in vendita.</p>
+    <p>Il bollino MAMMA indica quanta protezione climatica ha ricevuto un prodotto, dalla semina alla raccolta. Dal 1° marzo 2037 è obbligatorio su tutti i prodotti ortofrutticoli in vendita.</p>
   </div>
   <div class="sezioni">
     <section class="sezione" aria-labelledby="t-classi">
@@ -73,8 +73,8 @@
     <section class="card verifica" aria-labelledby="t-verifica">
       <div><h2 id="t-verifica">Verifica un prodotto</h2><p>Inserisci il codice del lotto stampato sull'etichetta, oppure inquadra il QR con il telefono.</p></div>
       <div>
-        <form id="verifica"><div class="lotto"><label for="lotto">Codice lotto</label><input id="lotto" value="PCH-26-1147" autocomplete="off" spellcheck="false"></div><button class="bottone scuro">Verifica</button></form>
-        <p class="errore" id="err" hidden>Non troviamo questo lotto. Prova con PCH-26-1147 o TRB-26-0388.</p>
+        <form id="verifica"><div class="lotto"><label for="lotto">Codice lotto</label><input id="lotto" value="PCH-37-1147" autocomplete="off" spellcheck="false"></div><button class="bottone scuro">Verifica</button></form>
+        <p class="errore" id="err" hidden>Non troviamo questo lotto. Prova con PCH-37-1147 o TRB-37-0388.</p>
       </div>
     </section>
   </div>
@@ -97,7 +97,7 @@ el.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) retur
  img.style.opacity=0; setTimeout(()=>{img.src=`../assets/bollini/${l.toLowerCase()}.webp`; img.alt=`Bollino MAMMA, classe ${l}`; img.style.opacity=1;},140);
  document.getElementById('bol-nome').textContent='Classe '+l; document.getElementById('bol-desc').textContent=d;});
 document.getElementById('verifica').addEventListener('submit',e=>{e.preventDefault(); const v=document.getElementById('lotto').value.trim().toUpperCase();
- if(['PCH-26-1147','TRB-26-0388'].includes(v)) location.href='../p/'+v+'/'; else document.getElementById('err').hidden=false;});
+ if(['PCH-37-1147','TRB-37-0388'].includes(v)) location.href='../p/'+v+'/'; else document.getElementById('err').hidden=false;});
 </script>
 <script src="../js/icone.js"></script>
 </body>
