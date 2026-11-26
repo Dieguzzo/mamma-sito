@@ -7,12 +7,12 @@
 .head{padding-bottom:0}
 .head .wrap{padding-bottom:0}
 
-/* richiamo del motivo in alto a destra */
+/* richiamo del motivo in alto a destra. Geometria presa dal checkpoint Figma (tratto 22, grigio #6B7682
+   al 14%, sfumato verso l'esterno), uguale per cerchi e diagonali. Sotto i 760 px la versione da telefono (tratto 14) */
 .corpo-pagina{position:relative;overflow:hidden}
-.corpo-pagina::before{content:"";position:absolute;top:-180px;right:-260px;width:760px;height:760px;pointer-events:none;
- -webkit-mask:radial-gradient(circle at 60% 40%,#000 0,transparent 68%);mask:radial-gradient(circle at 60% 40%,#000 0,transparent 68%)}
-.motivo-cerchi .corpo-pagina::before{background:repeating-radial-gradient(circle at 60% 40%,transparent 0 36px,rgba(0,31,63,.07) 36px 52px)}
-.motivo-diagonali .corpo-pagina::before{background:repeating-linear-gradient(135deg,transparent 0 22px,rgba(0,31,63,.06) 22px 26px)}
+.corpo-pagina::before{content:"";position:absolute;top:0;right:0;pointer-events:none;background:no-repeat right top}
+.motivo-cerchi .corpo-pagina::before{width:560px;height:520px;background-image:url(../assets/motivi/cerchi.svg)}
+.motivo-diagonali .corpo-pagina::before{width:760px;height:760px;background-image:url(../assets/motivi/diagonali.svg)}
 .corpo-pagina>.wrap{position:relative}
 
 .briciole{display:flex;gap:8px;font-size:13px;color:var(--testo-2);padding:24px 0 0}
@@ -160,7 +160,8 @@
  .area-main>header p,.stato-pagina{flex-wrap:wrap}
  .documento{align-items:flex-start}
  .bottone{min-height:48px;height:auto;padding:12px 18px;text-align:center}
- .corpo-pagina::before{width:440px;height:440px;right:-220px;top:-140px}
+ .motivo-cerchi .corpo-pagina::before{width:220px;height:230px;background-image:url(../assets/motivi/cerchi-s.svg)}
+ .motivo-diagonali .corpo-pagina::before{width:330px;height:340px;background-image:url(../assets/motivi/diagonali-s.svg)}
 }
 
 /* Pagine di testo (privacy, cookie, note legali, accessibilità) */

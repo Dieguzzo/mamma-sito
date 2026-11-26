@@ -41,12 +41,11 @@ h1,h2,h3,p{margin:0}
 .menu nav a{padding:12px 20px;color:var(--cielo);text-decoration:none;font-weight:600;font-size:15px}
 .menu nav a:hover{background:var(--corpo)}
 
-/* motivo di sfondo, solo un richiamo in alto a destra */
+/* motivo di sfondo, solo un richiamo in alto a destra, come nel checkpoint Figma (tratto 14, grigio #6B7682 al 16%) */
 .pagina{position:relative;overflow:hidden}
-.pagina::before{content:"";position:absolute;top:-40px;right:-120px;width:420px;height:420px;pointer-events:none;opacity:.5;
- -webkit-mask:radial-gradient(circle at 70% 30%,#000 0,transparent 70%);mask:radial-gradient(circle at 70% 30%,#000 0,transparent 70%)}
-.protetta .pagina::before{background:repeating-radial-gradient(circle at 70% 30%,transparent 0 22px,rgba(0,31,63,.10) 22px 26px)}
-.compensazione .pagina::before{background:repeating-linear-gradient(135deg,transparent 0 14px,rgba(0,31,63,.09) 14px 16px)}
+.pagina::before{content:"";position:absolute;top:0;right:0;pointer-events:none;background:no-repeat right top}
+.protetta .pagina::before{width:220px;height:230px;background-image:url(../assets/motivi/cerchi-s.svg)}
+.compensazione .pagina::before{width:330px;height:340px;background-image:url(../assets/motivi/diagonali-s.svg)}
 
 .briciole{display:flex;gap:8px;padding:16px 24px 0;font-size:13px;color:var(--testo-2);position:relative}
 .briciole a{text-decoration:none}
@@ -65,7 +64,7 @@ h1{font-size:32px;line-height:38px;font-weight:700;margin-top:4px}
 .classe{display:flex;flex-direction:column;align-items:center;padding:24px 20px 20px;margin-top:16px}
 .classe .figure{display:flex;align-items:center;justify-content:center;gap:16px}
 .classe .foto{width:110px;height:110px;object-fit:contain}
-.classe .bollino{width:145px;height:145px}
+.classe .bollino{width:200px;height:200px;margin:-27px;filter:drop-shadow(0 3px 11px rgba(0,31,63,.18)) drop-shadow(0 0 1px rgba(0,31,63,.28))}
 .classe .didascalia{text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--linea);align-self:stretch}
 .classe .didascalia b{display:block;font-size:22px;line-height:28px}
 .classe .didascalia span{color:var(--testo-2);font-size:15px}
@@ -192,3 +191,4 @@ h1{font-size:32px;line-height:38px;font-weight:700;margin-top:4px}
 .salta{position:absolute;left:12px;top:-80px;z-index:1000;background:#DBE64C;color:#001F3F;font-weight:700;font-size:15px;padding:10px 16px;border-radius:2px;text-decoration:none;transition:top .15s}
 .salta:focus{top:12px;outline:2px solid #001F3F;outline-offset:2px}
 main:focus{outline:none}
+@media (max-width:360px){.classe .bollino{width:176px;height:176px;margin:-24px}}
