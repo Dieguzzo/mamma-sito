@@ -1,7 +1,7 @@
 /* MAMMA · pagine secondarie desktop (si carica dopo mamma.css) */
 [hidden]{display:none!important}
 .brand .logo img{width:56px;height:56px;display:block}
-.nome .lt img{height:18px;width:auto;display:block}
+.nome .lt img{height:19px;width:auto;display:block}
 .slim .area .ico{width:16px;height:16px}
 .cerca .ico{width:22px;height:22px}
 .head{padding-bottom:0}
@@ -89,7 +89,7 @@
 .righe-tab td{padding:14px 16px 14px 0;border-bottom:1px solid var(--linea);vertical-align:middle}
 .righe-tab tr:last-child td{border-bottom:0}
 .lettera{display:inline-grid;place-items:center;width:32px;height:28px;border-radius:2px;font-weight:700;color:#fff}
-.lettera.A{background:#00804C}.lettera.B{background:#74C365;color:var(--cielo)}.lettera.C{background:#DBE64C;color:var(--cielo)}.lettera.D{background:#F2B134;color:var(--cielo)}.lettera.E{background:#E8743B}.lettera.F{background:#D23B2E}
+.lettera.A{background:#00964E}.lettera.B{background:#A9C801;color:var(--cielo)}.lettera.C{background:#E4C700;color:var(--cielo)}.lettera.D{background:#F49916;color:var(--cielo)}.lettera.E{background:#E94445}.lettera.F{background:#C62017}
 
 /* passi numerati */
 .passi{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}

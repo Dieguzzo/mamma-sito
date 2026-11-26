@@ -83,12 +83,12 @@
 <script src="../js/layout.js"></script>
 <script>
 const CL=[
- ['A','#00804C','Protezione climatica massima','Sole e pioggia programmati per tutta la stagione. Prodotti DOP e IGP delle zone protette.',5],
- ['B','#74C365','Protezione climatica alta','Interventi su gran parte della stagione, comprese fioritura e raccolta.',4],
- ['C','#DBE64C','Protezione climatica media','Interventi solo nelle fasi più delicate della coltivazione.',3],
- ['D','#F2B134','Protezione climatica bassa','Interventi occasionali, solo in caso di eventi estremi.',2],
- ['E','#E8743B','Protezione climatica minima','Nessun intervento diretto. Il prodotto beneficia solo degli interventi nelle zone vicine.',1],
- ['F','#D23B2E','Prodotto di zona di compensazione','Prodotti delle zone di compensazione, cresciuti con il meteo che hanno ricevuto.',0]];
+ ['A','#00964E','Protezione climatica massima','Sole e pioggia programmati per tutta la stagione. Prodotti DOP e IGP delle zone protette.',5],
+ ['B','#A9C801','Protezione climatica alta','Interventi su gran parte della stagione, comprese fioritura e raccolta.',4],
+ ['C','#E4C700','Protezione climatica media','Interventi solo nelle fasi più delicate della coltivazione.',3],
+ ['D','#F49916','Protezione climatica bassa','Interventi occasionali, solo in caso di eventi estremi.',2],
+ ['E','#E94445','Protezione climatica minima','Nessun intervento diretto. Il prodotto beneficia solo degli interventi nelle zone vicine.',1],
+ ['F','#C62017','Prodotto di zona di compensazione','Prodotti delle zone di compensazione, cresciuti con il meteo che hanno ricevuto.',0]];
 const el=document.getElementById('elenco');
 el.innerHTML=CL.map(([l,c,d,t,n],i)=>`<li><button aria-pressed="${i===0}" data-l="${l}"><span class="lettera ${l}">${l}</span><span class="nm"><b>Classe ${l}</b><small>${d}</small></span><span class="livello" aria-label="Livello di protezione ${n} su 5">${[0,1,2,3,4].map(k=>`<i style="${k<n?'background:'+c:''}"></i>`).join('')}</span><p>${t}</p></button></li>`).join('');
 const img=document.getElementById('bol-img');

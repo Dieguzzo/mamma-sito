@@ -2,7 +2,7 @@
  :root{
    --cielo:#001F3F; --cielo-scuro:#00132A; --luce:#DBE64C; --cloud:#F6F7ED; --blu:#1E488F;
    --verde:#00804C; --germoglio:#74C365; --corpo:#EFF1F3; --bianco:#fff;
-   --testo-2:rgba(0,31,63,.78); --linea:rgba(0,31,63,.12);
+   --testo-2:#3A4A5E; --linea:#D9DCCB;
    --ombra:0 4px 16px rgba(0,31,63,.08);
    --ease-out:cubic-bezier(.23,1,.32,1);
    --font:"semplicitapro","Titillium Web","Segoe UI",system-ui,sans-serif;
@@ -26,12 +26,12 @@
  .head{background:var(--cielo);color:#fff}
  .head .wrap{padding-top:28px;position:relative;z-index:2}
  .brandrow{display:flex;justify-content:space-between;align-items:center}
- .brand{display:flex;align-items:center;gap:16px;color:#fff;text-decoration:none}
+ .brand{display:flex;align-items:center;gap:14px;color:#fff;text-decoration:none}
  .brand .logo svg{width:56px;height:56px;display:block}
  /* lockup come quello del gruppo: marchio v4d, MAMMA e il nome dell'agenzia in maiuscolo su due righe */
- .nome{display:flex;flex-direction:column;gap:8px}
- .nome .lt svg,.nome .lt img{height:18px;width:auto;display:block}
- .nome small{font-size:10.5px;line-height:13px;letter-spacing:.03em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+ .nome{display:flex;flex-direction:column;gap:6px}
+ .nome .lt svg,.nome .lt img{height:19px;width:auto;display:block}
+ .nome small{font-size:10.5px;line-height:1.4;letter-spacing:.02em;text-transform:uppercase;color:#fff}
  .cerca{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:14px}
  .cerca svg{width:22px;height:22px}
  nav.main{display:flex;gap:40px;margin-top:22px;font-weight:600;font-size:16px}

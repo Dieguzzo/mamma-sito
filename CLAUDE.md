@@ -23,24 +23,26 @@ Un sito navigabile vero, da mostrare alla mostra, pubblicato con GitHub Pages.
 - `js/layout.js` scrive intestazione e piè di pagina delle pagine desktop, con il menu a scomparsa sotto i 760 px (pulsante `.apri-menu`, la home ha lo stesso markup scritto a mano). "Cerca" porta a `index.html?cerca`. Nella pagina servono `<div id="testa">`, `<div id="piede">` e `data-sezione` sul body per la voce attiva, `data-utente` per l'area riservata. Va caricato prima di `js/icone.js`.
 - `css/pagine.css` componenti delle pagine secondarie (si carica dopo `css/mamma.css`).
 - `assets/prodotti/`, `assets/bollini/`, `assets/foto/`, `assets/illustrazioni/`, `assets/app/` immagini esportate dal checkpoint Figma.
-- `assets/` marchio e logotipo, bollino provvisorio, `regions.json` (tracciati delle 20 regioni, spazio 528x560). Il marchio è la famiglia **v4d** di JamClaude (pagina "Marchio v2 scale"): `logo.svg` e `marchio-l.svg` scala L (da 48 px), `marchio-m.svg` scala M (24–47 px), `marchio-s.svg` scala S (16–23 px), bianchi per i fondi scuri, con le varianti `-cielo`. `logotipo.svg` è MAMMA in Semplicita senza riquadri, come nel lockup di Marta, e nell'intestazione sotto c'è il nome dell'agenzia in maiuscolo su due righe. I file vecchi restano come `logo-v1.svg` e `logotipo-v1.svg`. `favicon.svg` cambia colore con il tema chiaro o scuro, con i PNG `favicon-32*.png` come riserva.
+- `assets/` marchio e logotipo, bollino provvisorio, `regions.json` (tracciati delle 20 regioni, spazio 528x560). Il marchio è la famiglia **v4d** di JamClaude (pagina "Marchio v2 scale"): `logo.svg` e `marchio-l.svg` scala L (da 48 px), `marchio-m.svg` scala M (24–47 px), `marchio-s.svg` scala S (16–23 px), bianchi per i fondi scuri, con le varianti `-cielo`. Il lockup segue "Frame 97" del design system in Componenti e identità: marchio v4d, `logotipo.svg` a riquadri alto circa un terzo del marchio e sotto il nome dell'agenzia in maiuscolo su due righe con interlinea 140%. La versione senza riquadri del lockup di Marta resta come `logotipo-semplice.svg`. I file vecchi del marchio restano come `logo-v1.svg` e `logotipo-v1.svg`. `favicon.svg` cambia colore con il tema chiaro o scuro, con i PNG `favicon-32*.png` come riserva.
 - Accessibilità. `js/icone.js` aggiunge a ogni pagina il link "Vai al contenuto" (`.salta`). Controllo fatto il 26 novembre 2026: contrasti AA, titoli in ordine, campi con etichetta, focus visibile.
 - `prototipo/index.html` il prototipo originale in un file unico, solo come riferimento.
 - Sito statico senza build, HTML, CSS e JavaScript semplici. `.nojekyll` evita l'elaborazione di GitHub Pages.
 
 ## Riferimento di design
 
+Il design system aggiornato (palette, bollini, icone, lockup) sono i frame sopra il rettangolo rosso nella pagina "Componenti e identità" di JamClaude, da "00 / Design system · Indice" a "Icon system".
+
 Il riferimento è la pagina **"Checkpoint · 20 novembre"** del file Figma "JamClaude" (fileKey `wflMoCZm8EeFYcOgAiNcNp`), solo la versione **squadrata**. Sito chiaro e desktop, pagine QR mobile da 390.
 
 ## Linguaggio visivo
 
-- Colori. Cielo Profondo #001F3F, Luce del Raccolto #DBE64C, Cloud Seeding #F6F7ED, Blu Pioggia #1E488F, Verde Germoglio #74C365, Verde Agricolo #00804C, bianco. Fondo pagina #EFF1F3. Classi bollino A #00804C, B #74C365, C #DBE64C, D #F2B134, E #E8743B, F #D23B2E.
+- Colori. Cielo Profondo #001F3F, Luce del Raccolto #DBE64C, Cloud Seeding #F6F7ED, Blu Pioggia #1E488F, Verde Germoglio #74C365, Verde Agricolo #00804C, bianco. Neutri Linea #D9DCCB, Testo secondario #3A4A5E. Fondo pagina #EFF1F3. Classi bollino (documento "02 / Bollini" del design system) A #00964E, B #A9C801, C #E4C700, D #F49916, E #E94445, F #C62017.
 - Card bianche con raggio 4, ombra 0 4px 16px rgba(0,31,63,.08). Chip e pulsanti raggio 2.
 - Header slim più scuro (#00132A), header Cielo con sottolineatura Luce sulla voce attiva, footer Cielo.
-- Testi in Cielo, secondari al 78%, link in Blu Pioggia, numeri in Verde Agricolo.
+- Testi in Cielo, secondari in Testo secondario #3A4A5E, link in Blu Pioggia, numeri in Verde Agricolo.
 - Motivi. Cerchi concentrici per le zone protette, linee diagonali per le zone di compensazione. Sulle pagine secondarie solo come richiamo grigio molto sfumato in alto a destra.
 - Font da Adobe Fonts, progetto web di Diego `https://use.typekit.net/vpn6nes.css`. Famiglie `semplicitapro` (400 e 700) per tutto, `sole-sans-variable` esteso per le etichette maiuscole. Non copiare né caricare nel repository i file dei font.
-- Icone. Il set di Diego è il frame "ICONE123" nella pagina "Componenti e identità" del Figma (componenti "V2 / Icon / …", 24x24, tratto 1.4). Vanno esportate da lì in SVG con `currentColor`.
+- Icone. Stati del design system: predefinito Cielo Profondo, hover Cielo al 50%, selezionato Luce del Raccolto (sui fondi chiari al posto del giallo si usa l'icona piena, il giallo non si legge sul bianco). Il set di Diego è il frame "ICONE123" nella pagina "Componenti e identità" del Figma (componenti "V2 / Icon / …", 24x24, tratto 1.4). Vanno esportate da lì in SVG con `currentColor`.
 
 ## Tono dei testi per destinatario
 

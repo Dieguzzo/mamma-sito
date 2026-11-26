@@ -2,7 +2,7 @@
 :root{
  --cielo:#001F3F; --cielo-scuro:#00132A; --luce:#DBE64C; --cloud:#F6F7ED; --blu:#1E488F;
  --verde:#00804C; --germoglio:#74C365; --corpo:#EFF1F3; --bianco:#fff;
- --testo-2:rgba(0,31,63,.78); --testo-3:rgba(0,31,63,.62); --linea:rgba(0,31,63,.12);
+ --testo-2:#3A4A5E; --testo-3:rgba(0,31,63,.62); --linea:#D9DCCB;
  --ombra:0 4px 16px rgba(0,31,63,.08);
  --font:"semplicitapro","Titillium Web","Segoe UI",system-ui,sans-serif;
  --font-etich:"sole-sans-variable","semplicitapro",system-ui,sans-serif;

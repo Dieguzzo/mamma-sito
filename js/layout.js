@@ -11,7 +11,7 @@
 <div class="slim"><div class="wrap"><span>Repubblica Italiana · Agenzia MAMMA</span><div class="slim-r"><span>ITA</span><a class="area" href="${B}area-riservata/"><span data-icon="utente"></span>${utente ? utente + ' · Esci' : 'Area riservata'}</a></div></div></div>
 <header class="head"><div class="wrap">
   <div class="brandrow">
-    <a class="brand" href="${B}index.html" aria-label="MAMMA, vai alla home"><span class="logo"><img src="${B}assets/logo.svg" alt="" width="56" height="56"></span><span class="nome"><span class="lt"><img src="${B}assets/logotipo.svg" alt="MAMMA" height="18"></span><small>Agenzia per il Monitoraggio Atmosferico<br>e la Modifica Meteorologica Ambientale</small></span></a>
+    <a class="brand" href="${B}index.html" aria-label="MAMMA, vai alla home"><span class="logo"><img src="${B}assets/logo.svg" alt="" width="56" height="56"></span><span class="nome"><span class="lt"><img src="${B}assets/logotipo.svg" alt="MAMMA" height="19"></span><small>Agenzia per il Monitoraggio Atmosferico<br>e la Modifica Meteorologica Ambientale</small></span></a>
     <a class="cerca" href="${B}index.html?cerca" aria-label="Cerca un comune">Cerca <span data-icon="lente"></span></a>
     <button class="apri-menu" type="button" aria-expanded="false" aria-controls="nav-main" aria-label="Apri il menu" onclick="const h=this.closest('.head'),a=h.classList.toggle('aperto');this.setAttribute('aria-expanded',a);this.setAttribute('aria-label',a?'Chiudi il menu':'Apri il menu')"><span data-icon="menu"></span></button>
   </div>
