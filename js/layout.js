@@ -11,7 +11,7 @@
 <div class="slim"><div class="wrap"><span>Repubblica Italiana · Agenzia MAMMA</span><div class="slim-r"><span>ITA</span><a class="area" href="${B}area-riservata/"><span data-icon="utente"></span>${utente ? utente + ' · Esci' : 'Area riservata'}</a></div></div></div>
 <header class="head"><div class="wrap">
   <div class="brandrow">
-    <a class="brand" href="${B}index.html" aria-label="MAMMA, vai alla home"><span class="logo"><img src="${B}assets/logo.svg" alt="" width="56" height="56"></span><span class="nome"><span class="lt"><img src="${B}assets/logotipo.svg" alt="MAMMA" height="19"></span><small>Agenzia per il Monitoraggio Atmosferico<br>e la Modifica Meteorologica Ambientale</small></span></a>
+    <a class="brand" href="${B}index.html" aria-label="MAMMA, vai alla home"><span class="logo"><img src="${B}assets/logo.svg" alt="" width="56" height="56"></span><span class="nome"><span class="lt"><img src="${B}assets/logotipo-semplice.svg" alt="MAMMA" height="19"></span><small>Agenzia per il Monitoraggio Atmosferico<br>e la Modifica Meteorologica Ambientale</small></span></a>
     <a class="cerca" href="${B}index.html?cerca" aria-label="Cerca un comune">Cerca <span data-icon="lente"></span></a>
     <button class="apri-menu" type="button" aria-expanded="false" aria-controls="nav-main" aria-label="Apri il menu" onclick="const h=this.closest('.head'),a=h.classList.toggle('aperto');this.setAttribute('aria-expanded',a);this.setAttribute('aria-label',a?'Chiudi il menu':'Apri il menu')"><span data-icon="menu"></span></button>
   </div>
@@ -20,13 +20,13 @@
   const piede = `
 <footer class="piede"><div class="wrap">
   <div class="ente">
-    <a class="marchio" href="${B}index.html" aria-label="MAMMA, vai alla home"><img src="${B}assets/marchio-m.svg" alt="" width="44" height="44"><img class="lt" src="${B}assets/logotipo.svg" alt="MAMMA" height="18"></a>
+    <a class="marchio" href="${B}index.html" aria-label="MAMMA, vai alla home"><img src="${B}assets/marchio-m.svg" alt="" width="44" height="44"><img class="lt" src="${B}assets/logotipo-semplice.svg" alt="MAMMA" height="18"></a>
     <p>Agenzia per il Monitoraggio Atmosferico<br>e la Modifica Meteorologica Ambientale</p>
     <small>© 2037 MAMMA · Società a servizio della Repubblica Italiana</small>
   </div>
-  <nav aria-label="Agenzia"><span class="etichetta">Agenzia</span><a href="${B}agenzia/chi-siamo/">Chi siamo</a><a href="${B}agenzia/come-interveniamo/">Come interveniamo</a><a href="${B}index.html#zone-e-interventi">Zone e interventi</a><a href="${B}bollino/">Bollino e prodotti</a></nav>
-  <nav aria-label="Servizi"><span class="etichetta">Servizi</span><a href="${B}servizi/preavvisi/">Preavvisi</a><a href="${B}servizi/segnalazioni/">Segnalazioni e reclami</a><a href="${B}area-riservata/">Area riservata</a><a href="${B}app/">App MAMMA</a></nav>
-  <nav aria-label="Note"><span class="etichetta">Note</span><a href="${B}trasparenza/">Amministrazione trasparente</a><a href="#">Accessibilità</a><a href="#">Privacy</a><a href="#">Note legali</a></nav>
+  <nav aria-label="Agenzia"><span class="etichetta">Agenzia</span><a href="${B}agenzia/chi-siamo/">Chi siamo</a><a href="${B}agenzia/come-interveniamo/">Come interveniamo</a><a href="${B}index.html#zone-e-interventi">Zone e interventi</a><a href="${B}bollino/">Bollino e prodotti</a><a href="${B}notizie/">Notizie e comunicati</a></nav>
+  <nav aria-label="Servizi"><span class="etichetta">Servizi</span><a href="${B}servizi/preavvisi/">Preavvisi</a><a href="${B}servizi/segnalazioni/">Segnalazioni e reclami</a><a href="${B}area-riservata/">Area riservata</a><a href="${B}app/">App MAMMA</a><a href="${B}domande-frequenti/">Domande frequenti</a><a href="${B}contatti/">Contatti</a></nav>
+  <nav aria-label="Note"><span class="etichetta">Note</span><a href="${B}trasparenza/">Amministrazione trasparente</a><a href="${B}note/accessibilita/">Accessibilità</a><a href="${B}note/privacy/">Privacy</a><a href="${B}note/cookie/">Cookie</a><a href="${B}note/note-legali/">Note legali</a><a href="${B}mappa-del-sito/">Mappa del sito</a></nav>
 </div><div class="wrap scenario">Progetto di speculative design · Politecnico di Milano · i dati sono di scenario</div></footer>`;
   const t = document.getElementById('testa'); if (t) t.outerHTML = testa;
   const p = document.getElementById('piede'); if (p) p.outerHTML = piede;

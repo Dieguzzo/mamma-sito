@@ -87,9 +87,9 @@
           <div class="sanzione"><b>Copertura o rimozione del bollino o del cartello</b><span>Da 1.000 a 6.000 € e sospensione della vendita fino a 15 giorni</span></div>
         </section>
         <section class="card blocco" id="materiali"><h2 style="font-size:17px">Materiali per il punto vendita</h2>
-          <a class="documento" href="../../documenti/cartello-bollino.pdf" target="_blank" rel="noopener"><span><b>Cartello espositivo del bollino</b><small>PDF · 122 KB</small></span><span data-icon="scarica"></span></a>
-          <a class="documento" href="../../documenti/cartello-compensazione.pdf" target="_blank" rel="noopener"><span><b>Cartello «Prodotto di zona di compensazione»</b><small>PDF · 121 KB</small></span><span data-icon="scarica"></span></a>
-          <a class="documento" href="../../documenti/guida-clienti.pdf" target="_blank" rel="noopener"><span><b>Guida alla lettura per i clienti</b><small>PDF · 122 KB</small></span><span data-icon="scarica"></span></a>
+          <a class="documento" href="../../documenti/cartello-bollino.pdf" target="_blank" rel="noopener"><span><b>Cartello espositivo del bollino</b><small>PDF · 37 KB</small></span><span data-icon="scarica"></span></a>
+          <a class="documento" href="../../documenti/cartello-compensazione.pdf" target="_blank" rel="noopener"><span><b>Cartello «Prodotto di zona di compensazione»</b><small>PDF · 30 KB</small></span><span data-icon="scarica"></span></a>
+          <a class="documento" href="../../documenti/guida-clienti.pdf" target="_blank" rel="noopener"><span><b>Guida alla lettura per i clienti</b><small>PDF · 111 KB</small></span><span data-icon="scarica"></span></a>
         </section>
       </div>
 
@@ -104,8 +104,8 @@
         <section class="card blocco" id="bilance"><h2>Bilance omologate MAMMA</h2>
           <p style="margin:0;font-size:15px;line-height:23px;color:var(--testo-2)">Dal 1° gennaio 2038 le bilance del reparto ortofrutta devono stampare sull'etichetta il bollino e la classe di impatto climatico del prodotto pesato (Regolamento MAMMA n. 4/2037, art. 12).</p>
           <div class="modi">
-            <div><span data-icon="scatola"></span><b>Richiedere una bilancia MAMMA</b><p>Fornita in comodato d'uso, già omologata e collegata al registro nazionale dei prodotti.</p><a class="link-freccia" href="#">Richiedi la bilancia<span class="chev" data-icon="chevron"></span></a></div>
-            <div><span data-icon="attrezzo"></span><b>Omologare le bilance in uso</b><p>Un tecnico MAMMA verifica la bilancia e installa il modulo di stampa del bollino entro 10 giorni lavorativi.</p><a class="link-freccia" href="#">Prenota il tecnico<span class="chev" data-icon="chevron"></span></a></div>
+            <div><span data-icon="scatola"></span><b>Richiedere una bilancia MAMMA</b><p>Fornita in comodato d'uso, già omologata e collegata al registro nazionale dei prodotti.</p><a class="link-freccia" href="#" data-richiesta="Richiesta n. BL-2037-1182 inviata. La bilancia arriva entro 15 giorni lavorativi.">Richiedi la bilancia<span class="chev" data-icon="chevron"></span></a></div>
+            <div><span data-icon="attrezzo"></span><b>Omologare le bilance in uso</b><p>Un tecnico MAMMA verifica la bilancia e installa il modulo di stampa del bollino entro 10 giorni lavorativi.</p><a class="link-freccia" href="#" data-richiesta="Prenotazione n. OM-2037-0457 inviata. Il tecnico ti chiamerà per fissare la visita.">Prenota il tecnico<span class="chev" data-icon="chevron"></span></a></div>
           </div>
           <p class="stato-bilance" id="bilance-stato"></p>
         </section>
@@ -143,5 +143,6 @@ document.getElementById('bilance-stato').innerHTML=icona(B[0])+B[1];
 const D=[['Registro di carico ortofrutta','con classe e lotto di ogni prodotto'],['Documenti di trasporto','con il codice del bollino'],['Certificati di omologazione','di tutte le bilance in uso'],st==='nessuna'?['Verbali di verifica','da conservare dopo ogni controllo']:["Verbale dell'ultima verifica",'e ricevute delle regolarizzazioni'],['Ricevute della maggiorazione',"versamenti dell'ultimo anno"]];
 document.getElementById('docs').innerHTML=D.map(([t,s])=>`<div class="doc">${icona('file')}<div><b>${t}</b><span>${s}</span></div></div>`).join('');
 </script>
+<script>document.querySelectorAll('[data-richiesta]').forEach(a=>{a.setAttribute('role','button');a.addEventListener('click',e=>{e.preventDefault();const p=document.createElement('p');p.className='richiesta-ok';p.setAttribute('role','status');p.innerHTML='<span data-icon="ok"></span>'+a.dataset.richiesta;a.replaceWith(p);idrataIcone();});});</script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accesso agli atti · MAMMA</title>
+<meta name="description" content="Richiedi i documenti di un intervento">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-32.png" sizes="32x32" media="(prefers-color-scheme: light)">
+<link rel="icon" href="../../assets/favicon-32-scuro.png" sizes="32x32" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/vpn6nes.css">
+<link rel="stylesheet" href="../../css/mamma.css">
+<link rel="stylesheet" href="../../css/pagine.css">
+
+</head>
+<body data-sezione="trasparenza" class="motivo-diagonali">
+<div id="testa"></div>
+<main class="corpo-pagina"><div class="wrap">
+  <nav class="briciole" aria-label="Percorso"><a href="../../index.html">Home</a><span>/</span><a href="../../trasparenza/">Trasparenza</a><span>/</span><span>Accesso agli atti</span></nav>
+  <div class="intestazione"><h1>Accesso agli atti</h1><p>Puoi chiedere i documenti di un intervento che riguarda il tuo comune, come il piano di volo, l'ordine di lancio o il verbale del tecnico. Rispondiamo entro 30 giorni.</p></div>
+  <div class="colonne" style="padding-bottom:80px">
+    <form class="card modulo" id="modulo" novalidate>
+      <div class="due"><div class="campo"><label for="nome">Nome e cognome</label><input id="nome" autocomplete="name" required></div><div class="campo"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required></div></div>
+      <div class="due"><div class="campo"><label for="comune">Comune</label><input id="comune" list="comuni" required><datalist id="comuni"><option value="Milano (MI)"><option value="Pachino (SR)"><option value="Terralba (OR)"><option value="Oristano (OR)"></datalist></div><div class="campo"><label for="data">Data dell'intervento</label><input id="data" type="date" min="2037-01-01" max="2037-11-17" required></div></div>
+      <div class="campo"><label for="tipo">Documenti richiesti</label><select id="tipo"><option>Piano di volo del cloud seeding</option><option>Ordine di lancio dei razzi antigrandine</option><option>Registro di funzionamento degli specchi solari</option><option>Verbale del tecnico di zona</option><option>Tutti i documenti dell'intervento</option></select></div>
+      <div class="campo"><label for="motivo">Perché ti servono</label><textarea id="motivo" placeholder="Per esempio, una richiesta di indennizzo o un ricorso"></textarea></div>
+      <label class="spunta"><input type="checkbox" id="priv" required><span>Ho letto l'<a href="../../note/privacy/">informativa sulla privacy</a></span></label>
+      <p class="errore" id="err" hidden>Compila nome, email, comune, data e accetta l'informativa.</p>
+      <div class="azioni"><button class="bottone scuro" type="submit">Invia la richiesta</button><span class="nota-piccola" style="margin:0">Nessun costo per i documenti in formato digitale.</span></div>
+    </form>
+    <div class="colonna">
+      <section class="card richiesta" style="padding:24px"><h2 style="margin:0 0 8px;font-size:17px">Come funziona</h2><ol class="passi"><li><span class="n">1</span>Invii la richiesta e ricevi il numero di protocollo</li><li><span class="n">2</span>L'ufficio verifica che l'intervento riguardi il tuo comune</li><li><span class="n">3</span>Ricevi i documenti per email entro 30 giorni</li></ol></section>
+      <section class="card" style="padding:24px"><h2 style="margin:0 0 8px;font-size:17px">Dati già pubblici</h2><p style="margin:0 0 10px;font-size:15px;line-height:23px;color:var(--testo-2)">Orari, tipo ed effetto di ogni intervento sono già nei dati aperti, aggiornati ogni giorno.</p><a class="link-freccia" href="../../trasparenza/">Vai ai dati aperti<span class="chev" data-icon="chevron"></span></a></section>
+    </div>
+  </div>
+</div></main>
+<div id="piede"></div>
+<script src="../../js/layout.js"></script>
+<script src="../../js/icone.js"></script>
+<script>const f=document.getElementById('modulo');
+f.addEventListener('submit',e=>{e.preventDefault();
+ const ok=['nome','email','comune','data'].every(i=>document.getElementById(i).value.trim())&&document.getElementById('email').value.includes('@')&&document.getElementById('priv').checked;
+ const err=document.getElementById('err'); if(!ok){err.hidden=false;return;}
+ const n='AA-2037-'+String(4800+Math.floor(Math.random()*900)).padStart(5,'0');
+ f.outerHTML=`<section class="card avviso ok" style="align-self:start" role="status"><span data-icon="ok"></span><div><h2>Richiesta inviata</h2><p>Il numero di protocollo è <b>${n}</b>. Ti abbiamo mandato una conferma per email. Riceverai i documenti entro mercoledì 18 dicembre 2037.</p><a class="link-freccia" href="../../trasparenza/">Torna alla trasparenza<span class="chev" data-icon="chevron"></span></a></div></section>`;
+ idrataIcone(); });</script>
+</body>
+</html>

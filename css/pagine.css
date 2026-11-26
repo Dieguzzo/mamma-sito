@@ -162,3 +162,55 @@
  .bottone{min-height:48px;height:auto;padding:12px 18px;text-align:center}
  .corpo-pagina::before{width:440px;height:440px;right:-220px;top:-140px}
 }
+
+/* Pagine di testo (privacy, cookie, note legali, accessibilità) */
+.legale{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;align-items:start;padding-bottom:80px}
+.indice{position:sticky;top:24px;padding:20px 22px}
+.indice .etichetta{display:block;margin-bottom:8px}
+.indice a{display:block;padding:7px 0;font-size:14px;line-height:19px;color:var(--blu);text-decoration:none;border-bottom:1px solid var(--linea)}
+.indice a:last-child{border-bottom:0}
+.indice a:hover{text-decoration:underline}
+.testo-legale{max-width:760px}
+.testo-legale section{scroll-margin-top:24px}
+.testo-legale h2{font-size:22px;line-height:28px;margin:40px 0 10px}
+.testo-legale section:first-child h2{margin-top:0}
+.testo-legale h3{font-size:17px;line-height:24px;margin:22px 0 6px}
+.testo-legale p,.testo-legale li{font-size:16px;line-height:26px;color:var(--cielo)}
+.testo-legale p{margin:0 0 14px}
+.testo-legale ul{margin:0 0 14px;padding-left:20px}
+.testo-legale li{margin-bottom:6px}
+.testo-legale .righe-tab{margin:8px 0 18px}
+.testo-legale .agg{font-size:14px;color:var(--testo-2);margin-top:32px;padding-top:16px;border-top:1px solid var(--linea)}
+/* Domande frequenti */
+.faq{border-bottom:1px solid var(--linea)}
+.faq:last-child{border-bottom:0}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 24px;font-weight:700;font-size:16px;line-height:22px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:9px;height:9px;border-right:1.6px solid var(--cielo);border-bottom:1.6px solid var(--cielo);transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s var(--ease-out)}
+.faq[open] summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.faq summary:hover{background:rgba(0,31,63,.03)}
+.faq summary:focus-visible{outline:2px solid var(--blu);outline-offset:-2px}
+.faq .risposta{padding:0 24px 20px;font-size:15px;line-height:24px;color:var(--testo-2);max-width:720px}
+.faq .risposta p{margin:0 0 10px}
+.faq .risposta a{color:var(--blu)}
+/* Elenchi di link (mappa del sito, archivio) */
+.elenco-link{list-style:none;margin:0;padding:0}
+.elenco-link li{border-bottom:1px solid var(--linea)}
+.elenco-link li:last-child{border-bottom:0}
+.elenco-link a{display:block;padding:11px 0;color:var(--blu);text-decoration:none;font-size:15px;line-height:21px}
+.elenco-link a:hover{text-decoration:underline}
+.elenco-link small{display:block;color:var(--testo-2);font-size:13px}
+/* Moduli con esito */
+.modulo{padding:28px;display:grid;gap:18px}
+.modulo .due{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.modulo .spunta{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:21px;color:var(--testo-2)}
+.modulo .spunta input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--cielo);flex:none}
+.modulo .azioni{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.modulo .errore{color:#B3261E;font-size:14px;margin:0}
+.richiesta-ok{display:flex;gap:12px;align-items:center;font-size:14px;line-height:20px;color:var(--cielo);background:rgba(0,128,76,.08);border-radius:2px;padding:10px 12px;margin-top:4px}
+.richiesta-ok .ico{color:var(--verde,#00804C);width:20px;height:20px;flex:none}
+@media (max-width:900px){.legale{grid-template-columns:minmax(0,1fr);gap:24px}.indice{position:static}}
+@media (max-width:760px){.modulo{padding:20px}.modulo .due{grid-template-columns:minmax(0,1fr)}.faq summary{padding:16px 18px}.faq .risposta{padding:0 18px 18px}.testo-legale h2{font-size:20px;line-height:26px;margin-top:32px}}
+.modulo,.modulo>*,.modulo .campo{min-width:0}
+.modulo .campo input,.modulo .campo select,.modulo .campo textarea{width:100%;min-width:0}
+.scorri{overflow-x:auto;-webkit-overflow-scrolling:touch}

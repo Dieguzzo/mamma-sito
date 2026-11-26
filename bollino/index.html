@@ -14,8 +14,8 @@
 <style>
 .classi{display:grid;grid-template-columns:400px minmax(0,1fr);gap:20px;align-items:stretch}
 .vetrina{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center}
-.vetrina img{width:270px;height:auto;transition:opacity .18s ease}
-.vetrina b{display:block;font-size:28px;line-height:34px;margin-top:28px}
+.vetrina img{display:block;width:300px;height:auto;margin:-12px auto 0;filter:drop-shadow(0 5px 16px rgba(0,31,63,.18)) drop-shadow(0 0 1.5px rgba(0,31,63,.28));transition:opacity .18s ease}
+.vetrina b{display:block;font-size:28px;line-height:34px;margin-top:8px}
 .vetrina span{display:block;color:var(--testo-2);font-size:15px}
 .vetrina small{display:block;margin-top:20px;font-size:13px;color:var(--testo-2)}
 .elenco{list-style:none;margin:0;padding:0;overflow:hidden}
@@ -39,7 +39,7 @@
 .verifica .lotto input{border:0;outline:0;font:inherit;font-size:15px;color:var(--cielo);padding:0}
 .verifica .lotto:focus-within{border-color:var(--blu);box-shadow:0 0 0 3px rgba(30,72,143,.15)}
 .verifica .errore{color:#B3261E;font-size:13px;margin-top:6px}
-@media (max-width:1000px){.classi{grid-template-columns:minmax(0,1fr)}.vetrina{padding:28px 20px}.vetrina img{width:200px}.vetrina b{margin-top:18px}}
+@media (max-width:1000px){.classi{grid-template-columns:minmax(0,1fr)}.vetrina{padding:28px 20px}.vetrina img{width:230px}.vetrina b{margin-top:4px}}
 @media (max-width:760px){
  .elenco button{grid-template-columns:36px minmax(0,1fr);gap:4px 14px;padding:14px 16px}
  .elenco .livello{grid-column:2}.elenco p{grid-column:2;font-size:14px;line-height:20px}
@@ -61,7 +61,7 @@
       <h2 id="t-classi">Le sei classi</h2>
       <div class="classi">
         <div class="card vetrina" aria-live="polite">
-          <img id="bol-img" src="../assets/bollini/a.webp" alt="Bollino MAMMA, classe A" width="240" height="236">
+          <img id="bol-img" src="../assets/bollini/a.webp" alt="Bollino MAMMA, classe A" width="480" height="480">
           <b id="bol-nome">Classe A</b><span id="bol-desc">Protezione climatica massima</span>
           <small>Scegli una classe dall'elenco per vedere il suo bollino</small>
         </div>

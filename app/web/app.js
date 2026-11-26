@@ -65,7 +65,7 @@ function colori(fondo,conBarra){ if(metaTema) metaTema.content=fondo;
   if(!cornice.matches){ const h=document.documentElement.style; h.setProperty('--fondo-html',fondo); h.setProperty('--fondo-basso',conBarra?'#fff':fondo); } }
 const P = () => COMUNI[comune].zona==='p';
 
-const marchio = () => `<span class="marchio"><img class="logo" src="${ROOT}assets/marchio-m.svg" alt=""><img class="lt" src="${ROOT}assets/logotipo.svg" alt="MAMMA"></span>`;
+const marchio = () => `<span class="marchio"><img class="logo" src="${ROOT}assets/marchio-m.svg" alt=""><img class="lt" src="${ROOT}assets/logotipo-semplice.svg" alt="MAMMA"></span>`;
 function testa({titolo, cls='titolo-44', data, sopra='', sotto='', oggi=false}){
   const c=COMUNI[comune];
   return `<header class="testa ${oggi?'oggi':''}"><div class="barra">${marchio()}<span class="chip ${c.zona}">${c.zonaNome}</span></div>
